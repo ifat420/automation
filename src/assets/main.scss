@@ -3,33 +3,94 @@ $color-a: #2B54D0;
 $color-a-dark: rgb(26, 66, 185);
 $color-a-light: rgb(66, 102, 209);
 
-$color-b: #354052;
-$color-b-font: #fff;
-$color-b-dark: #2b3442;
+$color-b: #4C0A74;
+$color-b-font: rgb(212, 178, 233);
+$color-b-dark: #6A1B9A;
 $color-b-light: #3a465a;
 
+$sidebar-width: 250px;
+$header-height: 50px;
  
-.sidebar {
-    height: 100vh; 
+.main-content { 
+    display: inline-block;
+    min-height: calc(100vh - #{$header-height});
+    width: calc(100% - #{$sidebar-width}); 
+    margin-left: $sidebar-width;
+    background: #6A1B9A;
+    vertical-align: top; 
+} 
+
+
+.header {
+    height: $header-height;
+    background: $color-a;
+}
+
+.sidebar { 
+    position: fixed; 
+    // overflow-y: scroll;
+    top: $header-height;
+    min-height: calc(100vh - #{$header-height}); 
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
     color: $color-b-font;
     background: $color-b;
+    text-transform: uppercase; 
+    font-weight: 600;
+    letter-spacing: .1rem;
 
-    &__list { 
+    &__user {
+        display: none;
+        height: $sidebar-width;
+        width: $sidebar-width;
 
+        padding: 2rem; 
+
+        &--round {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__list {  
+        font-size: 1.4rem;  
+        
         &--item { 
-            padding: .5em 2em;
+            padding: 1.3rem 2rem;
             cursor: pointer;
+            display: inline-block;
+            width: 100%; 
+            position: relative;
 
-            &:hover {
+            & .fa-fw {
+                margin-right: 1.5rem;
+            }
+
+            & .fa-angle-down {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 2rem;
+            }
+
+            &:hover, &:active {
                 background: $color-b-dark;
             }
         } 
     } 
 
     &__sub-list { 
+        font-size: 1.4rem;  
+        padding: 1rem 0;
+        background: black;
 
-        &--item {
-            display: none;
+        &--item { 
+            padding: .5rem 6rem;
+            cursor: pointer;
+
+            &:hover {
+                background: #2B54D0;
+            }
         }
     } 
 }

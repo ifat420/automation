@@ -1,18 +1,33 @@
 html {
-    // font-size: 62.5%;
+    font-size: 62.5%;
+    
+}
+
+body { 
+    font-family: 'Roboto', sans-serif; 
+}
+
+a {
+    font-size: inherit;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 
 p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 ul {
     list-style: none;
-    padding: 0;
+    padding: 0; 
+} 
 
-}
-
-ul li {
-
+.circle {
+    border-radius: 1000px; 
 }
