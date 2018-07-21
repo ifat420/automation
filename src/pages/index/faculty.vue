@@ -22,6 +22,24 @@
         <div class="row">
             <div class="col-12">
                 
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Faculty Name</th>
+                        <th scope="col"><a href="#">edit</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Engineering</td>
+                        <td><a href="#">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
     </div>
