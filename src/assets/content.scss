@@ -1,6 +1,7 @@
-$color-primary: rgb(229, 183, 255);
+$color-primary: #6A1B9A;
 $t-color: #6b717f;  
 $t-heading: #fff;
+$secondary: #fff;
 
 @import "colors.scss"; 
 
@@ -32,12 +33,14 @@ $t-heading: #fff;
     color: $color-text-strong-invert; 
 
     & thead th { 
+        font-weight: 400;
         color: $color-text-invert;
         border: none;
         padding-top: 30px;
     }
 
     & td, & th {
+        font-weight: 400;
         border-top: 1px solid $color-border;  
         padding: 1.5rem;
     }
