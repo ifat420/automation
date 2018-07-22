@@ -14,16 +14,16 @@
                 </a>
                 <ul id="academicInfo" class="sidebar__sub-list collapse">
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Teacher</a>    
+                        <a @click.prevent="go('academicTeacher')" href="#">Teacher</a>    
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Student</a>     
+                        <a @click.prevent="go('academicStudent')" href="#">Student</a>     
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Stuff</a>     
+                        <a @click.prevent="go('academicStuff')" href="#">Stuff</a>     
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Hall</a>     
+                        <a @click.prevent="go('academicHall')" href="#">Hall</a>     
                     </li> 
                 </ul>
             </li>
@@ -35,52 +35,52 @@
                 </a>
                 <ul id="users" class="sidebar__sub-list collapse">
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Super</a>
+                        <a @click.prevent="go('userSuper')" href="#">Super</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Admin</a>
+                        <a @click.prevent="go('userAdmin')" href="#">Admin</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Teacher</a>
+                        <a @click.prevent="go('userTeacher')" href="#">Teacher</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Student</a>
+                        <a @click.prevent="go('userStudent')" href="#">Student</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Stuff</a>
+                        <a @click.prevent="go('userStuff')" href="#">Stuff</a>
                     </li> 
                 </ul>
             </li>
             <li class="">
-                <a href="" class="sidebar__list--item">
+                <a @click.prevent="go('faculty')"  href="" class="sidebar__list--item">
                     <i class="fas fa-fw fa-building"></i>
                     Faculty
                 </a> 
             </li>
             <li class="">
-                <a href="" class="sidebar__list--item">
+                <a @click.prevent="go('department')" href="" class="sidebar__list--item">
                     <i class="fas fa-fw fa-book"></i>
                     Department
                 </a> 
             </li>
             <li class="">
-                <a @click.prevent="go('program')" href="" class="sidebar__list--item">
+                <a @click.prevent="go('program')"  href="" class="sidebar__list--item">
                     <i class="fas fa-fw fa-pencil-alt"></i>
                     Program
                 </a> 
             </li>
             <li class="">
-                <a @click.prevent="go('program')" data-toggle="collapse" href="#session" class="sidebar__list--item">
+                <a  data-toggle="collapse" href="#session" class="sidebar__list--item">
                     <i class="fas fa-fw fa-cogs"></i>
                     Session
                     <i class="fas fa-angle-down"></i>
                 </a>
                 <ul id="session" class="sidebar__sub-list collapse">
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Add New</a>
+                        <a @click.prevent="go('sessionNew')" href="#">Add New</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Catalog</a>
+                        <a @click.prevent="go('sessionList')" href="#">Catalog</a>
                     </li>  
                 </ul>
             </li>
@@ -92,16 +92,16 @@
                 </a>
                 <ul id="course" class="sidebar__sub-list collapse">
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Add New</a>
+                        <a @click.prevent="go('courseAdd')"  href="#">Add New</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Catalog</a>
+                        <a @click.prevent="go('courseList')" href="#">Catalog</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Assign</a>
+                        <a @click.prevent="go('courseAssign')" href="#">Assign</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a href="#">Registration</a>
+                        <a @click.prevent="go('courseRegister')" href="#">Registration</a>
                     </li>  
                 </ul>
             </li>
