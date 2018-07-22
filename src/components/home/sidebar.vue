@@ -34,11 +34,21 @@
                     <i class="fas fa-angle-down"></i>
                 </a>
                 <ul id="users" class="sidebar__sub-list collapse">
-                    <li class="sidebar__sub-list--item">Super</li> 
-                    <li class="sidebar__sub-list--item">Admin</li> 
-                    <li class="sidebar__sub-list--item">Teacher</li> 
-                    <li class="sidebar__sub-list--item">Student</li> 
-                    <li class="sidebar__sub-list--item">Stuff</li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Super</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Admin</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Teacher</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Student</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Stuff</a>
+                    </li> 
                 </ul>
             </li>
             <li class="">
@@ -60,14 +70,18 @@
                 </a> 
             </li>
             <li class="">
-                <a data-toggle="collapse" href="#session" class="sidebar__list--item">
+                <a @click.prevent="go('program')" data-toggle="collapse" href="#session" class="sidebar__list--item">
                     <i class="fas fa-fw fa-cogs"></i>
                     Session
                     <i class="fas fa-angle-down"></i>
                 </a>
                 <ul id="session" class="sidebar__sub-list collapse">
-                    <li class="sidebar__sub-list--item">Add New</li> 
-                    <li class="sidebar__sub-list--item">Catalog</li>  
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Add New</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Catalog</a>
+                    </li>  
                 </ul>
             </li>
             <li class="">
@@ -77,10 +91,18 @@
                     <i class="fas fa-angle-down"></i>
                 </a>
                 <ul id="course" class="sidebar__sub-list collapse">
-                    <li class="sidebar__sub-list--item">Add New</li> 
-                    <li class="sidebar__sub-list--item">Catalog</li> 
-                    <li class="sidebar__sub-list--item">Assign</li> 
-                    <li class="sidebar__sub-list--item">Registration</li>  
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Add New</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Catalog</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Assign</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Registration</a>
+                    </li>  
                 </ul>
             </li>
             <li class=""> 
@@ -103,7 +125,7 @@ export default {
     methods: {
         go(name) {
             this.$router.push({
-                name: 'program'
+                name: name
             })
         },
         // reveal(event) {   
