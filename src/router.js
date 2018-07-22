@@ -11,7 +11,7 @@ import academicHall from './pages/index/academic/hall.vue'
 import userSuper from './pages/index/users/super.vue'
 import userAdmin from './pages/index/users/admin.vue'
 import userTeacher from './pages/index/users/teacher.vue'
-import userStudent from './pages/index/users/student.vue',
+import userStudent from './pages/index/users/student.vue'
 import userStuff from './pages/index/users/stuff.vue'
 
 import faculty from './pages/index/faculty.vue'
