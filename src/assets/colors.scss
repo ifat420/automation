@@ -19,15 +19,21 @@
  
 // $color-shadow: #fff; 
 $color-accent: $secondary;
+
 $color-background: tint($color-primary, 90% );
 $color-background-shade: shade($color-primary, 8% );
-$color-background-invert: $color-primary;
+$color-background-invert: $color-primary; 
+
+
 $color-text: darken($t-color, 15);
 $color-text-weak: tint($color-text, 10% );;
-$color-text-strong: shade($color-text, 8% );;
+$color-text-strong: shade($color-text, 8% );
+
 $color-text-heading: $t-heading;
+
 $color-text-invert: rgba($color-background, .75);
 $color-text-strong-invert: $color-background;
+
 $color-border: tint($color-primary, 10% );
 
 @if set-text-color($color-primary) == black {

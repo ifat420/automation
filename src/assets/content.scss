@@ -1,7 +1,7 @@
 $color-primary: #6A1B9A;
 $t-color: #6b717f;  
 $t-heading: #fff;
-$secondary: #fff;
+$secondary: #ED2A76;
 
 @import "colors.scss"; 
 
@@ -12,18 +12,14 @@ $secondary: #fff;
     width: calc(100% - #{$sidebar-width}); 
     margin-left: $sidebar-width;
     background: $color-background-invert;
-    padding: 2.5rem 3.5rem; 
+    padding: 4rem 3.5rem; 
 } 
 
 .headings {
     font-family: 'futuraStd';
     font-size: 4.8rem;
-    // color: $color-a-font-hover;
-}
-
-.btn {
-    font-size: 1.8rem;
-}
+    color: $color-text-strong-invert;
+} 
 
 
 .table { 
@@ -45,3 +41,161 @@ $secondary: #fff;
         padding: 1.5rem;
     }
 }
+ 
+
+  
+$trans-time: 300ms;
+$width: 100%; 
+
+.group {
+    position: relative;
+    margin: 40px 0;
+
+    input, select  {
+        letter-spacing: .1rem;
+        background: none;
+        color: $color-text-strong-invert;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: $width;
+        border: none;
+        border-radius: 0;
+        border-bottom: .1rem solid $color-border;
+        &:focus {
+            outline: none;
+        }
+        &:focus ~ label,
+        &:valid ~ label {
+            top: -1.8rem;
+            font-size: 1.2rem; 
+        }
+        &:focus ~ label { 
+            color: $color-accent;
+        }
+        &:focus ~ .bar:before {
+            width: $width;
+        }
+    } 
+     
+      
+    label {
+        letter-spacing: .2rem;
+        color: $color-text-invert;
+        font-size: 1.6rem; 
+        position: absolute;
+        pointer-events: none;
+        left: .5rem;
+        top: 1rem;
+        transition: $trans-time ease all;
+    }
+      
+    .bar {
+        position: relative;
+        display: block;
+        width: $width;
+        &:before {
+            content: '';
+            height: .1rem;
+            width: 0;
+            bottom: 0px;
+            position: absolute;
+            background: $color-accent;
+            transition: $trans-time ease all;
+            left: 0%;
+        }
+    }
+
+    select {
+        & option {
+            padding: 3.5rem;
+            letter-spacing: .2rem;
+            background: $color-background-shade;
+            color: $color-text-invert;  
+            &:focus {
+                outline: none;
+            }
+            &[value="1"] {
+                color: $color-text-invert;
+            }
+        } 
+        
+    } 
+}
+   
+  
+
+
+@mixin center($extend: true) {
+    @if $extend {
+        @extend %center;
+    } @else {
+        // color: inherit;
+        position: absolute; 
+        right: 0;
+        // top: 50%;
+        // transform: translateY(-50%);
+    }
+}
+
+%center {
+    @include center($extend: false);
+}
+
+button{
+    @include center; 
+    background: shade($color-primary, 35%);
+    color: $color-text-strong-invert;
+    width: 20rem;
+    height: 6rem;
+    border: 0;
+    font-size: 1.6rem;
+    border-radius: 0; 
+    transition: .6s;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    overflow: hidden;
+    &:focus{
+        outline: 0;
+    }
+    &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        background: rgba(255,255,255,0.5);
+        width: 6rem;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: .5;
+        filter: blur(30px);
+        transform: translateX(-10rem)  skewX(-15deg);
+    }
+    &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        background: rgba(255,255,255,0.2);
+        width: 3rem;
+        height: 100%;
+        left: 3rem;
+        top: 0;
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100px) skewX(-15deg);
+    }
+    &:hover{
+        background: $color-accent;
+        cursor: pointer;
+        &:before{
+            transform: translateX(300px)  skewX(-15deg);  
+            opacity: 0.6;
+            transition: .7s;
+        }
+        &:after{
+            transform: translateX(300px) skewX(-15deg);  
+            opacity: 1;
+            transition: .7s;
+        }
+    }
+  }

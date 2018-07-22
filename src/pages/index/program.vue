@@ -5,53 +5,71 @@
                 <h2 class="headings">Program</h2>    
             </div>    
             <div class="col-6 text-md-right">
-                <button class="btn btn-primary">Add New</button>    
+                <div style="position: relative">
+                    <button class="">Add New</button>    
+                </div>
             </div>    
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-6">
                 <form> 
+                    <div class="group"> 
+                        <select>
+                            <option disabled selected value="1">Select Department..</option> 
+                            <option>Computer Science and Technology</option> 
+                            <option>Department</option> 
+                            <option>Computer Science and Technology</option> 
+                            <option>Department</option> 
+                            <option>Computer Science and Technology</option> 
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
+                    </div> 
                     <div class="group">
-                        <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
-                        <label>Name</label>
+                        <input type="text" required="required"/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Program Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
-                        <label>Abbrebeation</label>
+                        <input type="text" required="required"/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Program Abbrebeation</label>
                     </div>  
+                    <div class="group">
+                        <input type="text" required="required"/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Degree</label>
+                    </div>
                 </form>    
             </div>    
         </div>   
-        <div class="row">
+
+        <div class="row mt-5">
             <div class="col">
                 <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Abbrebeation</th>
+                        <th scope="col">Degree</th>
+                        <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                        <tr v-for="(i, k) in 6" :key="k">
+                            <th scope="row"> {{i}} </th>
+                            <td>Bachelor of Science</td>
+                            <td>BSc</td>
+                            <td>Anonymous</td>
+                            <td>
+                                <a href="">Edit</a>
+                            </td>
+                        </tr> 
                     </tbody>
                 </table>
             </div>
@@ -66,102 +84,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$bg-color: #424242;
-$hl-color: #ED2A76;
-$muted-color: mix(white, $bg-color, 70%);
-$trans-time: 300ms;
-$width: 100%; 
- 
 
-form {
-  width: $width; 
-  
-  h1 {
-    font-size: 3em;
-    font-weight: 300;
-    text-align: center;
-    color: $hl-color;
-  }
-  h5 {
-    text-align: center;
-    text-transform: uppercase;
-    color: $muted-color;
-  }
-  hr.sep {
-    background: $hl-color;
-    box-shadow: none;
-    border: none;
-    height: 2px;
-    width: 25%;
-    margin: 0px auto 45px auto;
-  }
-  .emoji {
-    font-size: 1.2em;
-  }
-}
-
-.group {
-  position: relative;
-  margin: 45px 0;
-}
-
-textarea {
-  resize: none;
-}
-
-input,
-textarea {
-  background: none;
-  color: $muted-color;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: $width;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid $muted-color;
-  &:focus {
-    outline: none;
-  }
-  &:focus ~ label,
-  &:valid ~ label {
-    top: -14px;
-    font-size: 12px;
-    color: $hl-color;
-  }
-  &:focus ~ .bar:before {
-    width: $width;
-  }
-}
-
-input[type="password"] {
-  letter-spacing: 0.3em;
-}
-
-label {
-  color: $muted-color;
-  font-size: 16px;
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  left: 5px;
-  top: 10px;
-  transition: $trans-time ease all;
-}
-
-.bar {
-  position: relative;
-  display: block;
-  width: $width;
-  &:before {
-    content: '';
-    height: 2px;
-    width: 0;
-    bottom: 0px;
-    position: absolute;
-    background: $hl-color;
-    transition: $trans-time ease all;
-    left: 0%;
-  }
-}
 </style>
