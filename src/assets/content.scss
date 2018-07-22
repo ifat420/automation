@@ -1,0 +1,44 @@
+$color-primary: rgb(229, 183, 255);
+$t-color: #6b717f;  
+$t-heading: #fff;
+
+@import "colors.scss"; 
+
+
+.main-content { 
+    display: inline-block;
+    min-height: calc(100vh - #{$header-height});
+    width: calc(100% - #{$sidebar-width}); 
+    margin-left: $sidebar-width;
+    background: $color-background-invert;
+    padding: 2.5rem 3.5rem; 
+} 
+
+.headings {
+    font-family: 'futuraStd';
+    font-size: 4.8rem;
+    // color: $color-a-font-hover;
+}
+
+.btn {
+    font-size: 1.8rem;
+}
+
+
+.table { 
+    letter-spacing: 1px;
+    font-size: 1.6rem; 
+    background: $color-background-shade;
+    color: $color-text-strong-invert; 
+
+    & thead th { 
+        color: $color-text-invert;
+        border: none;
+        padding-top: 30px;
+    }
+
+    & td, & th {
+        border-top: 1px solid $color-border;  
+        padding: 1.5rem;
+    }
+}

@@ -1,11 +1,10 @@
 $color-primary: #4C0A74;
 $t-color: #6b717f;  
+$t-heading: #fff;
 
 @import "colors.scss"; 
 
-$sidebar-width: 25rem;
-$header-height: 0rem; 
-
+  
 
 .header {
     height: $header-height;

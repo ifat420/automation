@@ -1,0 +1,27 @@
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+} 
+ 
+// $color-shadow: #fff; 
+// $color-accent: #fff;
+$color-background: tint($color-primary, 90% );
+$color-background-shade: shade($color-primary, 8% );
+$color-background-invert: $color-primary;
+$color-text: darken($t-color, 15);
+$color-text-weak: tint($color-text, 10% );;
+$color-text-strong: shade($color-text, 8% );;
+$color-text-heading: $t-heading;
+$color-text-invert: rgba($color-background, .75);
+$color-text-strong-invert: $color-background;
+$color-text-link: $color-primary;
+// $color-text-link-visited: #fff;
+// $color-text-link-hover: #fff;
+$color-border: #dadbdf;
+
+//other
+$sidebar-width: 25rem;
+$header-height: 0rem;

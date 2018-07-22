@@ -8,5 +8,6 @@
 @import url('../src/assets/fonts.css');
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 @import url('../src/assets/basic.scss');
-@import url('../src/assets/main.scss');
+@import url('../src/assets/sidebar.scss');
+@import url('../src/assets/content.scss');
 </style>
