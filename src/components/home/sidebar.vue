@@ -1,8 +1,8 @@
 <template>
     <div class="sidebar">
         <div class="sidebar__user">
-            <div class="circle sidebar__user--round">
-
+            <div class="sidebar__user--round">
+                <img src="../../assets/images/Campus Automation logo.png" alt="logo">
             </div>
         </div>
         <ul class="sidebar__list">
@@ -13,10 +13,18 @@
                     <i class="fas fa-angle-down"></i>
                 </a>
                 <ul id="academicInfo" class="sidebar__sub-list collapse">
-                    <li class="sidebar__sub-list--item">Teacher</li> 
-                    <li class="sidebar__sub-list--item">Student</li> 
-                    <li class="sidebar__sub-list--item">Stuff</li> 
-                    <li class="sidebar__sub-list--item">Hall</li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Teacher</a>    
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Student</a>     
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Stuff</a>     
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a href="#">Hall</a>     
+                    </li> 
                 </ul>
             </li>
             <li class="">
@@ -46,7 +54,7 @@
                 </a> 
             </li>
             <li class="">
-                <a href="" class="sidebar__list--item">
+                <a @click.prevent="go('program')" href="" class="sidebar__list--item">
                     <i class="fas fa-fw fa-pencil-alt"></i>
                     Program
                 </a> 
@@ -93,6 +101,11 @@ export default {
         }
     },
     methods: {
+        go(name) {
+            this.$router.push({
+                name: 'program'
+            })
+        },
         // reveal(event) {   
         //     return;
         //     var tg = event.target.tagName;

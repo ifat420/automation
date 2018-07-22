@@ -5,6 +5,8 @@ html {
 
 body { 
     font-family: 'Roboto', sans-serif; 
+    font-family: 'futuraBook', sans-serif;
+    font-family: 'futuraStd', sans-serif;
 }
 
 a {
@@ -16,6 +18,10 @@ a {
         text-decoration: none;
         color: inherit;
     }
+}
+
+img {
+    width: 100%;
 }
 
 p {
