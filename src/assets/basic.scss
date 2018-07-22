@@ -1,11 +1,10 @@
 html {
-    font-size: 62.5%;
-    
+    font-size: 62.5%; 
 }
 
 body { 
     background: #000;
-    max-width: 1366px;
+    // max-width: 1366px;
     margin: auto;
     font-family: 'Roboto', sans-serif; 
     font-family: 'futuraBook', sans-serif;
@@ -40,3 +39,6 @@ ul {
 .circle {
     border-radius: 1000px; 
 }
+
+$retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+
