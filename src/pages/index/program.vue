@@ -6,7 +6,7 @@
             </div>    
             <div class="col-6 text-md-right">
                 <div style="position: relative">
-                    <button class="">Add New</button>    
+                    <button class="ca-btn">Add New</button>    
                 </div>
             </div>    
         </div>

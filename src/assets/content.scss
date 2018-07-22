@@ -142,7 +142,7 @@ $width: 100%;
     @include center($extend: false);
 }
 
-button{
+.ca-btn {
     @include center; 
     background: shade($color-primary, 35%);
     color: $color-text-strong-invert;
