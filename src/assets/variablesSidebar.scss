@@ -1,0 +1,26 @@
+$color-primary: #fff; 
+$t-heading: #fff;
+$secondary: #fff;
+
+$letter-spacing-reg: .1rem;
+$letter-spacing-small: .1rem;
+$letter-spacing-extra: .2rem;
+
+$font-big: 2.8rem;
+$font-reg: 1.4rem;
+$font-small: 1.2rem;
+
+@mixin font-w-reg {
+    font-family: 'futuraStd', sans-serif;
+    font-weight: 400;
+}
+
+@mixin font-w-bold {
+    font-family: 'futuraStd', sans-serif;
+    font-weight: 400;
+}
+
+@mixin font-w-thin {
+    font-family: 'futuraLight', sans-serif;
+    font-weight: 100;
+} 

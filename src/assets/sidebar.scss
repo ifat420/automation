@@ -1,12 +1,6 @@
-$color-primary: #fff;
-$t-color: #6b717f;  
-$t-heading: #fff;
-$secondary: #fff;
-
-
+@import "variablesSidebar";
 @import "colors.scss"; 
-
-  
+ 
 
 .header {
     height: $header-height;
@@ -19,6 +13,7 @@ $secondary: #fff;
 }
 
 .sidebar { 
+    @include font-w-reg;
     position: fixed; 
     // overflow-y: scroll;
     top: $header-height;
@@ -27,10 +22,9 @@ $secondary: #fff;
     max-width: $sidebar-width;
 
     background: $color-background-invert;
-    color: $color-text-invert; 
-    // text-transform: uppercase;  
-    // font-family: 'futuraMedium', sans-serif;
-    letter-spacing: .2rem; 
+    color: $color-text-invert;  
+    letter-spacing: $letter-spacing-reg; 
+    font-size: $font-reg;
 
     &__user {
         // display: none;
@@ -48,7 +42,7 @@ $secondary: #fff;
     }
 
     &__list {  
-        font-size: 1.4rem; 
+        font-size: $font-reg; 
         padding-top: .5rem; 
         
         &--item { 
@@ -77,9 +71,11 @@ $secondary: #fff;
     } 
 
     &__sub-list { 
-        font-size: 1.2rem;  
+        @include font-w-thin;
+        font-size: $font-small; 
         padding: 0 0 1.2rem 0;
         background: $color-background-shade;
+        letter-spacing: $letter-spacing-small; 
 
         &--item { 
             padding: .5rem 6rem;

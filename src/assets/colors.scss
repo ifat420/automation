@@ -25,9 +25,9 @@ $color-background-shade: shade($color-primary, 8% );
 $color-background-invert: $color-primary; 
 
 
-$color-text: darken($t-color, 15);
-$color-text-weak: tint($color-text, 10% );;
-$color-text-strong: shade($color-text, 8% );
+// $color-text: darken($t-color, 15);
+// $color-text-weak: tint($color-text, 10% );;
+// $color-text-strong: shade($color-text, 8% );
 
 $color-text-heading: $t-heading;
 
