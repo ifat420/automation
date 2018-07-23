@@ -1,5 +1,7 @@
 html {
     font-size: 62.5%; 
+    text-rendering: geometricPrecision;
+    text-rendering: optimizeLegibility;
 }
 
 body { 
@@ -9,6 +11,8 @@ body {
     font-family: 'Roboto', sans-serif; 
     font-family: 'futuraBook', sans-serif;
     font-family: 'futuraStd', sans-serif;
+    text-rendering: geometricPrecision;
+    text-rendering: optimizeLegibility;
 }
 
 a {

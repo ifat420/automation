@@ -290,3 +290,43 @@ $anim-text-offset: 2rem;
         opacity: 1;
     }
 }
+
+.filter {
+    font-size: $font-reg;
+    letter-spacing: $letter-spacing-reg; 
+
+    &__head {
+        color: $color-text-strong-invert;
+        margin-right: 2rem;
+        padding: .5rem 2.5rem;
+        background: $color-background-shade;
+    }
+
+    &__item {
+        display: inline-block;
+        cursor: pointer;
+        color: $color-text-invert;
+        padding: .5rem 2.5rem;
+        margin-right: 2rem;
+        // border: .1rem solid $color-border;
+        transition: all .3s ease;
+        position: relative; 
+
+        &:hover {
+            border: none;
+            padding: .5rem 2.5rem;
+            background: $color-accent;
+            color: $color-text-strong-invert;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border: .1rem solid $color-background-shade; 
+        }
+    }
+}

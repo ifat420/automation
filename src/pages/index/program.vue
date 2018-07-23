@@ -54,6 +54,13 @@
         </div>   
 
         <div class="row mt-5">
+            <div class="col filter">
+                <span class="filter__head">Department </span>
+                <span class="filter__item">BSc</span>
+                <span class="filter__item">MSc</span>
+            </div>
+        </div>
+        <div class="row mt-5">
             <div class="col">
                 <table class="table">
                     <thead>
