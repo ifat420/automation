@@ -14,6 +14,17 @@
         <div class="row mt-5">
             <div class="col-6">
                 <form>
+                     <div class="group"> 
+                        <select>
+                            <option disabled selected value="1">Select Faculty..</option> 
+                            <option>Engineering</option> 
+                            <option>Biology</option> 
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
+                    </div> 
+
                     <div class="group">
                         <input type="text" required="required"/>
                         <span class="highlight"></span>
@@ -37,6 +48,14 @@
                 </form>
             </div>
             
+        </div>
+
+        <div class="row mt-5">
+            <div class="col filter">
+                <span class="filter__head">Faculty </span>
+                <span class="filter__item">Engineering</span>
+                <span class="filter__item">Biology</span>
+            </div>
         </div>
 
          <div class="row mt-5">

@@ -13,6 +13,18 @@
         <div class="row mt-5">
             <div class="col-6">
                 <form> 
+
+                    <div class="group"> 
+                        <select>
+                            <option disabled selected value="1">Select Faculty..</option> 
+                            <option>Engineering</option> 
+                            <option>Biology</option> 
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
+                    </div> 
+
                     <div class="group"> 
                         <select>
                             <option disabled selected value="1">Select Department..</option> 
@@ -55,9 +67,16 @@
 
         <div class="row mt-5">
             <div class="col filter">
+                <span class="filter__head">Faculty </span>
+                <span class="filter__item">Engineering</span>
+                <span class="filter__item">Biology</span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col filter">
                 <span class="filter__head">Department </span>
-                <span class="filter__item">BSc</span>
-                <span class="filter__item">MSc</span>
+                <span class="filter__item">CSE</span>
+                <span class="filter__item">EST</span>
             </div>
         </div>
         <div class="row mt-5">
@@ -66,9 +85,11 @@
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Program Name</th>
                         <th scope="col">Abbrebeation</th>
                         <th scope="col">Degree</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Faculty</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -77,7 +98,9 @@
                             <th scope="row"> {{i}} </th>
                             <td>Bachelor of Science</td>
                             <td>BSc</td>
-                            <td>Anonymous</td>
+                            <td>BSC</td>
+                            <td>CSE</td>
+                            <td>Engineering</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
