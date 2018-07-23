@@ -6,7 +6,7 @@
             </div>    
             <div class="col-6 text-md-right">
                 <div style="position: relative">
-                    <button class="ca-btn">Add New</button>    
+                    <button class="ca-btn">Add Program</button>    
                 </div>
             </div>    
         </div>
@@ -43,6 +43,11 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Degree</label>
+                    </div>
+                    <div class="button-1">
+                        <span class="button-1__mask"></span>
+                        <span class="button-1__text">Submit</span>
+                        <span class="button-1__text button-1__text--bis">Submit</span>
                     </div>
                 </form>    
             </div>    
