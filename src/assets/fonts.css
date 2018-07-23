@@ -3,7 +3,7 @@
     font-family: 'Futura Std';
     font-style: normal;
     font-weight: 200;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/FuturaStd-Light.otf') format('otf'); 
 }
 
@@ -11,7 +11,7 @@
     font-family: 'Futura Pt';
     font-style: normal;
     font-weight: 200;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/futura-pt-light.otf') format('otf'); 
 }
 
@@ -19,7 +19,7 @@
     font-family: 'Futura Pt';
     font-style: normal;
     font-weight: 300;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/futura-pt-book.otf') format('otf'); 
 } 
 
@@ -27,7 +27,7 @@
     font-family: 'Futura Pt';
     font-style: normal;
     font-weight: 500;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/futura-pt-medium.otf') format('otf'); 
 }
 
@@ -35,7 +35,7 @@
     font-family: 'Futura Pt';
     font-style: normal;
     font-weight: 600;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/futura-pt-demibold.otf') format('otf'); 
 }
 
@@ -43,7 +43,7 @@
     font-family: 'Futura Pt';
     font-style: normal;
     font-weight: 700;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/futura-pt-bold-589e44b6aacd3.otf') format('otf'); 
 }
 
@@ -51,6 +51,6 @@
     font-family: 'Futura Pt';
     font-style: normal;
     font-weight: 800;
-
+    text-rendering: optimizeLegibility;
     src: url('./fonts/futura/futura-pt-heavy-589a6dd12187e.otf') format('otf'); 
 }
