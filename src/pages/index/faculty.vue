@@ -24,7 +24,6 @@
             </div>
             
         </div>
-
         <div class="row mt-5">
             <div class="col">
                 <table class="table">
@@ -36,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 6" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>Engineering</td>
+                        <tr v-for="(faculty, i) in faculties" :key="i">
+                            <th scope="row"> {{i+1}} </th>
+                            <td>{{faculty}}</td>
         
                             <td>
                                 <a href="">Edit</a>
@@ -55,8 +54,23 @@
     export default{
         data() {
             return {
-
+                faculties: []
             }
+        },
+
+        mounted() {
+            this.$http.get('api/get/faculty')
+                    .then(response => {
+                        return response.json();
+                        
+                    })
+                    .then(data => {
+                        data.forEach(fac => {
+                            this.faculties.push(fac[1]);
+                        });
+                    })
+                   
+                    
         }
     }    
 </script>

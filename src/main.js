@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import VueResource from 'vue-resource'
 import store from './store'
 
 import jQuery from 'jquery' 
 import popper from 'popper.js'
+
+Vue.use(VueResource);
+Vue.http.options.root = 'http://localhost:4000/';
 
 global.jQuery = jQuery  
 global.Popper = popper
