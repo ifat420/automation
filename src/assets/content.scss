@@ -8,32 +8,32 @@
     margin-left: $sidebar-width;
     background: $color-background-invert;
     padding: 4rem 3.5rem; 
-    @include font-w-reg;
+    font-family: inherit;
+    font-size: inherit;
 } 
 
-.headings {
-    @include font-w-bold;
-    font-size: $font-big;
+.headings { 
+    font-size: $font-size-heading;
+    font-weight: $font-weight-heading;
+    letter-spacing: $letter-spacing-heading;
     color: $color-text-heading;
 } 
 
 .table { 
-    @include font-w-thin;
-    letter-spacing: $letter-spacing-small;
-    font-size: $font-reg; 
+    font-size: $font-size-table;
+    font-weight: $font-weight-table;
+    letter-spacing: $letter-spacing-table;
     background: $color-background-shade;
     color: $color-text-strong-invert; 
 
-    & thead th { 
-        @include font-w-thin;
+    & thead th {  
         color: $color-text-invert;
         border: none;
-        padding-top: 30px;
+        padding-top: 3rem;
     }
 
-    & td, & th {
-        @include font-w-thin;
-        border-top: 1px solid $color-border;  
+    & td, & th { 
+        border-top: .1rem solid $color-border;  
         padding: 1.5rem;
     }
 }
@@ -43,13 +43,15 @@ $width: 100%;
 
 .group {
     position: relative;
-    letter-spacing: $letter-spacing-reg;
+    font-size: $font-size-text-input;
+    font-weight: $font-weight-text-input;
+    letter-spacing: $letter-spacing-text-input;
     margin: 4rem 0;
 
     input, select  { 
         background: none;
         color: $color-text-strong-invert;
-        font-size: 1.8rem;
+        font-size: inherit;
         padding: 1rem 1rem 1rem .5rem;
         display: block;
         width: $width;
@@ -62,7 +64,7 @@ $width: 100%;
         &:focus ~ label,
         &:valid ~ label {
             top: -1.8rem;
-            font-size: $font-small; 
+            font-size: $font-size-text-input-small; 
         }
         &:focus ~ label { 
             color: $color-accent;
@@ -75,7 +77,8 @@ $width: 100%;
       
     label { 
         color: $color-text-invert;
-        font-size: $font-reg; 
+        font-size: inherit; 
+        letter-spacing: inherit;
         position: absolute;
         pointer-events: none;
         left: .5rem;
@@ -132,25 +135,25 @@ $width: 100%;
     @include center($extend: false);
 }
 
-.ca-btn {
-    @include font-w-bold;
+.ca-btn { 
     @include center; 
     background: shade($color-primary, 35%);
     @if (lightness( shade($color-primary, 35%) ) > 60) {
         color: shade($color-background, 90%); 
     }
     @else {
-        color: tint($color-background, 40%);
-        
+        color: tint($color-background, 40%); 
     } 
+
+    font-size: $font-size-button-big;
+    font-weight: $font-weight-button-big;
+    letter-spacing: $letter-spacing-button-big;
     
     width: 20rem;
     height: 6rem;
-    border: 0;
-    font-size: $font-reg;
+    border: 0; 
     border-radius: 0; 
-    transition: .6s;
-    letter-spacing: $letter-spacing-extra;
+    transition: .6s; 
     text-transform: uppercase;
     overflow: hidden;
     &:focus{
@@ -201,10 +204,10 @@ $width: 100%;
 
 $anim-text-offset: 2rem;
 
-.button-1 { 
-    @include font-w-bold;
-    letter-spacing: $letter-spacing-extra;
-    font-size: $font-reg; 
+.button-1 {  
+    font-size: $font-size-button-regular;
+    font-weight: $font-weight-button-regular;
+    letter-spacing: $letter-spacing-button-regular;
     touch-callout: none;
     user-select: none;
     display: inline-block;
@@ -215,7 +218,7 @@ $anim-text-offset: 2rem;
     opacity: 0.6;
     color: $color-text-strong-invert;
     &__text{
-        @include font-w-bold;
+        font-weight: bold;
         display: block;
         padding: 1.5rem 5rem;
         text-transform: uppercase; 
@@ -292,8 +295,9 @@ $anim-text-offset: 2rem;
 }
 
 .filter {
-    font-size: $font-reg;
-    letter-spacing: $letter-spacing-reg; 
+    font-size: $font-size-table;
+    font-weight: $font-weight-table;
+    letter-spacing: $letter-spacing-table;
 
     &__head {
         color: $color-text-strong-invert;
