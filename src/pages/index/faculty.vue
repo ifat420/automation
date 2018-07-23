@@ -1,48 +1,54 @@
 <template>
-    <div class="container-fluid">
-        <div class="row">
+   <div class="container-fluid">
+       <div class="row">
             <div class="col-6">
-                <h2>Faculty Name</h2>
+                <h2 class="headings">Faculty</h2>
             </div>
-            <div class="col-6 text-right">
-                <button class="btn btn-primary">Button </button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="facultyName">Faculty Name:</label>
-                    <input type="text" class="form-control" id="faculty" name="facultyName" placeholder="Faculty Name">
+            <div class="col-6 text-md-right">
+                <div style="position: relative">
+                    <button class="ca-btn">Add Faculty</button>    
                 </div>
             </div>
-            <div class="col-6"></div>
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                
+          <div class="row mt-5">
+            <div class="col-6">
+                <form>
+                    <div class="group">
+                        <input type="text" required="required"/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Faculty Name</label>
+                    </div>  
+                </form>
+            </div>
+            
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
                 <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Faculty Name</th>
-                        <th scope="col"><a href="#">edit</a></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Engineering</td>
-                        <td><a href="#">Edit</a></td>
-                        </tr>
+                        <tr v-for="(i, k) in 6" :key="k">
+                            <th scope="row"> {{i}} </th>
+                            <td>Engineering</td>
+        
+                            <td>
+                                <a href="">Edit</a>
+                            </td>
+                        </tr> 
                     </tbody>
                 </table>
-
-
             </div>
         </div>
-    </div>
+   </div>
 </template>
 
 <script>
