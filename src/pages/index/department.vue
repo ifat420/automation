@@ -45,16 +45,22 @@
                         <span class="bar"></span>
                         <label>Department Code</label>
                     </div>  
+
+                    <div class="button">
+                        <button class="button__submit" type="submit">submit</button>
+                    </div>
                 </form>
             </div>
             
         </div>
 
         <div class="row mt-5">
-            <div class="col filter">
-                <span class="filter__head">Faculty </span>
-                <span class="filter__item">Engineering</span>
-                <span class="filter__item">Biology</span>
+            <div class="col">
+                <div class="filter">
+                    <span class="filter__head">Faculty </span>
+                    <span class="filter__item">Engineering</span>
+                    <span class="filter__item">Biology</span>
+                </div>
             </div>
         </div>
 

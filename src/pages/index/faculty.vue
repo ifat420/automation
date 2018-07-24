@@ -20,6 +20,9 @@
                         <span class="bar"></span>
                         <label>Faculty Name</label>
                     </div>  
+                    <div class="button">
+                        <button class="button__submit" type="submit">submit</button>
+                    </div>
                 </form>
             </div>
             

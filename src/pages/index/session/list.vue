@@ -7,26 +7,24 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col filter">
-                <span class="filter__head">Faculty </span>
-                <span class="filter__item">Engineering</span>
-                <span class="filter__item">Biology</span>
+            <div class="col">
+                <div class="filter">
+                    <span class="filter__head">Faculty </span>
+                    <span class="filter__item">Engineering</span>
+                    <span class="filter__item">Biology</span>
+                </div>
+                <div class="filter">
+                    <span class="filter__head">Department </span>
+                    <span class="filter__item">CSE</span>
+                    <span class="filter__item">EST</span>
+                </div>
+                <div class="filter">
+                    <span class="filter__head">Program </span>
+                    <span class="filter__item">BSC</span>
+                    <span class="filter__item">MSC</span>
+                </div>
             </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Department </span>
-                <span class="filter__item">CSE</span>
-                <span class="filter__item">EST</span>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Program </span>
-                <span class="filter__item">BSC</span>
-                <span class="filter__item">MSC</span>
-            </div>
-        </div>
+        </div> 
 
         <div class="row mt-5">
             <div class="col">
