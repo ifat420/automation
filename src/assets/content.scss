@@ -103,7 +103,13 @@ $width: 100%;
     }
 
     select {
+        font-size: $font-size-text-input;
+        font-weight: $font-weight-text-input;
+        letter-spacing: $letter-spacing-text-input;
         & option {
+            font-size: $font-size-text-input;
+            font-weight: $font-weight-text-input;
+            letter-spacing: $letter-spacing-text-input;
             padding: 3.5rem; 
             background: $color-background-shade;
             color: $color-text-invert;  

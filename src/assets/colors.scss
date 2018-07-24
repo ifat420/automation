@@ -21,7 +21,7 @@
 $color-accent: $secondary;
 
 $color-background: tint($color-primary, 90% );
-$color-background-shade: shade($color-primary, 8% );
+$color-background-shade: shade($color-primary, 20% );
 $color-background-invert: $color-primary; 
 
 
@@ -31,14 +31,16 @@ $color-background-invert: $color-primary;
 
 $color-text-heading: $t-heading;
 
-$color-text-invert: rgba($color-background, .75);
-$color-text-strong-invert: $color-background;
+//$color-text-invert: rgba($color-background, .75);
+//$color-text-strong-invert: $color-background;
+$color-text-invert:#e7edf5; 
+$color-text-strong-invert:#e7edf5;
 
 $color-border: tint($color-primary, 10% );
 
 @if set-text-color($color-primary) == black {
-    $color-text-invert: #222222c5;
-    $color-text-strong-invert: #181818;
+    $color-text-invert: #000000c5;
+    $color-text-strong-invert: #000000;
     $color-border: shade($color-primary, 20% );
 }
 
