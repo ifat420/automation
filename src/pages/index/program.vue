@@ -56,29 +56,27 @@
                         <span class="bar"></span>
                         <label>Degree</label>
                     </div>
-                    <div class="button-1">
-                        <span class="button-1__mask"></span>
-                        <span class="button-1__text">Submit</span>
-                        <span class="button-1__text button-1__text--bis">Submit</span>
+                    <div class="button">
+                        <button class="button__submit" type="submit">submit</button>
                     </div>
                 </form>    
             </div>    
         </div>   
 
         <div class="row mt-5">
-            <div class="col filter">
-                <span class="filter__head">Faculty </span>
-                <span class="filter__item">Engineering</span>
-                <span class="filter__item">Biology</span>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Department </span>
-                <span class="filter__item">CSE</span>
-                <span class="filter__item">EST</span>
-            </div>
-        </div>
+            <div class="col">
+                <div class="filter">
+                    <span class="filter__head">Faculty </span>
+                    <span class="filter__item">Engineering</span>
+                    <span class="filter__item">Biology</span>
+                </div>
+                <div class="filter">
+                    <span class="filter__head">Department </span>
+                    <span class="filter__item">CSE</span>
+                    <span class="filter__item">EST</span>
+                </div> 
+            </div> 
+        </div> 
         <div class="row mt-5">
             <div class="col">
                 <table class="table">

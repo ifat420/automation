@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sidebar__user">
             <div class="sidebar__user--round">
-                <img src="../../assets/images/Campus Automation logo.png" alt="logo">
+                <img src="../../assets/images/Campus Automation Logo 2 Icon.png" alt="logo">
             </div>
         </div>
         <ul class="sidebar__list">

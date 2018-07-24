@@ -1,7 +1,6 @@
 @import "variablesSidebar";
 @import "colors.scss"; 
  
-
 .header {
     height: $header-height;
     // background: $color-a;
@@ -13,7 +12,10 @@
 }
 
 .sidebar { 
-    @include font-w-reg;
+    font-size:  $font-size-menu;
+    letter-spacing: $letter-spacing-menu;
+    font-weight: $font-weight-menu;
+
     position: fixed; 
     // overflow-y: scroll;
     top: $header-height;
@@ -22,9 +24,7 @@
     max-width: $sidebar-width;
 
     background: $color-background-invert;
-    color: $color-text-invert;  
-    letter-spacing: $letter-spacing-reg; 
-    font-size: $font-reg;
+    color: $color-text-invert;   
 
     &__user {
         // display: none;
@@ -42,15 +42,18 @@
     }
 
     &__list {  
-        font-size: $font-reg; 
-        padding-top: .5rem; 
+        font-size: inherit; 
+        letter-spacing: inherit;
+        font-weight: inherit;
+        padding-top: .5rem;  
         
         &--item { 
-            padding: 1.3rem 2rem;
+            padding: 1.6rem 2rem;
             cursor: pointer;
             display: inline-block;
             width: 100%; 
             position: relative; 
+            transition: all .3s ease-in-out;
 
             & .fa-fw {
                 margin-right: 1.5rem;
@@ -63,7 +66,7 @@
                 right: 2rem;
             }
 
-            &[aria-expanded="true"], &:hover, &:active, &:focus {
+            &[aria-expanded="true"], &:hover, &:active, &:focus { 
                 background: $color-background-shade;
                 color: $color-text-strong-invert;
             }
@@ -71,14 +74,15 @@
     } 
 
     &__sub-list { 
-        @include font-w-thin;
-        font-size: $font-small; 
+        font-size:  $font-size-sub-menu;
+        letter-spacing: $letter-spacing-sub-menu;
+        font-weight: $font-weight-sub-menu;
+        
         padding: 0 0 1.2rem 0;
-        background: $color-background-shade;
-        letter-spacing: $letter-spacing-small; 
+        background: $color-background-shade; 
 
         &--item { 
-            padding: .5rem 6rem;
+            padding: .8rem 5.2rem;
             cursor: pointer;
 
             & a:hover, & a:active, & a:focus {

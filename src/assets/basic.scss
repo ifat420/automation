@@ -1,18 +1,13 @@
 html {
-    font-size: 62.5%; 
-    text-rendering: geometricPrecision;
-    text-rendering: optimizeLegibility;
+    font-size: 62.5%;  
 }
 
 body { 
     background: #000;
     // max-width: 1366px;
-    margin: auto;
-    font-family: 'Roboto', sans-serif; 
-    font-family: 'futuraBook', sans-serif;
-    font-family: 'futuraStd', sans-serif;
-    text-rendering: geometricPrecision;
-    text-rendering: optimizeLegibility;
+    margin: auto; 
+    font-family: 'Futura Pt', sans-serif;
+    text-transform: uppercase; 
 }
 
 a {

@@ -8,40 +8,36 @@
 
 
         <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Department </span>
-                <span class="filter__item">CSE</span>
-                <span class="filter__item">EST</span>
+            <div class="col">
+                <div class="filter">
+                    <span class="filter__head">Department </span>
+                    <span class="filter__item">CSE</span>
+                    <span class="filter__item">EST</span>
+                </div>
+                <div class="filter">
+                    <span class="filter__head">Program </span>
+                    <span class="filter__item">BSC</span>
+                    <span class="filter__item">MSC</span>
+                </div>
+                <div class="filter">
+                    <span class="filter__head">Session </span>
+                    <span class="filter__item">2013-14</span>
+                    <span class="filter__item">2014-15</span>
+                    <span class="filter__item">2015-16</span>
+                </div>
+                <div class="filter">
+                    <span class="filter__head">Semester </span>
+                    <span class="filter__item">1.1</span>
+                    <span class="filter__item">1.2</span>
+                    <span class="filter__item">2.1</span>
+                    <span class="filter__item">2.2</span>
+                    <span class="filter__item">3.1</span>
+                    <span class="filter__item">3.2</span>
+                    <span class="filter__item">4.1</span>
+                    <span class="filter__item">4.2</span>
+                </div>
             </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Program </span>
-                <span class="filter__item">BSC</span>
-                <span class="filter__item">MSC</span>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Session </span>
-                <span class="filter__item">2013-14</span>
-                <span class="filter__item">2014-15</span>
-                <span class="filter__item">2015-16</span>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col filter">
-                <span class="filter__head">Semester </span>
-                <span class="filter__item">1.1</span>
-                <span class="filter__item">1.2</span>
-                <span class="filter__item">2.1</span>
-                <span class="filter__item">2.2</span>
-                <span class="filter__item">3.1</span>
-                <span class="filter__item">3.2</span>
-                <span class="filter__item">4.1</span>
-                <span class="filter__item">4.2</span>
-            </div>
-        </div>
+        </div>  
 
         <div class="row mt-5">
             <div class="col">

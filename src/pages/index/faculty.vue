@@ -19,9 +19,11 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Faculty Name</label>
-                    </div>
 
-                    <div @click.prevent="insertNewFaculty" class="btn btn-primary">Submit</div>  
+                    </div>  
+                    <div class="button">
+                        <button @click.prevent="insertNewFaculty" class="button__submit" type="submit">submit</button>
+                    </div>
                 </form>
             </div>
         </div>

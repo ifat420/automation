@@ -62,10 +62,8 @@
                     </div> 
 
         
-                    <div class="button-1">
-                        <span class="button-1__mask"></span>
-                        <span class="button-1__text">Submit</span>
-                        <span class="button-1__text button-1__text--bis">Submit</span>
+                    <div class="button">
+                        <button class="button__submit" type="submit">submit</button>
                     </div>
                 </form>    
             </div>    

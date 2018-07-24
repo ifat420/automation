@@ -8,32 +8,34 @@
     margin-left: $sidebar-width;
     background: $color-background-invert;
     padding: 4rem 3.5rem; 
-    @include font-w-reg;
+    font-family: inherit;
+    font-size: inherit;
 } 
 
-.headings {
-    @include font-w-bold;
-    font-size: $font-big;
+.headings { 
+    font-size: $font-size-heading;
+    font-weight: $font-weight-heading;
+    letter-spacing: $letter-spacing-heading;
     color: $color-text-heading;
 } 
 
 .table { 
-    @include font-w-thin;
-    letter-spacing: $letter-spacing-small;
-    font-size: $font-reg; 
+    font-size: $font-size-table;
+    font-weight: $font-weight-table;
+    letter-spacing: $letter-spacing-table;
     background: $color-background-shade;
     color: $color-text-strong-invert; 
 
-    & thead th { 
-        @include font-w-thin;
+    & thead th {  
+        font-weight: $font-weight-table;
         color: $color-text-invert;
+        color: $color-text-weak-invert;
         border: none;
-        padding-top: 30px;
+        padding-top: 4rem;
     }
 
-    & td, & th {
-        @include font-w-thin;
-        border-top: 1px solid $color-border;  
+    & td, & th { 
+        border-top: .1rem solid $color-border;  
         padding: 1.5rem;
     }
 }
@@ -43,14 +45,20 @@ $width: 100%;
 
 .group {
     position: relative;
-    letter-spacing: $letter-spacing-reg;
+    font-size: $font-size-text-input;
+    font-weight: $font-weight-text-input;
+    letter-spacing: $letter-spacing-text-input;
+    color: $color-text-strong-invert;
     margin: 4rem 0;
 
-    input, select  { 
-        background: none;
-        color: $color-text-strong-invert;
-        font-size: 1.8rem;
-        padding: 1rem 1rem 1rem .5rem;
+    & input, & select  { 
+        background: none; 
+        font-size: inherit;
+        font-weight: inherit;
+        letter-spacing: inherit;
+        text-transform: uppercase;
+        color: inherit;
+        padding: 1rem 1rem 1rem .3rem;
         display: block;
         width: $width;
         border: none;
@@ -61,21 +69,38 @@ $width: 100%;
         }
         &:focus ~ label,
         &:valid ~ label {
-            top: -1.8rem;
-            font-size: $font-small; 
+            top: -1rem;
+            left: .3rem;
+            font-size: $font-size-text-input-small; 
         }
         &:focus ~ label { 
             color: $color-accent;
         }
+        &:valid ~ label { 
+            color: $color-text-weak-invert;
+        }
         &:focus ~ .bar:before {
             width: $width;
         }
+
+        & option { 
+            background: $color-background-shade;
+            color: inherit;  
+            &:focus {
+                outline: none;
+            }
+            &[value="1"] {
+                color: $color-text-invert; 
+            }
+        } 
     } 
      
       
-    label { 
-        color: $color-text-invert;
-        font-size: $font-reg; 
+    & label { 
+        color: inherit;
+        font-weight: inherit;
+        font-size: inherit; 
+        letter-spacing: inherit;
         position: absolute;
         pointer-events: none;
         left: .5rem;
@@ -83,7 +108,7 @@ $width: 100%;
         transition: $trans-time ease all;
     }
       
-    .bar {
+    & .bar {
         position: relative;
         display: block;
         width: $width;
@@ -98,33 +123,16 @@ $width: 100%;
             left: 0%;
         }
     }
-
-    select {
-        & option {
-            padding: 3.5rem; 
-            background: $color-background-shade;
-            color: $color-text-invert;  
-            &:focus {
-                outline: none;
-            }
-            &[value="1"] {
-                color: $color-text-invert;
-            }
-        } 
-        
-    } 
+ 
 }
    
 
 @mixin center($extend: true) {
     @if $extend {
         @extend %center;
-    } @else {
-        // color: inherit;
+    } @else { 
         position: absolute; 
-        right: 0;
-        // top: 50%;
-        // transform: translateY(-50%);
+        right: 0; 
     }
 }
 
@@ -132,25 +140,25 @@ $width: 100%;
     @include center($extend: false);
 }
 
-.ca-btn {
-    @include font-w-bold;
+.ca-btn { 
     @include center; 
     background: shade($color-primary, 35%);
     @if (lightness( shade($color-primary, 35%) ) > 60) {
         color: shade($color-background, 90%); 
     }
     @else {
-        color: tint($color-background, 40%);
-        
+        color: tint($color-background, 40%); 
     } 
+
+    font-size: $font-size-button-big;
+    font-weight: $font-weight-button-big;
+    letter-spacing: $letter-spacing-button-big;
     
     width: 20rem;
     height: 6rem;
-    border: 0;
-    font-size: $font-reg;
+    border: 0; 
     border-radius: 0; 
-    transition: .6s;
-    letter-spacing: $letter-spacing-extra;
+    transition: .6s; 
     text-transform: uppercase;
     overflow: hidden;
     &:focus{
@@ -199,114 +207,26 @@ $width: 100%;
   }
 
 
-$anim-text-offset: 2rem;
-
-.button-1 { 
-    @include font-w-bold;
-    letter-spacing: $letter-spacing-extra;
-    font-size: $font-reg; 
-    touch-callout: none;
-    user-select: none;
-    display: inline-block;
-    border: .1rem solid;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    opacity: 0.6;
-    color: $color-text-strong-invert;
-    &__text{
-        @include font-w-bold;
-        display: block;
-        padding: 1.5rem 5rem;
-        text-transform: uppercase; 
-        &:before{
-            content: attr(title);
-        }
-        &--bis{
-            display: block;
-            position: absolute;
-            top: 0; left:0; right: 0; bottom: 0;
-            transform: translateX(-1 * $anim-text-offset);
-            opacity: 0;
-        }
-    }
-    &__mask{
-        display: block;
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: $color-text-strong-invert;
-        transform: translateX(-100%) rotate(45deg);
-        transition: all 0.3s;
-    }  
-}
-  
-.button-1:hover{
-    opacity: 1;
-    .button-1__text{
-      animation: fx-text .3s ease-out;
-      &--bis{
-        animation: fx-text-bis .3s ease-out;
-      }
-    }    
-    .button-1__mask{
-      animation: fx-mask .3s ease-out;
-    }    
-}
-  
-.button-1:active{
-    opacity: 1;
-    background: $color-background;
-    color: inherit;
-}
-  
-  
-  
-@keyframes fx-mask {
-    0%{
-      transform: translateX(-100%) rotate(45deg);
-    }
-    100%{
-      transform: translateX(100%) rotate(45deg);
-    }
-}
-  
-@keyframes fx-text {
-    0%{
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100%{
-        transform: translateX($anim-text-offset);
-        opacity: 0;
-    }
-}
-@keyframes fx-text-bis {
-    0%{
-        transform: translateX(-1 * $anim-text-offset);
-        opacity: 0;
-    }
-    100%{
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
+$filter-padding: 1rem 2rem;
 
 .filter {
-    font-size: $font-reg;
-    letter-spacing: $letter-spacing-reg; 
-
+    font-size: $font-size-table;
+    font-weight: $font-weight-table;
+    letter-spacing: $letter-spacing-table;
+    
     &__head {
         color: $color-text-strong-invert;
         margin-right: 2rem;
-        padding: .5rem 2.5rem;
+        padding: $filter-padding;
         background: $color-background-shade;
     }
 
     &__item {
+        margin-top: 1.5rem;
         display: inline-block;
         cursor: pointer;
         color: $color-text-invert;
-        padding: .5rem 2.5rem;
+        padding: $filter-padding;
         margin-right: 2rem;
         // border: .1rem solid $color-border;
         transition: all .3s ease;
@@ -314,7 +234,7 @@ $anim-text-offset: 2rem;
 
         &:hover {
             border: none;
-            padding: .5rem 2.5rem;
+            padding: $filter-padding;
             background: $color-accent;
             color: $color-text-strong-invert;
         }
@@ -327,6 +247,26 @@ $anim-text-offset: 2rem;
             top: 0;
             left: 0;
             border: .1rem solid $color-background-shade; 
+        }
+    }
+}
+
+.button {
+    margin-bottom: 2.5rem;
+    &__submit {
+        cursor: pointer;
+        font-size: $font-size-button-regular;
+        text-transform: uppercase;
+        padding: 1rem 4rem;
+        background: $color-background-shade;
+        border: none;
+        color: $color-accent;
+        letter-spacing: $letter-spacing-button-regular;
+        transition: all .3s ease;
+
+        &:hover {
+            background: $color-accent;
+            color: black;
         }
     }
 }
