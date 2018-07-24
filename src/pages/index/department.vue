@@ -67,15 +67,17 @@
                         <th scope="col">Name</th>
                         <th scope="col">Abbrebeation</th>
                         <th scope="col">Code</th>
+                        <th scope="col">Faculty</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 6" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>Computer Science and Engineering</td>
-                            <td>CSE</td>
-                            <td>01</td>
+                        <tr v-for="(departmentDetails, k) in departmentArray" :key="k">
+                            <th scope="row"> {{k+1}} </th>
+                            <td>{{departmentDetails[1]}}</td>
+                            <td>{{departmentDetails[2]}}</td>
+                            <td>{{departmentDetails[3]}}</td>
+                            <td>{{departmentDetails[4]}}</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -89,5 +91,33 @@
 </template>
 
 <script>
-    
+    export default {
+        data(){
+            return{
+                department: {
+
+                },
+                departmentArray: []
+            }
+        },
+        
+        methods: {
+
+        },
+
+        mounted() {
+            this.$http.get('get/department')
+                    .then(response => {
+                        return response.json();
+                        
+                    })
+                    .then(data => {
+                        console.log(data)
+                        data.forEach(d => {
+                            this.departmentArray.push(d);
+                        });
+                        
+                    })
+        }
+    }
 </script>

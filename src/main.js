@@ -8,7 +8,7 @@ import jQuery from 'jquery'
 import popper from 'popper.js'
 
 Vue.use(VueResource);
-Vue.http.options.root = 'http://localhost:4000/';
+Vue.http.options.root = 'http://localhost:4000/api/';
 
 global.jQuery = jQuery  
 global.Popper = popper
@@ -64,6 +64,7 @@ fontawesome.library.add(faGooglePlusG)
 //end font awesome
 
 Vue.config.productionTip = false
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
 
 new Vue({
   router,

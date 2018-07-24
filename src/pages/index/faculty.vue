@@ -15,14 +15,15 @@
             <div class="col-6">
                 <form>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="fac.facultyName" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Faculty Name</label>
-                    </div>  
+                    </div>
+
+                    <div @click.prevent="insertNewFaculty" class="btn btn-primary">Submit</div>  
                 </form>
             </div>
-            
         </div>
         <div class="row mt-5">
             <div class="col">
@@ -54,12 +55,29 @@
     export default{
         data() {
             return {
-                faculties: []
+                faculties: [],
+                fac: {
+                    facultyName: ''
+                },
+                successMessage: ''
+            }
+        },
+        methods: {
+            insertNewFaculty() {
+                var link = 'insert/faculty';
+                this.$http.post(link, this.fac )
+                        .then(response => {
+                            console.log(response.body)
+                        }, error => {
+                            console.log(error);
+                        })
+                this.facultyName = '';
+               
             }
         },
 
         mounted() {
-            this.$http.get('api/get/faculty')
+            this.$http.get('get/faculty')
                     .then(response => {
                         return response.json();
                         
@@ -68,9 +86,8 @@
                         data.forEach(fac => {
                             this.faculties.push(fac[1]);
                         });
-                    })
-                   
-                    
+                    });                        
         }
+
     }    
 </script>
