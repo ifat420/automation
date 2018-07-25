@@ -17,6 +17,7 @@
     font-weight: $font-weight-heading;
     letter-spacing: $letter-spacing-heading;
     color: $color-text-heading;
+    margin-bottom: 8rem;
 } 
 
 .table { 
@@ -37,11 +38,23 @@
     & td, & th { 
         border-top: .1rem solid $color-border;  
         padding: 1.5rem;
+
+        & a {
+            color: $color-accent; 
+            padding-bottom: 0rem;
+            border-bottom: .1rem solid $color-accent;
+            transition: all .3s ease;
+
+            &:hover {
+                color: $color-text-strong-invert;
+            }
+        }
     }
 }
 
 $trans-time: 300ms;
 $width: 100%; 
+
 
 .group {
     position: relative;
@@ -49,7 +62,7 @@ $width: 100%;
     font-weight: $font-weight-text-input;
     letter-spacing: $letter-spacing-text-input;
     color: $color-text-strong-invert;
-    margin: 4rem 0;
+    margin: 0 0  4rem 0;
 
     & input, & select  { 
         background: none; 
@@ -72,12 +85,12 @@ $width: 100%;
             top: -1rem;
             left: .3rem;
             font-size: $font-size-text-input-small; 
+        } 
+        &:valid ~ label { 
+            color: $color-text-weak-invert;
         }
         &:focus ~ label { 
             color: $color-accent;
-        }
-        &:valid ~ label { 
-            color: $color-text-weak-invert;
         }
         &:focus ~ .bar:before {
             width: $width;
@@ -222,7 +235,7 @@ $filter-padding: 1rem 2rem;
     }
 
     &__item {
-        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
         display: inline-block;
         cursor: pointer;
         color: $color-text-invert;
@@ -252,7 +265,7 @@ $filter-padding: 1rem 2rem;
 }
 
 .button {
-    margin-bottom: 2.5rem;
+    margin-bottom: 7rem;
     &__submit {
         cursor: pointer;
         font-size: $font-size-button-regular;
@@ -263,6 +276,7 @@ $filter-padding: 1rem 2rem;
         color: $color-accent;
         letter-spacing: $letter-spacing-button-regular;
         transition: all .3s ease;
+        margin-right: 1.5rem;
 
         &:hover {
             background: $color-accent;

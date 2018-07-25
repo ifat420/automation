@@ -17,9 +17,9 @@
     font-weight: $font-weight-menu;
 
     position: fixed; 
-    // overflow-y: scroll;
+    
     top: $header-height;
-    min-height: calc(100vh - #{$header-height}); 
+    height: calc(100vh - #{$header-height}); 
     min-width: $sidebar-width;
     max-width: $sidebar-width;
 
@@ -42,10 +42,16 @@
     }
 
     &__list {  
+        height: calc(100vh - #{$header-height} - #{$sidebar-width});
+        position: relative;
+        overflow: hidden;
+        
         font-size: inherit; 
         letter-spacing: inherit;
         font-weight: inherit;
         padding-top: .5rem;  
+
+         
         
         &--item { 
             padding: 1.6rem 2rem;

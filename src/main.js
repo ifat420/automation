@@ -10,6 +10,7 @@ global.jQuery = jQuery
 global.Popper = popper
 
 import 'bootstrap' //js
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
 
 // font awesome
 import fontawesome from '@fortawesome/fontawesome'

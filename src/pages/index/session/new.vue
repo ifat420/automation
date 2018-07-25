@@ -6,10 +6,9 @@
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-6">
-                <form> 
-
+                <form>  
                     <div class="group"> 
                         <select>
                             <option disabled selected value="1">Select Faculty..</option> 
@@ -59,7 +58,8 @@
                         <label>Academic Year</label>
                     </div>  
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
+                        <button class="button__submit mr-4" type="submit">submit</button>
+                        <button class="button__submit" type="reset" value="Reset">reset</button>
                     </div>
                 </form>    
             </div>    

@@ -4,14 +4,14 @@
             <div class="col-6">
                 <h2 class="headings">Faculty</h2>
             </div>
-            <div class="col-6 text-md-right">
+            <div class="col-6 text-md-right" v-if="!showForm">
                 <div style="position: relative">
-                    <button class="ca-btn">Add Faculty</button>    
+                    <button class="ca-btn" @click.prevent="showForm = true">Add Faculty</button>    
                 </div>
             </div>
         </div>
 
-          <div class="row mt-5">
+          <div class="row" v-if="showForm">
             <div class="col-6">
                 <form>
                     <div class="group">
@@ -22,13 +22,14 @@
                     </div>  
                     <div class="button">
                         <button class="button__submit" type="submit">submit</button>
+                        <button class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
                     </div>
                 </form>
             </div>
             
         </div>
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
@@ -41,8 +42,7 @@
                     <tbody>
                         <tr v-for="(i, k) in 6" :key="k">
                             <th scope="row"> {{i}} </th>
-                            <td>Engineering</td>
-        
+                            <td>Engineering</td> 
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -58,7 +58,7 @@
     export default{
         data() {
             return {
-
+                showForm: false
             }
         }
     }    

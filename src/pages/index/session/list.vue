@@ -6,7 +6,7 @@
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <div class="filter">
                     <span class="filter__head">Faculty </span>
@@ -26,7 +26,7 @@
             </div>
         </div> 
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
