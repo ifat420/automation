@@ -6,7 +6,7 @@
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-6">
                 <form> 
 
@@ -114,7 +114,8 @@
                         <label>Teacher Name</label>
                     </div>  
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
+                        <button class="button__submit mr-4" type="submit" value="Submit">submit</button>
+                        <button class="button__submit" type="reset" value="Reset">reset</button>
                     </div>
                 </form>    
             </div>    

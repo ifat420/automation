@@ -5,7 +5,7 @@
                 <img src="../../assets/images/Campus Automation Logo 2 Icon.png" alt="logo">
             </div>
         </div>
-        <ul class="sidebar__list">
+        <ul class="sidebar__list" ref="sidebar" id="container">
             <li class="">  
                 <a data-toggle="collapse" href="#academicInfo" class="sidebar__list--item">
                     <i class="fas fa-fw fa-university"></i>
@@ -116,6 +116,8 @@
 </template>
 
 <script>
+import PerfectScrollbar from 'perfect-scrollbar';
+
 export default {
     data() {
         return {
@@ -148,10 +150,16 @@ export default {
         // }
     },
     mounted() { 
-        this.$nextTick().then(function(){
-            // $("#sidebar").mCustomScrollbar({
-            //     theme: "minimal"
-            // });
+        var s = this;
+        this.$nextTick().then(function(){ 
+            var container = s.$refs.sidebar;  
+            var options = {
+                wheelSpeed: .3,
+                wheelPropagation: true, 
+                minScrollbarLength: null,
+                swipeEasing: true,
+            }
+            const ps = new PerfectScrollbar(container, options); 
         })
     }
 }

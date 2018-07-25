@@ -4,14 +4,14 @@
             <div class="col-6">
                 <h2 class="headings">Department</h2>
             </div>
-            <div class="col-6 text-md-right">
+            <div class="col-6 text-md-right" v-if="!showForm">
                 <div style="position: relative">
-                    <button class="ca-btn">Add Department</button>    
+                    <button class="ca-btn" type="button" @click.prevent="showForm = true">Add Department</button>    
                 </div>
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row" v-if="showForm">
             <div class="col-6">
                 <form>
                      <div class="group"> 
@@ -48,13 +48,14 @@
 
                     <div class="button">
                         <button class="button__submit" type="submit">submit</button>
+                        <button class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
                     </div>
                 </form>
             </div>
             
         </div>
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <div class="filter">
                     <span class="filter__head">Faculty </span>
@@ -64,7 +65,7 @@
             </div>
         </div>
 
-         <div class="row mt-5">
+         <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
@@ -97,6 +98,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
     export default {
         data(){
             return{
@@ -126,4 +128,15 @@
                     })
         }
     }
+=======
+
+export default {
+    data() {
+        return {
+            showForm: false
+        }
+    }
+}
+    
+>>>>>>> 4d567123aa6a0a492d62d2d84bc5497052cfa35f
 </script>

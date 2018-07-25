@@ -4,13 +4,13 @@
             <div class="col-6">
                 <h2 class="headings">Program</h2>    
             </div>    
-            <div class="col-6 text-md-right">
+            <div class="col-6 text-md-right" v-if="!showForm">
                 <div style="position: relative">
-                    <button class="ca-btn">Add Program</button>    
+                    <button class="ca-btn" type="button" @click.prevent="showForm = true">Add Program</button>    
                 </div>
             </div>    
         </div>
-        <div class="row mt-5">
+        <div class="row" v-if="showForm">
             <div class="col-6">
                 <form> 
 
@@ -58,12 +58,13 @@
                     </div>
                     <div class="button">
                         <button class="button__submit" type="submit">submit</button>
+                        <button @click="showForm = false" class="button__submit" type="button">cancel</button>
                     </div>
                 </form>    
             </div>    
         </div>   
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <div class="filter">
                     <span class="filter__head">Faculty </span>
@@ -77,7 +78,7 @@
                 </div> 
             </div> 
         </div> 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
@@ -112,7 +113,11 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            showForm: false
+        }
+    }
 }
 </script>
 
