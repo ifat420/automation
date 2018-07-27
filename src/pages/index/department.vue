@@ -98,7 +98,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
     export default {
         data(){
             return{
@@ -128,15 +127,4 @@
                     })
         }
     }
-=======
-
-export default {
-    data() {
-        return {
-            showForm: false
-        }
-    }
-}
-    
->>>>>>> 4d567123aa6a0a492d62d2d84bc5497052cfa35f
 </script>
