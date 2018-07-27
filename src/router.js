@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 import home from './pages/index.vue'
  
+import login from './pages/login.vue'
+
 import academicTeacher from './pages/index/academic/teacher.vue'
 import academicStudent from './pages/index/academic/student.vue'
 import academicStuff from './pages/index/academic/stuff.vue'
@@ -128,6 +130,11 @@ var routes = [
                 name: 'courseRegister'
             }
         ]
+    },
+    {
+        path: '/login',
+        component: login,
+        name: 'login'
     }
 ]
 

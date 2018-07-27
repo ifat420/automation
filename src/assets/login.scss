@@ -1,0 +1,40 @@
+@import "variablesContent";
+@import "colors.scss"; 
+
+.login {
+    background: $color-background-invert;
+    min-height: 100vh;
+    padding: 5rem 0;
+
+    &__card { 
+        width: 40rem; 
+        background: $color-background-shade;
+        padding: 4rem;
+        margin: auto;
+        position: relative;
+        top: 50%;
+
+        &--logo {
+            
+            & img {
+                width: 20rem;
+            }
+            
+        }
+
+        &--form {
+
+            margin-top: 5rem;
+
+            & .button {
+                margin-bottom: 0;
+                text-align: center;
+
+                &__submit { 
+                }
+            }
+        }
+
+
+    }
+}
