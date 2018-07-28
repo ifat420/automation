@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 6" :key="k">
+                        <tr v-for="(i, k) in 2" :key="k">
                             <th scope="row"> {{i}} </th>
                             <td>Engineering</td> 
                             <td>

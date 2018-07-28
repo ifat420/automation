@@ -93,7 +93,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 6" :key="k">
+                        <tr v-for="(i, k) in 4" :key="k">
                             <th scope="row"> {{i}} </th>
                             <td>Bachelor of Science</td>
                             <td>BSc</td>

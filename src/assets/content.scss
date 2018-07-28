@@ -41,7 +41,7 @@
     & td, & th { 
         border-top: 1px solid $color-border;  
         padding: 2.3rem 2rem;
-
+        font-weight: $font-weight-table;
         & a {
             color: $color-accent; 
             padding-bottom: 0rem;
