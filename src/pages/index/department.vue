@@ -14,11 +14,12 @@
         <div class="row" v-if="showForm">
             <div class="col-6">
                 <form>
+                    
                      <div class="group"> 
-                        <select>
+                        <select v-model="department.facultyName">
                             <option disabled selected value="1">Select Faculty..</option> 
-                            <option>Engineering</option> 
-                            <option>Biology</option> 
+                            <option v-for="(fac, i) in allFaculty" :key="i" :value="fac[1]"  >{{fac[1]}}</option> 
+                            
                         </select>
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -26,28 +27,29 @@
                     </div> 
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="department.deptName" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Department Name</label>
                     </div>  
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="department.dAbr" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Department Abbreviation</label>
                     </div>  
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="department.dCode" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Department Code</label>
                     </div>  
 
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
+                        <button v-if="!updateButton" @click.prevent="insertDepartment" class="button__submit" type="submit">Save</button>
+                        <button v-if="updateButton" class="button__submit" @click.prevent="updateDepartment" type="submit">Update</button>
                         <button class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
                     </div>
                 </form>
@@ -86,7 +88,7 @@
                             <td>{{departmentDetails[3]}}</td>
                             <td>{{departmentDetails[4]}}</td>
                             <td>
-                                <a href="">Edit</a>
+                                <a href="" @click.prevent="gotEdit(k)">Edit</a>
                             </td>
                         </tr> 
                     </tbody>
@@ -98,33 +100,72 @@
 </template>
 
 <script>
+     import { commonData } from '../../mixins/commonData.js';
+
     export default {
+        mixins: [commonData],
         data(){
             return{
                 department: {
-
+                    facultyName: '',
+                    deptName: '',
+                    dAbr: '',
+                    dCode: ''
                 },
-                departmentArray: []
+                departmentArray: [],
+                showForm: false,
+                updateButton: false,
+                departmentId: ''
             }
         },
-        
+
         methods: {
-
-        },
-
-        mounted() {
-            this.$http.get('get/department')
+            getAllDepartments(){
+                this.$http.get('get/department')
                     .then(response => {
                         return response.json();
                         
                     })
                     .then(data => {
-                        console.log(data)
-                        data.forEach(d => {
-                            this.departmentArray.push(d);
-                        });
+                        this.departmentArray = data;
                         
                     })
+            },
+            gotEdit(p){
+                let dept = this.departmentArray[p];
+                this.department.facultyName = dept[4];
+                this.department.deptName = dept[1];
+                this.department.dAbr = dept[2];
+                this.department.dCode = dept[3];
+                this.departmentId = dept[0];
+                this.showForm = true;
+                this.updateButton = true;
+
+            },
+            insertDepartment(){
+                this.$http.post('insert/department', this.department)
+                        .then(response => {
+                            console.log(response.body);
+                        }, err => {
+                            console.log(err);
+                        })
+                this.showForm = false;
+                this.updateButton = false
+            },
+            updateDepartment(){
+                this.$http.put(`update/department/${this.departmentId}`, this.department)
+                        .then(response=> {
+                            console.log(response.body);
+                        }, err => {
+                            console.log(err);
+                        })
+                this.showForm = false;
+                this.updateButton = false;
+            }
+        },
+
+        mounted() {
+             this.getAllDepartments()
         }
     }
 </script>

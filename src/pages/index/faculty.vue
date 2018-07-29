@@ -22,8 +22,9 @@
 
                     </div>  
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
-                        <button class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
+                        <button v-if="!updateButton" @click.prevent="insertNewFaculty"  class="button__submit" type="submit">Save</button>
+                        <button v-if="updateButton" @click.prevent="updateFaculty"  class="button__submit" type="submit">Update</button>
+                        <button  class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
                     </div>
                 </form>
             </div>
@@ -42,10 +43,10 @@
                     <tbody>
                         <tr v-for="(faculty, i) in faculties" :key="i">
                             <th scope="row"> {{i+1}} </th>
-                            <td>{{faculty}}</td>
+                            <td>{{faculty[1]}}</td>
         
                             <td>
-                                <a href="">Edit</a>
+                                <a @click.prevent="goEdit(i)" href="">Edit</a>
                             </td>
                         </tr> 
                     </tbody>
@@ -64,7 +65,9 @@
                     facultyName: ''
                 },
                 successMessage: '',
-                showForm: false
+                showForm: false,
+                updateButton: false,
+                facutlyId: ''
             }
         },
         methods: {
@@ -77,7 +80,23 @@
                             console.log(error);
                         })
                 this.facultyName = '';
-               
+                this.showForm = false;
+            },
+            goEdit(p){
+                let fac = this.faculties[p]
+                this.fac.facultyName = fac[1];
+                this.facutlyId = fac[0];
+                this.updateButton = true;
+                this.showForm = true;
+            },
+            updateFaculty() {
+                this.$http.put(`update/faculty/${this.facutlyId}`, this.fac)
+                        .then(response => {
+                            console.log(response.body)
+                        }, err => {
+                            console.log(err)
+                        });
+                    this.showForm = false;
             }
         },
 
@@ -88,9 +107,7 @@
                         
                     })
                     .then(data => {
-                        data.forEach(fac => {
-                            this.faculties.push(fac[1]);
-                        });
+                        this.faculties = data;
                     });                        
         }
 

@@ -67,6 +67,10 @@ fontawesome.library.add(faGooglePlusG)
 Vue.config.productionTip = false
 // Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
 
+Vue.prototype.$errorHandler = (e) => {
+  console.log('error: ', e)
+}
+
 new Vue({
   router,
   store,
