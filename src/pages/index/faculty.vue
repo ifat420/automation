@@ -24,7 +24,7 @@
                     <div class="button">
                         <button v-if="!updateButton" @click.prevent="insertNewFaculty"  class="button__submit" type="submit">Save</button>
                         <button v-if="updateButton" @click.prevent="updateFaculty"  class="button__submit" type="submit">Update</button>
-                        <button  class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
+                        <button  class="button__submit" type="button" @click.prevent="clear">cancel</button>
                     </div>
                 </form>
             </div>
@@ -71,11 +71,26 @@
             }
         },
         methods: {
+            clear(){
+                this.fac.facultyName = '';
+                this.showForm = false;
+                this.updateButton = false;
+            },
+            getFaculty() {
+                this.$http.get('get/faculty')
+                    .then(response => {
+                        return response.json();
+                        
+                    })
+                    .then(data => {
+                        this.faculties = data;
+                    });    
+            },
             insertNewFaculty() {
                 var link = 'insert/faculty';
                 this.$http.post(link, this.fac )
                         .then(response => {
-                            console.log(response.body)
+                            this.getFaculty();
                         }, error => {
                             console.log(error);
                         })
@@ -92,7 +107,7 @@
             updateFaculty() {
                 this.$http.put(`update/faculty/${this.facutlyId}`, this.fac)
                         .then(response => {
-                            console.log(response.body)
+                            this.getFaculty();
                         }, err => {
                             console.log(err)
                         });
@@ -101,14 +116,7 @@
         },
 
         mounted() {
-            this.$http.get('get/faculty')
-                    .then(response => {
-                        return response.json();
-                        
-                    })
-                    .then(data => {
-                        this.faculties = data;
-                    });                        
+            this.getFaculty();           
         }
 
     }    

@@ -50,7 +50,7 @@
                     <div class="button">
                         <button v-if="!updateButton" @click.prevent="insertDepartment" class="button__submit" type="submit">Save</button>
                         <button v-if="updateButton" class="button__submit" @click.prevent="updateDepartment" type="submit">Update</button>
-                        <button class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
+                        <button class="button__submit" type="button" @click.prevent="clear">cancel</button>
                     </div>
                 </form>
             </div>
@@ -120,6 +120,14 @@
         },
 
         methods: {
+            clear() {
+                this.showForm = false;
+                this.department.facultyName = '';
+                this.department.deptName = '';
+                this.department.dAbr = '';
+                this.department.dCode = '';
+
+            },
             getAllDepartments(){
                 this.$http.get('get/department')
                     .then(response => {
@@ -145,7 +153,7 @@
             insertDepartment(){
                 this.$http.post('insert/department', this.department)
                         .then(response => {
-                            console.log(response.body);
+                            this.getAllDepartments();
                         }, err => {
                             console.log(err);
                         })
@@ -155,7 +163,7 @@
             updateDepartment(){
                 this.$http.put(`update/department/${this.departmentId}`, this.department)
                         .then(response=> {
-                            console.log(response.body);
+                            this.getAllDepartments();
                         }, err => {
                             console.log(err);
                         })

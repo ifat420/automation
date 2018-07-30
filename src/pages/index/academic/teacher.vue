@@ -14,53 +14,41 @@
             <div class="col-6">
                 <form>  
                     <div class="group"> 
-                        <select>
-                            <option disabled selected value="1">Select Faculty..</option> 
-                            <option>Engineering</option> 
-                            <option>Biology</option> 
-                        </select>
-                        <span class="highlight"></span>
-                        <span class="bar"></span> 
-                    </div>  
-                    <div class="group"> 
-                        <select>
+                        <select v-model="teacherObj.deptName">
                             <option disabled selected value="1">Select Department..</option> 
-                            <option>Computer Science and Technology</option> 
-                            <option>Department</option> 
-                            <option>Computer Science and Technology</option> 
-                            <option>Department</option> 
-                            <option>Computer Science and Technology</option> 
+                            <option v-for="(dept, k) in allDept" :key="k" :value="dept[1]"> {{dept[1]}}</option>
                         </select>
                         <span class="highlight"></span>
                         <span class="bar"></span> 
                     </div> 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="teacherObj.teacherName" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Teacher Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="teacherObj.teacherDesc" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Teacher Designation</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="teacherObj.teacherEmail" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Email</label>
                     </div>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="teacherObj.teacherPhone" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Phone Number</label>
                     </div>
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
-                        <button @click="showForm = false" class="button__submit" type="button">cancel</button>
+                        <button @click.prevent="insertTeacher" v-if="!updateButton" class="button__submit" type="submit">Save</button>
+                        <button @click.prevent="updateTeacher" v-if="updateButton" class="button__submit" type="submit">Update</button>
+                        <button @click.prevent="clear" class="button__submit" type="button">cancel</button>
                     </div>
                 </form>    
             </div>    
@@ -96,16 +84,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 4" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>John Doe</td>
-                            <td>Null</td>
-                            <td>jhondoe@gmail.com</td>
-                            <td>+880171896245</td>
-                            <td>Engineering</td>
-                            <td>CSE</td>
+                        <tr v-for="(teacher, k) in teachersArray" :key="k">
+                            <th scope="row"> {{k+1}} </th>
+                            <td>{{teacher[0]}}</td>
+                            <td>{{teacher[1]}}</td>
+                            <td>{{teacher[2]}}</td>
+                            <td>{{teacher[3]}}</td>
+                            <td>{{teacher[4]}}</td>
+                            <td>{{teacher[5]}}</td>
                             <td>
-                                <a href="">Edit</a>
+                                <a @click.prevent="goEdit(k)" href="">Edit</a>
                             </td>
                         </tr> 
                     </tbody>
@@ -116,11 +104,82 @@
 </template>
 
 <script>
+    import {commonData}  from '../../../mixins/commonData.js'
 export default {
+    mixins: [commonData],
     data() {
         return {
-            showForm: false
+            showForm: false,
+            teachersArray: [],
+            teacherObj: {
+                deptName: '',
+                teacherName: '',
+                teacherDesc: '',
+                teacherEmail: '',
+                teacherPhone: ''
+            },
+            teacherId: '',
+            updateButton: false 
         }
+    },
+    methods: {
+         getAllTeachers(){
+                this.$http.get('get/teacher')
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.teachersArray = data;
+                        console.log(data);
+                    })
+            },
+        insertTeacher(){
+                this.$http.post('insert/teacher', this.teacherObj)
+                        .then(response => {
+                            this.getAllTeachers();
+                            this.showForm = false;
+                        }, err => {
+                            console.log(err);
+                        })
+                
+            },
+            goEdit(p){
+                this.showForm = true;
+                this.updateButton = true;
+                let t = this.teachersArray[p];
+                this.teacherObj.deptName = t[7];
+                this.teacherObj.teacherName = t[0];
+                this.teacherObj.teacherDesc = t[1];
+                this.teacherObj.teacherEmail = t[2];
+                this.teacherObj.teacherPhone = t[3];
+
+                this.teacherId = t[6];
+                
+            },
+            clear(){
+                this.teacherObj.deptName = '';
+                this.teacherObj.teacherName = '';
+                this.teacherObj.teacherDesc = '';
+                this.teacherObj.teacherEmail = '';
+                this.teacherObj.teacherPhone = '';
+
+                this.showForm = false;
+                this.updateButton = false;
+            },
+            updateTeacher(){
+                this.$http.put(`update/teacher/${this.teacherId}`, this.teacherObj)
+                        .then(response=> {
+                            this.getAllTeachers();
+                            this.showForm = false;
+                            this.updateButton = false;
+                        }, err => {
+                            console.log(err);
+                        })
+               
+            }
+    },
+    mounted(){
+        this.getAllTeachers();
     }
 }
 </script>

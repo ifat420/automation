@@ -132,7 +132,7 @@ export default {
         updateProg(){
             this.$http.put(`update/program/${this.progrmId}`, this.inputProgram)
                     .then(response => {
-                        console.log(response.body)
+                        this.getDataFromDb();
                     }, error => {
                         console.log(error)
                     })
@@ -153,7 +153,7 @@ export default {
         insertProgram() {
             this.$http.post('insert/program', this.inputProgram )
                         .then(response => {
-                            console.log(response.body)
+                            this.getDataFromDb();
                         }, error => {
                             console.log(error);
                         })
