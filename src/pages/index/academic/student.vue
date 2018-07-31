@@ -14,7 +14,7 @@
             <div class="col-6">
                 <form>  
                     <div class="group"> 
-                        <select>
+                        <select v-model="studentObject.departmentName">
                             <option disabled selected value="1">Select Department..</option> 
                             <option v-for="(dept, k) in allDept" :key="k" :value="dept[1]"> {{dept[1]}}</option>
                         </select>
@@ -23,7 +23,7 @@
                     </div> 
                     
                     <div class="group"> 
-                        <select>
+                        <select v-model="studentObject.progAbbr">
                             <option disabled selected value="1">Select Program..</option> 
                             <option value="BSC">BSC</option> 
                             <option value="MSC">MSC</option> 
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="group"> 
-                        <select>
+                        <select v-model="studentObject.session">
                             <option disabled selected value="1">Select Session..</option> 
                             <option v-for="(sec, k) in distinctSession" :key="k" :value="sec[0]">{{sec[0]}}</option> 
                             
@@ -44,7 +44,7 @@
                         <!-- <label>Select Department</label> -->
                     </div>
                     <div class="group"> 
-                        <select>
+                        <select v-model="studentObject.hallName">
                             <option disabled selected value="1">Select Hall..</option> 
                             <option v-for="(hall, k) in allHall" :key="k" :value="hall[2]">{{hall[2]}}</option> 
                             
@@ -55,56 +55,56 @@
                     </div>
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.roll" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Roll Number</label>
                     </div>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.reg" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Registration Number</label>
                     </div>
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.fstName" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>First Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.lstName" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Last Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.fatherName" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Father Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.motherName" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Mother Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.phoneNumber" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Phone Number</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.dob" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Date of Birth</label>
                     </div>
                    <div class="group"> 
-                        <select>
+                        <select v-model="studentObject.gender">
                             <option disabled selected value="1">Select Program..</option> 
                             <option value="male">Male</option> 
                             <option value="femail">Female</option> 
@@ -114,45 +114,45 @@
                         <!-- <label>Select Department</label> -->
                     </div>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.religion" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Religion Name</label>
                     </div>  
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.preAdd" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Present Address</label>
                     </div>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.perAdd" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Permanent Address</label>
                     </div>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.email" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Email Address</label>
                     </div>
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.nation" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Nationality</label>
                     </div> 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="studentObject.status" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Status</label>
                     </div>
                     
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
-                        <button @click="showForm = false" class="button__submit" type="button">cancel</button>
+                        <button @click.prevent="insertStudent" class="button__submit" type="submit">submit</button>
+                        <button @click.prevent="showForm = false" class="button__submit" type="button">cancel</button>
                     </div>
                 </form>    
             </div>    
@@ -218,7 +218,26 @@ export default {
             showForm: false,
             studentArray: [],
             studentObject: {
-                
+                departmentName: '',
+                progAbbr: '',
+                session: '',
+                roll: '',
+                reg: '',
+                fstName: '',
+                lstName: '',
+                fatherName: '',
+                motherName: '',
+                phoneNumber: '',
+                dob: '',
+                gender: '',
+                religion: '',
+                preAdd: '',
+                perAdd: '',
+                email: '',
+                nation: '',
+                status: '',
+                hallName: ''
+
             }
         }
     },
@@ -232,7 +251,17 @@ export default {
                     .then(data => {
                         this.studentArray = data;
                     })
-            }
+            },
+           insertStudent(){
+                this.$http.post('insert/student', this.studentObject)
+                        .then(response => {
+                            this.getAllStudents()
+                        }, err => {
+                            console.log(err);
+                        })
+                this.showForm = false;
+                this.updateButton = false
+            },
     },
     mounted() {
         this.getAllStudents();

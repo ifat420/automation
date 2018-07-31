@@ -57,16 +57,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 6" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>CSE 1101</td>
-                            <td>Computer Fundamental</td>
-                            <td>3.0</td>
-                            <td>Theory</td>
-                            <td>CSE</td>
-                            <td>1.1</td>
-                            <td>2013-14</td>
-                            <td>BSC</td>
+                        <tr v-for="(course, k) in courseArray" :key="k">
+                            <th scope="row"> {{k+1}} </th>
+                            <td>{{course[0]}}</td>
+                            <td>{{course[1]}}</td>
+                            <td>{{course[2]}}</td>
+                            <td>{{course[3]}}</td>
+                            <td>{{course[4]}}</td>
+                            <td>{{course[5]}}</td>
+                            <td>{{course[6]}}</td>
+                            <td>{{course[7]}}</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -79,5 +79,25 @@
 </template>
 
 <script>
-    
+export default {
+    data() {
+        return {
+            courseArray: []
+        }
+    },
+    methods: {
+        getAllCourse(){
+                this.$http.get('get/course')
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.courseArray = data;
+                    })
+            },
+    },
+    mounted(){
+        this.getAllCourse();
+    }
+}
 </script>
