@@ -27,6 +27,7 @@ import courseAdd from './pages/index/course/add.vue'
 import courseList from './pages/index/course/list.vue'
 import courseAssign from './pages/index/course/assign.vue'
 import courseRegister from './pages/index/course/register.vue'
+import marksTable from './pages/index/marks/table.vue'
 
 
 
@@ -128,6 +129,11 @@ var routes = [
                 path: '/course/register',
                 component: courseRegister,
                 name: 'courseRegister'
+            },
+            {
+                path: '/marks/table',
+                component: marksTable,
+                name: 'marksTable'
             }
         ]
     },
