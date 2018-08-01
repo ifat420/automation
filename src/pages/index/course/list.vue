@@ -93,6 +93,7 @@ export default {
                     })
                     .then(data => {
                         this.courseArray = data;
+                    console.log(data);
                     })
             },
     },

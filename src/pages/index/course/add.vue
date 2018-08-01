@@ -35,6 +35,7 @@
                             <option disabled selected value="1">Course Type..</option> 
                             <option value="theory" >Theory</option> 
                             <option value="lab">Laboratory</option> 
+                            <option value="central viva">Viva Voce</option> 
                             <option value="thesis/project">Thesis/Project</option> 
                             <option value="tour">Industrial Tour</option> 
                         </select>
@@ -140,14 +141,14 @@
                 this.$http.post('insert/course', this.courseObj)
                         .then(response => {
                             console.log(response.body)
-                            
+                            this.$router.push({
+                                name: 'courseList'
+                            });
                         }, err => {
                             console.log(err);
                         })
                 
-                 this.$router.push({
-                        name: 'courseList'
-                    });
+                 
             }
         }
     }    
