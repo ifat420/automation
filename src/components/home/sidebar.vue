@@ -102,7 +102,7 @@
                     </li> 
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('courseRegister')" href="#">Registration</a>
-                    </li>  
+                    </li> 
                 </ul>
             </li>
             <li class=""> 
@@ -116,8 +116,9 @@
                         <a @click.prevent="go('marksTable')"  href="#">Table</a>
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a @click.prevent="go('courseList')" href="#">Catalog</a>
+                        <a @click.prevent="go('thirdExaminerTable')"  href="#">Third Examiner Table</a>
                     </li> 
+                   
                   
                 </ul>
             </li>

@@ -28,6 +28,7 @@ import courseList from './pages/index/course/list.vue'
 import courseAssign from './pages/index/course/assign.vue'
 import courseRegister from './pages/index/course/register.vue'
 import marksTable from './pages/index/marks/table.vue'
+import thirdExaminerTable from './pages/index/marks/thirdexaminertable.vue'
 
 
 
@@ -134,6 +135,11 @@ var routes = [
                 path: '/marks/table',
                 component: marksTable,
                 name: 'marksTable'
+            },
+            {
+                path: '/marks/table',
+                component: thirdExaminerTable,
+                name: 'thirdExaminerTable'
             }
         ]
     },

@@ -97,27 +97,27 @@
                             <td>{{m[1]}}</td>
                             <td>
                                 <div class="form-group">
-                                    <input v-model="m[2]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[2]"  class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[3]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[3]"  class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[4]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[4]" class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[5]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[5]" class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[6]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[6]"  class="form-control"  placeholder="marks">
                                 </div>
                             </td>
                         </tr> 
@@ -156,22 +156,22 @@
                             <td>{{m[1]}}</td>
                             <td>
                                 <div class="form-group">
-                                    <input v-model="m[2]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[2]"  class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[3]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[3]"  class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[4]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[4]" class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[5]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[5]" class="form-control"  placeholder="marks">
                                 </div>
                             </td>
                         </tr> 
@@ -207,12 +207,12 @@
                             <td>{{m[1]}}</td>
                             <td>
                                 <div class="form-group">
-                                    <input v-model="m[2]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[2]"  class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[3]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[3]" class="form-control"  placeholder="marks">
                                 </div>
                             </td>
                         </tr> 
@@ -249,27 +249,27 @@
                             <td>{{m[1]}}</td>
                             <td>
                                 <div class="form-group">
-                                    <input v-model="m[2]"  class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[2]"  class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[3]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[3]" class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[4]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[4]" class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[5]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[5]" class="form-control" type="number" placeholder="marks">
                                 </div>
                             </td>
                             <td>
                                  <div class="form-group">
-                                    <input v-model="m[6]" class="form-control" id="inputPassword2" placeholder="marks">
+                                    <input v-model="m[6]" class="form-control"  placeholder="marks">
                                 </div>
                             </td>
                         </tr> 
