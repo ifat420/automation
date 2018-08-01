@@ -118,6 +118,9 @@
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('thirdExaminerTable')"  href="#">Third Examiner Table</a>
                     </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('finalResultAllTogather')"  href="#">Result</a>
+                    </li> 
                    
                   
                 </ul>
