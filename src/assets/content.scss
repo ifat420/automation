@@ -17,7 +17,7 @@
     font-weight: $font-weight-heading;
     letter-spacing: $letter-spacing-heading;
     color: $color-text-heading;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
 } 
 
 .table { 
@@ -28,6 +28,7 @@
     // color: $color-text-strong-invert; 
     color: $color-text-invert;
     text-transform: initial;
+    // border: 1px solid #ccc;
 
     & thead th {  
         font-weight: $font-weight-table;
@@ -35,12 +36,12 @@
         color: $color-text-weak-invert;
         text-transform: uppercase;
         border: none;
-        padding-top: 4rem;
+        padding: 3rem 2rem 1rem;
     }
 
     & td, & th { 
         border-top: 1px solid $color-border;  
-        padding: 2.3rem 2rem;
+        padding: 2rem 2rem;
         font-weight: $font-weight-table;
         & a {
             color: $color-accent; 
@@ -268,7 +269,7 @@ $filter-padding: 1rem 2rem;
 }
 
 .button {
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
     &__submit {
         cursor: pointer;
         font-size: $font-size-button-regular;
