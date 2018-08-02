@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import VueResource from 'vue-resource'
 import store from './store'
 
 import jQuery from 'jquery' 
 import popper from 'popper.js'
+
+Vue.use(VueResource);
+Vue.http.options.root = 'http://localhost:4000/api/';
 
 global.jQuery = jQuery  
 global.Popper = popper
@@ -61,6 +65,11 @@ fontawesome.library.add(faGooglePlusG)
 //end font awesome
 
 Vue.config.productionTip = false
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
+
+Vue.prototype.$errorHandler = (e) => {
+  console.log('error: ', e)
+}
 
 new Vue({
   router,

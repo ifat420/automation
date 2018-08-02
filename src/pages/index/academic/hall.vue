@@ -14,20 +14,25 @@
             <div class="col-6">
                 <form>    
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input v-model="hallObject.name" type="text" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Hall Name</label>
                     </div>  
-                    <div class="group">
-                        <input type="text" required="required"/>
+                    <div class="group"> 
+                        <select v-model="hallObject.type">
+                            <option disabled selected value="1">Select Program..</option> 
+                            <option value="male">MALE</option> 
+                            <option value="female">FEMALE</option> 
+                        </select>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Hall Type</label>
-                    </div>  
+                        <!-- <label>Select Department</label> -->
+                    </div> 
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
-                        <button @click="showForm = false" class="button__submit" type="button">cancel</button>
+                        <button v-if="!updateButton" @click.prevent="insertHall" class="button__submit" type="submit">Save</button>
+                        <button v-if="updateButton"  @click.prevent="updateHall" class="button__submit" type="submit">Update</button>
+                        <button @click.prevent="clear" class="button__submit" type="button">cancel</button>
                     </div>
                 </form>    
             </div>    
@@ -45,12 +50,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 3" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>Sheikh Hasina Hall</td>
-                            <td>Female Hall</td> 
+                        <tr v-for="(hall, k) in allHall" :key="k">
+                            <th scope="row"> {{k+1}} </th>
+                            <td>{{hall[2]}}</td>
+                            <td>{{hall[1].toUpperCase()}}</td> 
                             <td>
-                                <a href="">Edit</a>
+                                <a @click.prevent="gotEdit(k)" href="">Edit</a>
                             </td>
                         </tr> 
                     </tbody>
@@ -61,10 +66,61 @@
 </template>
 
 <script>
+    import {commonData} from '../../../mixins/commonData.js'
 export default {
+    mixins: [commonData],
     data() {
         return {
-            showForm: false
+            showForm: false,
+            updateButton: false,
+            hallObject: {
+                name: '',
+                type: ''
+            },
+            hallId: ''
+        }
+    },
+    methods: {
+        insertHall(){
+            this.$http.post('insert/hall', this.hallObject)
+                    .then(response => {
+                        this.getAllHall();
+                    }, err => {
+                        console.log(err);
+                    })
+            this.hallObject.name = '';
+            this.hallObject.type = '';
+            this.showForm = false;
+            this.updateButton = false
+        },
+        clear() {
+            this.showForm = false;
+            this.department.facultyName = '';
+            this.department.deptName = '';
+            this.department.dAbr = '';
+            this.department.dCode = '';
+
+        },
+        gotEdit(p){
+                let h = this.allHall[p];
+                this.hallObject.name = h[2];
+                this.hallObject.type = h[1];
+                this.hallId = h[0];
+               
+                this.showForm = true;
+                this.updateButton = true;
+
+            },
+
+        updateHall(){
+            this.$http.put(`update/hall/${this.hallId}`, this.hallObject)
+                    .then(response=> {
+                        this.getAllHall();
+                    }, err => {
+                        console.log(err);
+                    })
+            this.showForm = false;
+            this.updateButton = false;
         }
     }
 }

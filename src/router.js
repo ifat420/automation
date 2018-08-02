@@ -27,6 +27,9 @@ import courseAdd from './pages/index/course/add.vue'
 import courseList from './pages/index/course/list.vue'
 import courseAssign from './pages/index/course/assign.vue'
 import courseRegister from './pages/index/course/register.vue'
+import marksTable from './pages/index/marks/table.vue'
+import thirdExaminerTable from './pages/index/marks/thirdexaminertable.vue'
+import finalResultAllTogather from './pages/index/marks/finalresultalltogather.vue'
 
 
 
@@ -128,6 +131,21 @@ var routes = [
                 path: '/course/register',
                 component: courseRegister,
                 name: 'courseRegister'
+            },
+            {
+                path: '/marks/marksTable',
+                component: marksTable,
+                name: 'marksTable'
+            },
+            {
+                path: '/marks/thirdExaminerTable',
+                component: thirdExaminerTable,
+                name: 'thirdExaminerTable'
+            },
+            {
+                path: '/marks/finalResultAllTogather',
+                component: finalResultAllTogather,
+                name: 'finalResultAllTogather'
             }
         ]
     },

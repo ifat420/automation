@@ -8,7 +8,7 @@
     margin-left: $sidebar-width;
     background: $color-background-invert;
     padding: 4rem 3.5rem; 
-    font-family: inherit;
+    font-family: 'Futura Pt', sans-serif;
     font-size: inherit;
 } 
 
@@ -68,12 +68,16 @@ $width: 100%;
     color: $color-text-strong-invert;
     margin: 0 0  4rem 0;
 
+    & select {
+        text-transform: uppercase;
+    }
+
     & input, & select  { 
         background: none; 
         font-size: inherit;
         font-weight: inherit;
         letter-spacing: inherit;
-        text-transform: uppercase;
+        
         color: inherit;
         padding: 1rem 1rem 1rem .3rem;
         display: block;
@@ -107,13 +111,14 @@ $width: 100%;
                 outline: none;
             }
             &[value="1"] {
-                color: $color-text-invert; 
+                // color: $color-text-invert; 
             }
         } 
     } 
      
       
     & label { 
+        text-transform: uppercase;
         color: inherit;
         font-weight: inherit;
         font-size: inherit; 

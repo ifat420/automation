@@ -102,14 +102,28 @@
                     </li> 
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('courseRegister')" href="#">Registration</a>
-                    </li>  
+                    </li> 
                 </ul>
             </li>
             <li class=""> 
-                <a href="" class="sidebar__list--item">
+                <a data-toggle="collapse" href="#marks" class="sidebar__list--item">
                     <i class="fas fa-fw fa-edit"></i>
                     Marks
+                    <i class="fas fa-angle-down"></i>
                 </a> 
+                <ul id="marks" class="sidebar__sub-list collapse">
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('marksTable')"  href="#">Table</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('thirdExaminerTable')"  href="#">Third Examiner Table</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('finalResultAllTogather')"  href="#">Result</a>
+                    </li> 
+                   
+                  
+                </ul>
             </li>
         </ul>
     </div>

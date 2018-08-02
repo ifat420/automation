@@ -40,12 +40,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 6" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>CSE</td>
-                            <td>BSc</td>
-                            <td>2013-14</td>
-                            <td>Engineering</td>
+                        <tr v-for="(session, k) in sessions" :key="k">
+                            <th scope="row"> {{k+1}} </th>
+                            <td>{{session[0]}}</td>
+                            <td>{{session[1]}}</td>
+                            <td>{{session[2]}}</td>
+                            <td>{{session[3]}}</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -58,5 +58,28 @@
 </template>
 
 <script>
-    
+    export default {
+        data() {
+            return {
+                sessions: []
+            }
+        },
+
+        methods: {
+            
+
+            getSession(){
+                this.$http.get('get/session')
+                        .then(response => {
+                            return response.json();
+                        })
+                        .then(data => {
+                            this.sessions = data;
+                        })
+            }
+        },
+        mounted() {
+            this.getSession();
+        }
+    }
 </script>

@@ -14,11 +14,12 @@
         <div class="row" v-if="showForm">
             <div class="col-6">
                 <form>
+                    
                      <div class="group"> 
-                        <select>
+                        <select v-model="department.facultyName">
                             <option disabled selected value="1">Select Faculty..</option> 
-                            <option>Engineering</option> 
-                            <option>Biology</option> 
+                            <option v-for="(fac, i) in allFaculty" :key="i" :value="fac[1]"  >{{fac[1]}}</option> 
+                            
                         </select>
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -26,29 +27,30 @@
                     </div> 
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="department.deptName" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Department Name</label>
                     </div>  
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="department.dAbr" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Department Abbreviation</label>
                     </div>  
 
                     <div class="group">
-                        <input type="text" required="required"/>
+                        <input type="text" v-model="department.dCode" required="required"/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Department Code</label>
                     </div>  
 
                     <div class="button">
-                        <button class="button__submit" type="submit">submit</button>
-                        <button class="button__submit" type="button" @click.prevent="showForm = false">cancel</button>
+                        <button v-if="!updateButton" @click.prevent="insertDepartment" class="button__submit" type="submit">Save</button>
+                        <button v-if="updateButton" class="button__submit" @click.prevent="updateDepartment" type="submit">Update</button>
+                        <button class="button__submit" type="button" @click.prevent="clear">cancel</button>
                     </div>
                 </form>
             </div>
@@ -74,17 +76,19 @@
                         <th scope="col">Name</th>
                         <th scope="col">Abbrebeation</th>
                         <th scope="col">Code</th>
+                        <th scope="col">Faculty</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(i, k) in 4" :key="k">
-                            <th scope="row"> {{i}} </th>
-                            <td>Computer Science and Engineering</td>
-                            <td>CSE</td>
-                            <td>01</td>
+                        <tr v-for="(departmentDetails, k) in departmentArray" :key="k">
+                            <th scope="row"> {{k+1}} </th>
+                            <td>{{departmentDetails[1]}}</td>
+                            <td>{{departmentDetails[2]}}</td>
+                            <td>{{departmentDetails[3]}}</td>
+                            <td>{{departmentDetails[4]}}</td>
                             <td>
-                                <a href="">Edit</a>
+                                <a href="" @click.prevent="gotEdit(k)">Edit</a>
                             </td>
                         </tr> 
                     </tbody>
@@ -96,13 +100,80 @@
 </template>
 
 <script>
+     import { commonData } from '../../mixins/commonData.js';
 
-export default {
-    data() {
-        return {
-            showForm: false
+    export default {
+        mixins: [commonData],
+        data(){
+            return{
+                department: {
+                    facultyName: '',
+                    deptName: '',
+                    dAbr: '',
+                    dCode: ''
+                },
+                departmentArray: [],
+                showForm: false,
+                updateButton: false,
+                departmentId: ''
+            }
+        },
+
+        methods: {
+            clear() {
+                this.showForm = false;
+                this.department.facultyName = '';
+                this.department.deptName = '';
+                this.department.dAbr = '';
+                this.department.dCode = '';
+
+            },
+            getAllDepartments(){
+                this.$http.get('get/department')
+                    .then(response => {
+                        return response.json();
+                        
+                    })
+                    .then(data => {
+                        this.departmentArray = data;
+                        
+                    })
+            },
+            gotEdit(p){
+                let dept = this.departmentArray[p];
+                this.department.facultyName = dept[4];
+                this.department.deptName = dept[1];
+                this.department.dAbr = dept[2];
+                this.department.dCode = dept[3];
+                this.departmentId = dept[0];
+                this.showForm = true;
+                this.updateButton = true;
+
+            },
+            insertDepartment(){
+                this.$http.post('insert/department', this.department)
+                        .then(response => {
+                            this.getAllDepartments();
+                        }, err => {
+                            console.log(err);
+                        })
+                this.showForm = false;
+                this.updateButton = false
+            },
+            updateDepartment(){
+                this.$http.put(`update/department/${this.departmentId}`, this.department)
+                        .then(response=> {
+                            this.getAllDepartments();
+                        }, err => {
+                            console.log(err);
+                        })
+                this.showForm = false;
+                this.updateButton = false;
+            }
+        },
+
+        mounted() {
+             this.getAllDepartments()
         }
     }
-}
-    
 </script>
