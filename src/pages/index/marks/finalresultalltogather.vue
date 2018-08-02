@@ -74,7 +74,7 @@
                 <h2 class="headings">Input Theory Marks</h2>
             </div>
         </div>
-
+        {{pointMustCreditArray}}
         <div class="row" v-if="showTable">
             <div class="col">
                 <table class="table">
@@ -90,8 +90,8 @@
                         <tr v-for="(row, k) in pointMustCreditArray" :key="k">
                             <th scope="row"> {{k+1}} </th>
                             <td>{{row[0]}}</td>
-                            <td>{{row[1] / row[2]}}</td>
-                            <td>{{ checker(row[0]) }}</td>
+                            <td>{{ (row[1] / row[2]).toFixed(2) }}</td>
+                            <td>{{ failSubject[0][0] === row[0] ? failSubject[0][1] : '' }}</td>
                         </tr> 
                     </tbody>
                 </table>
@@ -133,7 +133,7 @@
                 showTable: false,
                 pointMustCreditArray: [],
                 failSubject: [],
-                i: 0
+               
             }
         },
         methods: {
@@ -142,8 +142,9 @@
                         .then(response => {
                             this.pointMustCreditArray =  response.body.rows;
                             this.showTable = true;
-                            console.log(this.pointMustCreditArray);
+                            // console.log(this.pointMustCreditArray);
                             this.getFailSubject();
+
                         }, err => {
                             console.log(err);
                         })   
@@ -152,7 +153,7 @@
                  this.$http.post('insert/getfailsubjects', this.courseInputSearch)
                         .then(response => {
                             this.failSubject =  response.body.rows;
-                            console.log(this.failSubject);
+                            // console.log(this.failSubject);
                         }, err => {
                             console.log(err);
                         })   
@@ -163,18 +164,8 @@
                 
             },
 
-            checker(roll){
-                console.log('roll: ', roll);
-                console.log(this.failSubject[0][0]);
-                console.log(this.failSubject[0][1]);
-                // if(roll === this.failSubject[this.i][0]){
-                //     ++this.i;
-                //     return this.failSubject[this.i-1][1];
-                    
-                // }
-            }
-               
 
+            
 
         
     }
