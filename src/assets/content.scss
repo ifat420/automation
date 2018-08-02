@@ -24,11 +24,11 @@
     font-size: $font-size-table;
     font-weight: $font-weight-table;
     letter-spacing: $letter-spacing-table;
-    background: $color-background-shade;
+    background: $color-background;
     // color: $color-text-strong-invert; 
     color: $color-text-invert;
     text-transform: initial;
-    // border: 1px solid #ccc;
+    border: 1px solid #ccc;
 
     & thead th {  
         font-weight: $font-weight-table;
@@ -164,7 +164,7 @@ $width: 100%;
 
 .ca-btn { 
     @include center; 
-    background: shade($color-primary, 35%);
+    background: tint($color-accent, 45%);
     @if (lightness( shade($color-primary, 35%) ) > 60) {
         color: shade($color-background, 90%); 
     }
@@ -237,10 +237,12 @@ $filter-padding: 1rem 2rem;
     letter-spacing: $letter-spacing-table;
     
     &__head {
-        color: $color-text-strong-invert;
+        // color: $color-text-strong-invert;
+        color: #fff;
         margin-right: 2rem;
         padding: $filter-padding;
-        background: $color-background-shade;
+        // background: $color-background-shade;
+        background: #393857c5;
     }
 
     &__item {
