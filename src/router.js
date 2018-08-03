@@ -30,6 +30,7 @@ import courseRegister from './pages/index/course/register.vue'
 import marksTable from './pages/index/marks/table.vue'
 import thirdExaminerTable from './pages/index/marks/thirdexaminertable.vue'
 import finalResultAllTogather from './pages/index/marks/finalresultalltogather.vue'
+import sessionAdmin from './pages/index/users/sessionAdmin.vue'
 
 
 
@@ -146,6 +147,11 @@ var routes = [
                 path: '/marks/finalResultAllTogather',
                 component: finalResultAllTogather,
                 name: 'finalResultAllTogather'
+            },
+            {
+                path: '/users/sessionAdmin',
+                component: sessionAdmin,
+                name: 'sessionAdmin'
             }
         ]
     },

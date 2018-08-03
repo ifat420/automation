@@ -71,10 +71,9 @@
 
         <div class="row" v-if="showTable">
             <div class="col-6">
-                <h2 class="headings">Input Theory Marks</h2>
+                <h2 class="headings">Result Table</h2>
             </div>
         </div>
-        {{pointMustCreditArray}}
         <div class="row" v-if="showTable">
             <div class="col">
                 <table class="table">
@@ -98,21 +97,6 @@
             </div>
         </div>
 
-
-        
-
-       
-
-
-
-
-        <div class="row" v-if="showTable">
-            <div class="col-6">
-                 <div class="button">
-                    <button @click.prevent="submitButton" class="button__submit" type="submit">submit</button>
-                </div>
-            </div>
-        </div>
 
     </div>
 </template>

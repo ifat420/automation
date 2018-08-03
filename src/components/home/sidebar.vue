@@ -49,6 +49,9 @@
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('userStuff')" href="#">Stuff</a>
                     </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('sessionAdmin')" href="#">Session Admin</a>
+                    </li> 
                 </ul>
             </li>
             <li class="">
