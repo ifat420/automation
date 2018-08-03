@@ -33,16 +33,21 @@ $color-text-heading: $t-heading;
 
 //$color-text-invert: rgba($color-background, .75);
 //$color-text-strong-invert: $color-background; 
-$color-text-invert: rgba(#e7edf5, 1); 
-$color-text-strong-invert: rgba(#fcfcfc, 1);
+// $color-text-invert: rgba(#e7edf5, 1); 
+// $color-text-strong-invert: rgba(#fcfcfc, 1);
+$color-text-invert: #e7edf5; 
+$color-text-strong-invert: #fcfcfc;
 $color-text-weak-invert: rgba(222, 229, 238, 0.815);
 
 $color-border: tint($color-primary, 10% );
 
 @if set-text-color($color-primary) == black {
-    $color-text-invert: rgba(#000000c5, 1);
-    $color-text-strong-invert: rgba(#000000, 1) ;
-    $color-text-weak-invert: rgba(#0000009f, 1);
+    // $color-text-invert: rgba(#000000c5, 1);
+    // $color-text-strong-invert: rgba(#000000, 1) ;
+    // $color-text-weak-invert: rgba(#0000009f, 1);
+    $color-text-invert: #000000c5;
+    $color-text-strong-invert: #000000;
+    $color-text-weak-invert: #0000009f;
     $color-border: shade($color-primary, 20% );
 }
 
