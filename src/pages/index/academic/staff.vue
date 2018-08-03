@@ -64,35 +64,32 @@
                     </div>
                 </form>    
             </div>    
-        </div>   
+        </div>    
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Faculty </span>
-                    <span class="filter__item">Engineering</span>
-                    <span class="filter__item">Biology</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
-                <div class="filter">
-                    <span class="filter__head">Department </span>
-                    <span class="filter__item">CSE</span>
-                    <span class="filter__item">EST</span>
-                </div> 
-            </div> 
-        </div> 
+            </div>
+        </div>
+
         <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Faculty</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Action</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Faculty</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,7 +116,27 @@
 export default {
     data() {
         return {
-            showForm: false
+            filter: [
+                {
+                    title: 'Faculty',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Department',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                } 
+            ],
+            select: ['all', 'all']
         }
     }
 }

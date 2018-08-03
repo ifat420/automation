@@ -21,13 +21,12 @@
                     </div>  
                     <div class="group"> 
                         <select v-model="hallObject.type">
-                            <option disabled selected value="1">Select Program..</option> 
+                            <option disabled selected value="1">SELECT TYPE</option> 
                             <option value="male">MALE</option> 
                             <option value="female">FEMALE</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
                     <div class="button">
                         <button v-if="!updateButton" @click.prevent="insertHall" class="button__submit" type="submit">Save</button>
@@ -75,7 +74,7 @@ export default {
             updateButton: false,
             hallObject: {
                 name: '',
-                type: ''
+                type: '1'
             },
             hallId: ''
         }

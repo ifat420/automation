@@ -17,7 +17,7 @@
                     
                      <div class="group"> 
                         <select v-model="department.facultyName">
-                            <option disabled selected value="1">Select Faculty..</option> 
+                            <option disabled selected value="1">SELECT FACULTY</option> 
                             <option v-for="(fac, i) in allFaculty" :key="i" :value="fac[1]"  >{{fac[1]}}</option> 
                             
                         </select>
@@ -58,11 +58,12 @@
         </div>
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Faculty </span>
-                    <span class="filter__item">Engineering</span>
-                    <span class="filter__item">Biology</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -106,8 +107,20 @@
         mixins: [commonData],
         data(){
             return{
-                department: {
-                    facultyName: '',
+                filter: [
+                {
+                    title: 'Faculty',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                }
+            ],
+            select: ['all'],
+            department: {
+                    facultyName: '1',
                     deptName: '',
                     dAbr: '',
                     dCode: ''

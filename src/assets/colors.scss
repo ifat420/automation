@@ -21,7 +21,7 @@
 $color-accent: $secondary;
 
 $color-background: tint($color-primary, 90% );
-$color-background-shade: shade($color-primary, 20% );
+$color-background-shade: shade($color-primary, 15% );
 $color-background-invert: $color-primary; 
 
 
@@ -39,23 +39,23 @@ $color-text-invert: #e7edf5;
 $color-text-strong-invert: #fcfcfc;
 $color-text-weak-invert: rgba(222, 229, 238, 0.815);
 
-$color-border: tint($color-primary, 10% );
+$color-border: tint($color-primary, 90% );
 
 @if set-text-color($color-primary) == black {
     // $color-text-invert: rgba(#000000c5, 1);
     // $color-text-strong-invert: rgba(#000000, 1) ;
     // $color-text-weak-invert: rgba(#0000009f, 1);
-    $color-text-invert: #000000c5;
+    $color-text-invert: #000000ef;
     $color-text-strong-invert: #000000;
     $color-text-weak-invert: #0000009f;
     $color-border: shade($color-primary, 20% );
 }
 
-$color-text-link: $color-primary;
+$color-text-link: $third;
 // $color-text-link-visited: #fff;
 // $color-text-link-hover: #fff;
-
+$color-border-top: rgba(204, 204, 204, 0.438);
 
 //other
-$sidebar-width: 25rem;
+$sidebar-width: 20rem;
 $header-height: 0rem;

@@ -7,14 +7,16 @@ import login from './pages/login.vue'
 
 import academicTeacher from './pages/index/academic/teacher.vue'
 import academicStudent from './pages/index/academic/student.vue'
-import academicStuff from './pages/index/academic/stuff.vue'
+import academicStuff from './pages/index/academic/staff.vue'
 import academicHall from './pages/index/academic/hall.vue'
 
 import userSuper from './pages/index/users/super.vue'
 import userAdmin from './pages/index/users/admin.vue'
 import userTeacher from './pages/index/users/teacher.vue'
 import userStudent from './pages/index/users/student.vue'
-import userStuff from './pages/index/users/stuff.vue'
+import userStuff from './pages/index/users/staff.vue'
+
+import sessionAdmin from './pages/index/admins/session.vue'
 
 import faculty from './pages/index/faculty.vue'
 import department from './pages/index/department.vue'
@@ -27,6 +29,7 @@ import courseAdd from './pages/index/course/add.vue'
 import courseList from './pages/index/course/list.vue'
 import courseAssign from './pages/index/course/assign.vue'
 import courseRegister from './pages/index/course/register.vue'
+
 import marksTable from './pages/index/marks/table.vue'
 import thirdExaminerTable from './pages/index/marks/thirdexaminertable.vue'
 import finalResultAllTogather from './pages/index/marks/finalresultalltogather.vue'
@@ -60,6 +63,11 @@ var routes = [
                 path: '/academic/hall',
                 component: academicHall,
                 name: 'academicHall'
+            },
+            {
+                path: '/admins/session',
+                component: sessionAdmin,
+                name: 'sessionAdmin'
             },
             {
                 path: '/user/super',

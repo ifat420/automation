@@ -12,16 +12,14 @@
         </div>
         <div class="row" v-if="showForm">
             <div class="col-6">
-                <form> 
-
+                <form>  
                     <div class="group"> 
                         <select v-model="inputProgram.deptName">
-                            <option disabled selected value="">Select Department..</option> 
+                            <option disabled selected value="">SELECT PROGRAM</option> 
                             <option v-for="(program, i) in programs" :key="i" :value="program[5]" >{{program[5]}} </option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
                     <div class="group">
                         <input type="text" v-model="inputProgram.progName" required="required"/>
@@ -51,19 +49,17 @@
         </div>   
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Faculty </span>
-                    <span class="filter__item">Engineering</span>
-                    <span class="filter__item">Biology</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
-                <div class="filter">
-                    <span class="filter__head">Department </span>
-                    <span class="filter__item">CSE</span>
-                    <span class="filter__item">EST</span>
-                </div> 
-            </div> 
-        </div> 
+            </div>
+        </div>
+
+        
         <div class="row">
             <div class="col">
                 <table class="table">
@@ -101,6 +97,27 @@
 export default {
     data() {
         return {
+            filter: [
+                {
+                    title: 'Faculty',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Department',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                } 
+            ],
+            select: ['all', 'all'],
             inputProgram: {
                 deptName: '',
                 progName: '',

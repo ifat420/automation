@@ -1,35 +1,32 @@
 <template>
-    <div class="contariner-fluid">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
+            <div class="col">
                 <h2 class="headings">Session</h2>
             </div>
         </div>
 
         <div class="row">
             <div class="col-6">
-                <form>  
-
+                <form>   
                     <div class="group"> 
                         <select v-model="sessionData.deptName">
-                            <option disabled selected value="1">Select Department..</option> 
+                            <option disabled selected value="1">SELECT DEPARTMENT</option> 
                             <option v-for="(dept, k) in allDept" :key="k" :value="dept[1]"> {{dept[1]}}</option> 
                             
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
 
                     <div class="group"> 
                         <select v-model="sessionData.progName">
-                            <option disabled selected value="1">Select Program..</option> 
+                            <option disabled selected value="1">SELECT PROGRAM</option> 
                             <option value="BSC">BSC</option> 
                             <option value="MSC">MSC</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div>
 
                     <div class="group">
@@ -50,9 +47,7 @@
                     </div>
                 </form>    
             </div>    
-        </div>   
-
-
+        </div>    
     </div>
 </template>
 
@@ -63,8 +58,8 @@ export default {
     data(){
         return {
             sessionData: {
-                deptName: '',
-                progName: '',
+                deptName: '1',
+                progName: '1',
                 session: '',
                 academicYr: ''
             }
