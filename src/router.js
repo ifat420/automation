@@ -98,8 +98,7 @@ var routes = [
                 path: '/user/stuff',
                 component: userStuff,
                 name: 'userStuff'
-            }
-            ,
+            },
             {
                 path: '/faculty',
                 component: faculty,
@@ -186,4 +185,4 @@ export default new Router({
         y: 0
       };
     }
-  });
+});
