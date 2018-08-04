@@ -3,9 +3,9 @@
  
 .header {
     height: $header-height;
-    // background: $color-a;
+    background: #E33A59;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     // box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -127,4 +127,19 @@ $sidebar-logout-height: 2.9rem;
         background: $color-background-shade;
         background: $third;
     } 
+}
+
+.user-settings {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    background: #E33A59;
+    border-radius: 20rem;
+    height: 5rem;
+    width: 5rem; 
+    & a {
+        font-size: 3rem;
+        display: block; 
+        font-weight: 500;
+    }
 }

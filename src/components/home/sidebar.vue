@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sidebar__user">
             <div class="sidebar__user--round">
-                <img src="../../assets/images/Campus Automation Logo 2 Icon2.png" alt="logo">
+                <img src="../../assets/images/Campus Automation Logo 2 Icon2.png" alt="logo"/>
             </div>
         </div>
         <ul class="sidebar__list" ref="sidebar" id="container">
@@ -136,9 +136,14 @@
                 </ul>
             </li>
         </ul>
-        <div class="logout">
-            <a href="#" @click.prevent="logout">Log Out</a>
-        </div>
+        
+        <a href="#" @click.prevent="logout">
+            <div class="user-settings d-flex justify-content-center align-items-center">
+                <!-- <i class="fas fa-cogs fa-2x"></i> -->
+                <i class="fas fa-cog fa-2x slow-spin"></i>
+            </div>
+        </a>
+        
     </div>
 </template>
 

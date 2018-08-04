@@ -18,6 +18,7 @@
     padding: 1.5rem 1rem; 
     // font-family: 'Futura Pt', sans-serif;
     font-size: inherit;
+    padding-bottom: 5rem;
 } 
 
 .headings { 
@@ -192,6 +193,9 @@ $width: 100%;
         background: $ca-btn-background-hover;
         color: getColor($ca-btn-background-hover); 
     }
+    &:focus {
+        outline: none;
+    }
 }
  
 $filter-padding: 1rem 2rem;
@@ -270,5 +274,13 @@ $filter-padding: 1rem 2rem;
             background: $color-bc-button-hover;
             color: getColor($color-bc-button-hover);
         }
+        &:focus {
+            outline: none;;
+        }
     }
+}
+
+.slow-spin {
+    -webkit-animation: fa-spin 6s infinite linear;
+    animation: fa-spin 6s infinite linear;
 }

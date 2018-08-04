@@ -28,6 +28,7 @@ import faBuilding from '@fortawesome/fontawesome-free-solid/faBuilding'
 import faBook from '@fortawesome/fontawesome-free-solid/faBook'
 import faAngleDown from '@fortawesome/fontawesome-free-solid/faAngleDown'
 import faExclamationTriangle from '@fortawesome/fontawesome-free-solid/faExclamationTriangle'
+import faCog from '@fortawesome/fontawesome-free-solid/faCog'
 
 import faFacebookF from '@fortawesome/fontawesome-free-brands/faFacebookF' 
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook' 
@@ -50,6 +51,7 @@ fontawesome.library.add(faBuilding)
 fontawesome.library.add(faBook)
 fontawesome.library.add(faAngleDown)
 fontawesome.library.add(faExclamationTriangle)
+fontawesome.library.add(faCog)
 
 
 fontawesome.library.add(faFacebookF) 
