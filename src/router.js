@@ -43,6 +43,11 @@ var routes = [
         path: '/',
         component: home,
         name: 'home',
+        beforeEnter: (to, from, next) => { 
+            var flag = localStorage.getItem('login');
+            if(flag === '1') next();
+            else next('/login'); 
+        },
         children: [
             {
                 path: '/academic/teacher',

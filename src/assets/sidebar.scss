@@ -11,6 +11,8 @@
     // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+$sidebar-logout-height: 2.9rem;
+
 .sidebar { 
     font-size:  $font-size-menu;
     letter-spacing: $letter-spacing-menu;
@@ -22,6 +24,7 @@
     height: calc(100vh - #{$header-height}); 
     min-width: $sidebar-width;
     max-width: $sidebar-width;
+    
 
     background: $color-background-invert;
     color: #F0F1F5;   
@@ -49,7 +52,7 @@
     }
 
     &__list {   
-        height: calc(100vh - #{$header-height} - #{$sidebar-width});
+        height: calc(100vh - #{$header-height} - #{$sidebar-width} - #{$sidebar-logout-height});
         position: relative;
         overflow: hidden;
         
@@ -57,7 +60,7 @@
         letter-spacing: inherit;
         font-weight: inherit;
         padding-top: .5rem;  
-
+        margin-bottom: 0;
          
         
         &--item { 
@@ -105,3 +108,23 @@
     } 
 }
 
+.logout { 
+    position: relative;
+    z-index: 999;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: $third;
+    background: $color-background-shade;
+    min-height: $sidebar-logout-height;
+    transition: all .3s ease;
+    & a {
+        font-size: 1.2rem;
+        display: block;
+        padding: .5rem;
+    }
+    &:hover {
+        background: $color-background-shade;
+        background: $third;
+    } 
+}

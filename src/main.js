@@ -71,6 +71,8 @@ Vue.prototype.$errorHandler = (e) => {
   console.log('error: ', e)
 }
 
+ 
+
 new Vue({
   router,
   store,

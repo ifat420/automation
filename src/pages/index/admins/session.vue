@@ -6,13 +6,30 @@
             </div>
         </div>
 
-        <div class="btn-group btn-group-toggle session-admin mb-3" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> Session with admin
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Session with no admin
-            </label> 
+        <div class="row mb-3" style="margin-top: -15px">
+            <div class="col">
+                <div class="btn-group btn-group-toggle session-admin mb-3" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Session with admin
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Session with no admin
+                    </label> 
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -46,6 +63,30 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            filter: [
+                {
+                    title: 'Department',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Session',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                }
+            ],
+            select: ['all', 'all'],
+        }
+    }
 }
 </script>

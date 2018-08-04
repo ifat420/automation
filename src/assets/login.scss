@@ -1,14 +1,26 @@
 @import "variablesContent";
 @import "colors.scss"; 
 
+
+@function getColor($clr) {
+    @if (lightness( shade($clr, 35%) ) > 70) {
+        @return shade($color-background, 98%); 
+    }
+    @else {
+        @return tint($color-background, 80%); 
+    }
+}
+
+$login-bc: $color-background-invert;
+
 .login {
-    background: $color-background-invert;
+    background: $login-bc;
     min-height: 100vh;
     padding: 5rem 0;
 
     &__card { 
         width: 40rem; 
-        background: $color-background-shade;
+        background: $color-accent;
         padding: 4rem;
         margin: auto;
         position: relative;
@@ -25,16 +37,40 @@
         &--form {
 
             margin-top: 5rem;
-
+            & label {
+                color: #fff;
+            }
             & .button {
                 margin-bottom: 0;
                 text-align: center;
-
+                
                 &__submit { 
+                    background: #00BDD4;
+                    margin-top: 2.5rem;
                 }
             }
         }
 
+        .group {
+            & label {
+                color: getColor($login-bc);
+                font-weight: 300;
+            }
+            & input, & select {
+                color: getColor($login-bc);
 
-    }
+                &:valid ~ label { 
+                    color: rgba(getColor($login-bc), .7);
+                    font-weight: 300;
+                    letter-spacing: 0.1rem;
+                }
+                &:focus ~ label { 
+                    color: $third;
+                    font-weight: 300;
+                    letter-spacing: 0.1rem;
+                }
+            }
+        } 
+
+    } 
 }

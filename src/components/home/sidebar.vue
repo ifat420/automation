@@ -132,12 +132,13 @@
                     </li> 
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('finalResultAllTogather')"  href="#">Result</a>
-                    </li> 
-                   
-                  
+                    </li>  
                 </ul>
             </li>
         </ul>
+        <div class="logout">
+            <a href="#" @click.prevent="logout">Log Out</a>
+        </div>
     </div>
 </template>
 
@@ -156,6 +157,12 @@ export default {
                 name: name
             })
         },
+        logout() {
+            localStorage.clear();
+            this.$router.push({
+                name: 'login'
+            })
+        }
         // reveal(event) {   
         //     return;
         //     var tg = event.target.tagName;
