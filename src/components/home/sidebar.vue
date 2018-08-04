@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sidebar__user">
             <div class="sidebar__user--round">
-                <img src="../../assets/images/Campus Automation Logo 2 Icon2.png" alt="logo">
+                <img src="../../assets/images/Campus Automation Logo 2 Icon2.png" alt="logo"/>
             </div>
         </div>
         <ul class="sidebar__list" ref="sidebar" id="container">
@@ -135,12 +135,18 @@
                     </li> 
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('finalResultAllTogather')"  href="#">Result</a>
-                    </li> 
-                   
-                  
+                    </li>  
                 </ul>
             </li>
         </ul>
+        
+        <a href="#" @click.prevent="logout">
+            <div class="user-settings d-flex justify-content-center align-items-center">
+                <!-- <i class="fas fa-cogs fa-2x"></i> -->
+                <i class="fas fa-cog fa-2x slow-spin"></i>
+            </div>
+        </a>
+        
     </div>
 </template>
 
@@ -159,6 +165,12 @@ export default {
                 name: name
             })
         },
+        logout() {
+            localStorage.clear();
+            this.$router.push({
+                name: 'login'
+            })
+        }
         // reveal(event) {   
         //     return;
         //     var tg = event.target.tagName;

@@ -43,6 +43,11 @@ var routes = [
         path: '/',
         component: home,
         name: 'home',
+        beforeEnter: (to, from, next) => { 
+            var flag = localStorage.getItem('login');
+            if(flag === '1') next();
+            else next('/login'); 
+        },
         children: [
             {
                 path: '/academic/teacher',
@@ -93,8 +98,7 @@ var routes = [
                 path: '/user/stuff',
                 component: userStuff,
                 name: 'userStuff'
-            }
-            ,
+            },
             {
                 path: '/faculty',
                 component: faculty,
@@ -181,4 +185,4 @@ export default new Router({
         y: 0
       };
     }
-  });
+});
