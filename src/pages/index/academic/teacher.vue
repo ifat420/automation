@@ -15,7 +15,7 @@
                 <form>  
                     <div class="group"> 
                         <select v-model="teacherObj.deptName">
-                            <option disabled selected value="1">Select Department..</option> 
+                            <option disabled selected value="1">SELECT DEPARTMENT</option> 
                             <option v-for="(dept, k) in allDept" :key="k" :value="dept[1]"> {{dept[1]}}</option>
                         </select>
                         <span class="highlight"></span>
@@ -55,19 +55,16 @@
         </div>   
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Faculty </span>
-                    <span class="filter__item">Engineering</span>
-                    <span class="filter__item">Biology</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
-                <div class="filter">
-                    <span class="filter__head">Department </span>
-                    <span class="filter__item">CSE</span>
-                    <span class="filter__item">EST</span>
-                </div> 
-            </div> 
-        </div> 
+            </div>
+        </div>
+
         <div class="row">
             <div class="col">
                 <table class="table">
@@ -109,10 +106,31 @@ export default {
     mixins: [commonData],
     data() {
         return {
+            filter: [
+                {
+                    title: 'Faculty',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Department',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                } 
+            ],
+            select: ['all', 'all'],
             showForm: false,
             teachersArray: [],
             teacherObj: {
-                deptName: '',
+                deptName: '1',
                 teacherName: '',
                 teacherDesc: '',
                 teacherEmail: '',

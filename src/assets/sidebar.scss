@@ -24,7 +24,8 @@
     max-width: $sidebar-width;
 
     background: $color-background-invert;
-    color: $color-text-invert;   
+    color: #F0F1F5;   
+    color: #fff;   
 
     &__user {
         // display: none;
@@ -33,15 +34,21 @@
         background: $color-background-shade;
         color: $color-text-strong-invert;
 
-        padding: 5rem; 
+
+        padding: 3rem; 
 
         &--round {
             height: 100%;
             width: 100%; 
+            text-align: center;
+            & img {
+                // width: 100%; 
+                height: 100%;
+            }
         }
     }
 
-    &__list {  
+    &__list {   
         height: calc(100vh - #{$header-height} - #{$sidebar-width});
         position: relative;
         overflow: hidden;
@@ -54,7 +61,7 @@
          
         
         &--item { 
-            padding: 1.6rem 2rem;
+            padding: 1rem 2rem;
             cursor: pointer;
             display: inline-block;
             width: 100%; 
@@ -88,7 +95,7 @@
         background: $color-background-shade; 
 
         &--item { 
-            padding: .8rem 5.2rem;
+            padding: .5rem 5.2rem;
             cursor: pointer;
 
             & a:hover, & a:active, & a:focus {

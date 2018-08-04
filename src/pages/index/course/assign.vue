@@ -1,5 +1,5 @@
 <template>
-    <div class="contariner-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-6">
                 <h2 class="headings">Course Assign</h2>
@@ -11,40 +11,37 @@
                 <form> 
                     <div class="group"> 
                         <select v-model="courseAssignObj.departmentName">
-                            <option disabled selected value="1">Select Department..</option> 
+                            <option disabled selected value="1">SELECT DEPARTMENT</option> 
                             <option v-for="(dept, k) in allDept" :key="k" :value="dept[1]"> {{dept[1]}}</option>  
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
 
                     <div class="group"> 
                         <select v-model="courseAssignObj.program">
-                            <option disabled selected value="1">Select Program..</option> 
+                            <option disabled selected value="1">SELECT PROGRAM</option> 
                             <option value="BSC">BSC</option> 
                             <option value="MSC">MSC</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div>
 
                     <div class="group"> 
                         <select v-model="courseAssignObj.session">
-                            <option disabled selected value="1">Select Session..</option> 
+                            <option disabled selected value="1">SELECT SESSION</option> 
                             <option v-for="(sec, k) in distinctSession" :key="k" :value="sec[0]">{{sec[0]}}</option>
                             
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
                                     
 
                     <div class="group"> 
                         <select v-model="courseAssignObj.semisterId">
-                            <option disabled selected value="1">Select Semester..</option> 
+                            <option disabled selected value="1">SELECT SEMESTER</option> 
                             <option value="1.1">1.1</option> 
                             <option value="1.2">1.2</option> 
                             <option value="2.1">2.1</option> 
@@ -55,8 +52,7 @@
                             <option value="4.2">4.2</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
 
         
@@ -79,10 +75,10 @@
         data(){
             return {
                 courseAssignObj: {
-                    departmentName: '',
-                    program: '',
-                    session: '',
-                    semisterId: ''
+                    departmentName: '1',
+                    program: '1',
+                    session: '1',
+                    semisterId: '1'
 
                 }
             }

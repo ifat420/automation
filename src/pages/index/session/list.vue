@@ -1,5 +1,5 @@
 <template>
-    <div class="container-flud">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-6">
                 <h2 class="headings">Session</h2>
@@ -7,24 +7,15 @@
         </div>
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Faculty </span>
-                    <span class="filter__item">Engineering</span>
-                    <span class="filter__item">Biology</span>
-                </div>
-                <div class="filter">
-                    <span class="filter__head">Department </span>
-                    <span class="filter__item">CSE</span>
-                    <span class="filter__item">EST</span>
-                </div>
-                <div class="filter">
-                    <span class="filter__head">Program </span>
-                    <span class="filter__item">BSC</span>
-                    <span class="filter__item">MSC</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <div class="row">
             <div class="col">
@@ -61,6 +52,26 @@
     export default {
         data() {
             return {
+                filter: [
+                {
+                    title: 'Faculty',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        },
+                        {
+                            name: 'All',
+                            value: 'all'
+                        },
+                        {
+                            name: 'All',
+                            value: 'all'
+                        },
+                    ]
+                }
+            ],
+            select: ['all', 'all', 'all'],
                 sessions: []
             }
         },

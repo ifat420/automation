@@ -1,13 +1,21 @@
 @import "variablesContent";
 @import "colors.scss"; 
 
+@function getColor($clr) {
+    @if (lightness( shade($clr, 35%) ) > 60) {
+        @return shade($color-background, 98%); 
+    }
+    @else {
+        @return tint($color-background, 80%); 
+    }
+}
 .main-content { 
     display: inline-block;
     min-height: calc(100vh - #{$header-height});
     width: calc(100% - #{$sidebar-width}); 
     margin-left: $sidebar-width;
     background: $color-background-invert;
-    padding: 4rem 3.5rem; 
+    padding: 1.5rem 1rem; 
     font-family: 'Futura Pt', sans-serif;
     font-size: inherit;
 } 
@@ -17,42 +25,59 @@
     font-weight: $font-weight-heading;
     letter-spacing: $letter-spacing-heading;
     color: $color-text-heading;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
 } 
+
+.session-admin {
+    
+    & label {
+        font-size: $font-size-text-input-small;
+        letter-spacing: .1rem;
+        font-weight: 200; 
+    } 
+}
 
 .table { 
     font-size: $font-size-table;
     font-weight: $font-weight-table;
     letter-spacing: $letter-spacing-table;
-    background: $color-background-shade;
+    background: $color-background;
     // color: $color-text-strong-invert; 
     color: $color-text-invert;
     text-transform: initial;
-    // border: 1px solid #ccc;
+    border: 1px solid rgba(204, 204, 204, 0.767);
+    text-align: center; 
+    
 
     & thead th {  
-        font-weight: $font-weight-table;
-        color: $color-text-invert;
-        color: $color-text-weak-invert;
+        $color-bc-table-head: $color-accent;
+        background: $color-bc-table-head;
+        font-weight: $font-weight-table; 
+        color: getColor($color-bc-table-head); 
         text-transform: uppercase;
         border: none;
-        padding: 3rem 2rem 1rem;
+        padding: 1.5rem 2rem 1rem;
+        // border-radius: .3rem;
     }
 
     & td, & th { 
-        border-top: 1px solid $color-border;  
-        padding: 2rem 2rem;
+        border-top: 1px solid $color-border-top;  
+        padding: 1rem 2rem;
         font-weight: $font-weight-table;
         & a {
-            color: $color-accent; 
+            color: $color-text-link; 
             padding-bottom: 0rem;
-            border-bottom: .1rem solid $color-accent;
-            transition: all .3s ease;
+            border-bottom: .1rem solid $color-text-link;
+            transition: all .2s ease;
 
             &:hover {
-                color: $color-text-strong-invert;
+                color: $color-accent;
+                border-bottom: .1rem solid  $color-accent;
             }
         }
+    }
+    tr:nth-child(even) {
+        // background-color: tint($color-accent, 95%);
     }
 }
 
@@ -66,18 +91,14 @@ $width: 100%;
     font-weight: $font-weight-text-input;
     letter-spacing: $letter-spacing-text-input;
     color: $color-text-strong-invert;
-    margin: 0 0  4rem 0;
-
-    & select {
-        text-transform: uppercase;
-    }
+    margin: 0 0 2rem 0;
+ 
 
     & input, & select  { 
         background: none; 
         font-size: inherit;
-        font-weight: inherit;
-        letter-spacing: inherit;
-        
+        font-weight: inherit; 
+        letter-spacing: $letter-spacing-text-input;
         color: inherit;
         padding: 1rem 1rem 1rem .3rem;
         display: block;
@@ -96,9 +117,13 @@ $width: 100%;
         } 
         &:valid ~ label { 
             color: $color-text-weak-invert;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
         }
         &:focus ~ label { 
-            color: $color-accent;
+            color: $third;
+            font-weight: 500;
+            letter-spacing: 0.2rem;
         }
         &:focus ~ .bar:before {
             width: $width;
@@ -111,7 +136,7 @@ $width: 100%;
                 outline: none;
             }
             &[value="1"] {
-                // color: $color-text-invert; 
+                // color: $color-text-invert;  
             }
         } 
     } 
@@ -140,101 +165,51 @@ $width: 100%;
             width: 0;
             bottom: 0px;
             position: absolute;
-            background: $color-accent;
+            background: $third;
             transition: $trans-time ease all;
             left: 0%;
         }
     }
  
 }
-   
-
-@mixin center($extend: true) {
-    @if $extend {
-        @extend %center;
-    } @else { 
-        position: absolute; 
-        right: 0; 
-    }
-}
-
-%center {
-    @include center($extend: false);
-}
-
-.ca-btn { 
-    @include center; 
-    background: shade($color-primary, 35%);
-    @if (lightness( shade($color-primary, 35%) ) > 60) {
-        color: shade($color-background, 90%); 
-    }
-    @else {
-        color: tint($color-background, 40%); 
-    } 
-
-    font-size: $font-size-button-big;
-    font-weight: $font-weight-button-big;
-    letter-spacing: $letter-spacing-button-big;
     
-    width: 20rem;
-    height: 6rem;
-    border: 0; 
-    border-radius: 0; 
-    transition: .6s; 
+ 
+.ca-btn {
+    $ca-btn-background:  $color-text-link;
+    color: getColor($ca-btn-background); 
     text-transform: uppercase;
-    overflow: hidden;
-    &:focus{
-        outline: 0;
+    background: $ca-btn-background;
+    font-weight: $font-weight-button-big;
+    font-size: $font-size-button-big; 
+    padding: 1rem 2.5rem;
+    border: 0;
+    cursor: pointer;
+    letter-spacing: $letter-spacing-button-big;
+    border-radius: .3rem;
+    transition: all .3s ease-in-out;
+    &:hover {
+        $ca-btn-background-hover: $color-accent;
+        background: $ca-btn-background-hover;
+        color: getColor($ca-btn-background-hover); 
     }
-    &:before{
-        content: '';
-        display: block;
-        position: absolute;
-        background: rgba(255,255,255,0.5);
-        width: 6rem;
-        height: 100%;
-        left: 0;
-        top: 0;
-        opacity: .5;
-        filter: blur(30px);
-        transform: translateX(-10rem)  skewX(-15deg);
-    }
-    &:after{
-        content: '';
-        display: block;
-        position: absolute;
-        background: rgba(255,255,255,0.2);
-        width: 3rem;
-        height: 100%;
-        left: 3rem;
-        top: 0;
-        opacity: 0;
-        filter: blur(5px);
-        transform: translateX(-100px) skewX(-15deg);
-    }
-    &:hover{
-        background: $color-accent;
-        cursor: pointer;
-        &:before{
-            transform: translateX(300px)  skewX(-15deg);  
-            opacity: 0.6;
-            transition: .7s;
-        }
-        &:after{
-            transform: translateX(300px) skewX(-15deg);  
-            opacity: 1;
-            transition: .7s;
-        }
-    }
-  }
-
-
+}
+ 
 $filter-padding: 1rem 2rem;
 
 .filter {
     font-size: $font-size-table;
     font-weight: $font-weight-table;
-    letter-spacing: $letter-spacing-table;
+    letter-spacing: $letter-spacing-table;  
+
+    &__select { 
+        padding: .375rem .75rem;
+        font-size: $font-size-text-input; 
+        color: $color-text-invert;
+        background-color: $color-background; 
+        border: 1px solid $color-border-top;
+        border-radius: 0rem;
+        height: 3rem !important;
+    }
     
     &__head {
         color: $color-text-strong-invert;
@@ -274,22 +249,26 @@ $filter-padding: 1rem 2rem;
 }
 
 .button {
-    margin-bottom: 4rem;
+    margin-bottom: 4rem; 
     &__submit {
+        $color-bc-button: $color-accent;
+        color: getColor($color-bc-button); 
         cursor: pointer;
         font-size: $font-size-button-regular;
         text-transform: uppercase;
-        padding: 1rem 4rem;
-        background: $color-background-shade;
-        border: none;
-        color: $color-accent;
+        padding: .5rem 2.5rem; 
+        background: $color-bc-button;
+        border: none; 
+        
         letter-spacing: $letter-spacing-button-regular;
         transition: all .3s ease;
         margin-right: 1.5rem;
-
+        font-weight: 200; 
+        // border-radius: .3rem;
         &:hover {
-            background: $color-accent;
-            color: black;
+            $color-bc-button-hover: $third;
+            background: $color-bc-button-hover;
+            color: getColor($color-bc-button-hover);
         }
     }
 }

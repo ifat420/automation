@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sidebar__user">
             <div class="sidebar__user--round">
-                <img src="../../assets/images/Campus Automation Logo 2 Icon.png" alt="logo">
+                <img src="../../assets/images/Campus Automation Logo 2 Icon2.png" alt="logo">
             </div>
         </div>
         <ul class="sidebar__list" ref="sidebar" id="container">
@@ -20,11 +20,23 @@
                         <a @click.prevent="go('academicStudent')" href="#">Student</a>     
                     </li> 
                     <li class="sidebar__sub-list--item">
-                        <a @click.prevent="go('academicStuff')" href="#">Stuff</a>     
+                        <a @click.prevent="go('academicStuff')" href="#">Staff</a>     
                     </li> 
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('academicHall')" href="#">Hall</a>     
                     </li> 
+                </ul>
+            </li>
+            <li class="">  
+                <a data-toggle="collapse" href="#admins" class="sidebar__list--item">
+                    <i class="fas fa-fw fa-university"></i>
+                    Admins
+                    <i class="fas fa-angle-down"></i>
+                </a>
+                <ul id="admins" class="sidebar__sub-list collapse">
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('sessionAdmin')" href="#">session</a>    
+                    </li>  
                 </ul>
             </li>
             <li class="">

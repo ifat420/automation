@@ -1,5 +1,5 @@
 <template>
-    <div class="container-flud">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-6">
                 <h2 class="headings">Course List</h2>
@@ -8,36 +8,15 @@
 
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Department </span>
-                    <span class="filter__item">CSE</span>
-                    <span class="filter__item">EST</span>
-                </div>
-                <div class="filter">
-                    <span class="filter__head">Program </span>
-                    <span class="filter__item">BSC</span>
-                    <span class="filter__item">MSC</span>
-                </div>
-                <div class="filter">
-                    <span class="filter__head">Session </span>
-                    <span class="filter__item">2013-14</span>
-                    <span class="filter__item">2014-15</span>
-                    <span class="filter__item">2015-16</span>
-                </div>
-                <div class="filter">
-                    <span class="filter__head">Semester </span>
-                    <span class="filter__item">1.1</span>
-                    <span class="filter__item">1.2</span>
-                    <span class="filter__item">2.1</span>
-                    <span class="filter__item">2.2</span>
-                    <span class="filter__item">3.1</span>
-                    <span class="filter__item">3.2</span>
-                    <span class="filter__item">4.1</span>
-                    <span class="filter__item">4.2</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
             </div>
-        </div>  
+        </div>
 
         <div class="row">
             <div class="col">
@@ -82,6 +61,45 @@
 export default {
     data() {
         return {
+            filter: [
+                {
+                    title: 'Departmetn',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Program',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Session',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Semester',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                }
+            ],
+            select: ['all', 'all', 'all', 'all'],
             courseArray: []
         }
     },

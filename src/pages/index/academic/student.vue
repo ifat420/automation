@@ -15,7 +15,7 @@
                 <form>  
                     <div class="group"> 
                         <select v-model="studentObject.departmentName">
-                            <option disabled selected value="1">Select Department..</option> 
+                            <option disabled selected value="1">SELECT DEPARTMENT</option> 
                             <option v-for="(dept, k) in allDept" :key="k" :value="dept[1]"> {{dept[1]}}</option>
                         </select>
                         <span class="highlight"></span>
@@ -24,34 +24,31 @@
                     
                     <div class="group"> 
                         <select v-model="studentObject.progAbbr">
-                            <option disabled selected value="1">Select Program..</option> 
+                            <option disabled selected value="1">SELECT PROGRAM</option> 
                             <option value="BSC">BSC</option> 
                             <option value="MSC">MSC</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div>
 
                     <div class="group"> 
                         <select v-model="studentObject.session">
-                            <option disabled selected value="1">Select Session..</option> 
+                            <option disabled selected value="1">SELECT SESSION</option> 
                             <option v-for="(sec, k) in distinctSession" :key="k" :value="sec[0]">{{sec[0]}}</option> 
                             
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div>
                     <div class="group"> 
                         <select v-model="studentObject.hallName">
-                            <option disabled selected value="1">Select Hall..</option> 
+                            <option disabled selected value="1">SELECT HALL</option> 
                             <option v-for="(hall, k) in allHall" :key="k" :value="hall[2]">{{hall[2]}}</option> 
                             
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div>
 
                     <div class="group">
@@ -105,13 +102,12 @@
                     </div>
                    <div class="group"> 
                         <select v-model="studentObject.gender">
-                            <option disabled selected value="1">Select Program..</option> 
+                            <option disabled selected value="1">SELECT GENDER</option> 
                             <option value="male">Male</option> 
                             <option value="femail">Female</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div>
                     <div class="group">
                         <input v-model="studentObject.religion" type="text" required="required"/>
@@ -159,19 +155,16 @@
         </div>   
 
         <div class="row">
-            <div class="col">
-                <div class="filter">
-                    <span class="filter__head">Faculty </span>
-                    <span class="filter__item">Engineering</span>
-                    <span class="filter__item">Biology</span>
+            <div class="col-2" v-for="(i, j) in filter" :key="j">
+                <div class="form-group filter">
+                    <label for="facultyFilter">{{ i.title }}</label>
+                    <select v-model="select[j]" class="form-control filter__select" id="facultyFilter">
+                        <option v-for="(n, p) in i.values" :key="p" :value="n.value" >{{ n.name }}</option>
+                    </select>
                 </div>
-                <div class="filter">
-                    <span class="filter__head">Department </span>
-                    <span class="filter__item">CSE</span>
-                    <span class="filter__item">EST</span>
-                </div> 
-            </div> 
-        </div> 
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col">
                 <table class="table">
@@ -215,12 +208,33 @@ export default {
     mixins: [commonData],
     data() {
         return {
+            filter: [
+                {
+                    title: 'Faculty',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                },
+                {
+                    title: 'Department',
+                    values: [
+                        {
+                            name: 'All',
+                            value: 'all'
+                        }
+                    ]
+                } 
+            ],
+            select: ['all', 'all'],
             showForm: false,
             studentArray: [],
             studentObject: {
-                departmentName: '',
-                progAbbr: '',
-                session: '',
+                departmentName: '1',
+                progAbbr: '1',
+                session: '1',
                 roll: '',
                 reg: '',
                 fstName: '',
@@ -229,14 +243,14 @@ export default {
                 motherName: '',
                 phoneNumber: '',
                 dob: '',
-                gender: '',
+                gender: '1',
                 religion: '',
                 preAdd: '',
                 perAdd: '',
                 email: '',
                 nation: '',
                 status: '',
-                hallName: ''
+                hallName: '1'
 
             }
         }
