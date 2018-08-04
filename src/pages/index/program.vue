@@ -15,8 +15,8 @@
                 <form>  
                     <div class="group"> 
                         <select v-model="inputProgram.deptName">
-                            <option disabled selected value="">SELECT PROGRAM</option> 
-                            <option v-for="(program, i) in programs" :key="i" :value="program[5]" >{{program[5]}} </option> 
+                            <option disabled selected value="">SELECT DEPARTMENT NAME</option> 
+                            <option v-for="(program, i) in programObjArray" :key="i" :value="program.departmentName" >{{program.departmentName}} </option> 
                         </select>
                         <span class="highlight"></span>
                         <span class="bar"></span> 
@@ -75,13 +75,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(program, k) in programs" :key="k">
+                        <tr v-for="(p, k) in programObjArray" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{program[1]}}</td>
-                            <td>{{program[3]}}</td>
-                            <td>{{program[4]}}</td>
-                            <td>{{program[0]}}</td>
-                            <td>{{program[2]}}</td>
+                            <td>{{p.programName}}</td>
+                            <td>{{p.programAbbr}}</td>
+                            <td>{{p.programDegree}}</td>
+                            <td>{{p.departmentName}}</td>
+                            <td>{{p.facultyName}}</td>
                             <td>
                                 <a href="" @click.prevent="goEdit(k)">Edit</a>
                             </td>
@@ -122,32 +122,35 @@ export default {
                 deptName: '',
                 progName: '',
                 pAbr: '',
-                deg: ''
+                deg: '',
+                id: ''
 
             },
-            progrmId: '',
             showForm: false,
-            programs: [],
+            programObjArray: [],
             update: false
         }
     },
 
     methods: { 
         goEdit(p){
-            let prog = this.programs[p]
-            this.inputProgram.deptName = prog[5];
-            this.inputProgram.progName = prog[1];
-            this.inputProgram.pAbr = prog[3];
-            this.inputProgram.deg = prog[4];
+            let prog = this.programObjArray[p];
+            console.log('this.programObjArray[p];: ', this.programObjArray[p]);
+    
+            this.inputProgram.deptName = prog.departmentName;
+            this.inputProgram.progName = prog.progName;
+            this.inputProgram.pAbr = prog.programAbbr;
+            this.inputProgram.deg = prog.programDegree;
+            this.inputProgram.id = prog.programId;
 
-            this.progrmId = prog[6]
+
             this.showForm = true;
             this.update = true;
 
 
         },
         updateProg(){
-            this.$http.put(`update/program/${this.progrmId}`, this.inputProgram)
+            this.$http.put(`update/program/${this.inputProgram.id}`, this.inputProgram)
                     .then(response => {
                         this.getDataFromDb();
                     }, error => {
@@ -164,7 +167,18 @@ export default {
                         
                     })
                     .then(data => {
-                        this.programs = data;
+                        data.forEach(p => {
+                            this.programObjArray.push({
+                                departmentAbbr: p[0],
+                                programName: p[1],
+                                facultyName: p[2],
+                                programAbbr: p[3],
+                                programDegree: p[4],
+                                departmentName: p[5],
+                                programId: p[6]
+
+                            });
+                        })
                     }).catch(this.$errorHandler)
         },
         insertProgram() {

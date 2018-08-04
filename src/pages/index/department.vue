@@ -82,12 +82,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(departmentDetails, k) in departmentArray" :key="k">
+                        <tr v-for="(dept, k) in departmentObjectArray" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{departmentDetails[1]}}</td>
-                            <td>{{departmentDetails[2]}}</td>
-                            <td>{{departmentDetails[3]}}</td>
-                            <td>{{departmentDetails[4]}}</td>
+                            <td>{{dept.departmentName}}</td>
+                            <td>{{dept.departmentAbbr}}</td>
+                            <td>{{dept.departmentCode}}</td>
+                            <td>{{dept.facultyName}}</td>
                             <td>
                                 <a href="" @click.prevent="gotEdit(k)">Edit</a>
                             </td>
@@ -120,15 +120,15 @@
             ],
             select: ['all'],
             department: {
-                    facultyName: '1',
+                    facultyName: '',
                     deptName: '',
                     dAbr: '',
-                    dCode: ''
+                    dCode: '',
+                    departmentId: ''
                 },
-                departmentArray: [],
+                departmentObjectArray: [],
                 showForm: false,
                 updateButton: false,
-                departmentId: ''
             }
         },
 
@@ -149,16 +149,25 @@
                     })
                     .then(data => {
                         this.departmentArray = data;
-                        
+                        data.forEach(dept => {
+                            this.departmentObjectArray.push({
+                                departmentId: dept[0],
+                                departmentName: dept[1],
+                                departmentAbbr:  dept[2],
+                                departmentCode:  dept[3],
+                                facultyName: dept[4]
+                            });  
+                            
+                        });
                     })
             },
             gotEdit(p){
-                let dept = this.departmentArray[p];
-                this.department.facultyName = dept[4];
-                this.department.deptName = dept[1];
-                this.department.dAbr = dept[2];
-                this.department.dCode = dept[3];
-                this.departmentId = dept[0];
+                let dept = this.departmentObjectArray[p];
+                this.department.facultyName = dept.facultyName;
+                this.department.deptName = dept.departmentName;
+                this.department.dAbr = dept.departmentAbbr;
+                this.department.dCode = dept.departmentCode;
+                this.department.departmentId = dept.departmentId;
                 this.showForm = true;
                 this.updateButton = true;
 
@@ -174,7 +183,7 @@
                 this.updateButton = false
             },
             updateDepartment(){
-                this.$http.put(`update/department/${this.departmentId}`, this.department)
+                this.$http.put(`update/department/${this.department.departmentId}`, this.department)
                         .then(response=> {
                             this.getAllDepartments();
                         }, err => {
