@@ -137,12 +137,7 @@
             </li>
         </ul>
         
-        <a href="#" @click.prevent="logout">
-            <div class="user-settings d-flex justify-content-center align-items-center">
-                <!-- <i class="fas fa-cogs fa-2x"></i> -->
-                <i class="fas fa-cog fa-2x slow-spin"></i>
-            </div>
-        </a>
+        
         
     </div>
 </template>
