@@ -192,10 +192,10 @@
                 this.showForm = false;
                 this.updateButton = false;
             }
-        },
-
+        }, 
         mounted() {
-             this.getAllDepartments()
+            //  this.getAllDepartments();
+             this.$store.dispatch('getFaculties'); 
         }
     }
 </script>
