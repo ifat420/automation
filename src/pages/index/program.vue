@@ -75,7 +75,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(p, k) in programObjArray" :key="k">
+                        <tr v-for="(p, k) in programTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
                             <td>{{p.programName}}</td>
                             <td>{{p.programAbbr}}</td>
@@ -97,26 +97,7 @@
 export default {
     data() {
         return {
-            filter: [
-                {
-                    title: 'Faculty',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Department',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                } 
-            ],
+
             select: ['all', 'all'],
             inputProgram: {
                 deptName: '',
@@ -128,10 +109,46 @@ export default {
             },
             showForm: false,
             programObjArray: [],
-            update: false
+            update: false,
+            faculty: []
         }
     },
+    computed: {
+        filter(){ 
+            return [
+                {
+                    title: 'Faculty',
+                    values: this.$store.state.faculty
+                },
+                {
+                    title: 'Department',
+                    values: this.$store.state.department
+                }, 
+            ]
+        },
 
+       programTable(){
+            var fcl = this.select[0]
+            var dep = this.select[1]
+                var nArray = []
+                if(fcl === 'all'){
+                    nArray = this.programObjArray;
+                }else{
+                    nArray = this.programObjArray.filter(el => {
+                        return el.facultyName === fcl;
+                    })
+                }
+
+                if(dep !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+                
+                return nArray;
+       }
+
+    },
     methods: { 
         goEdit(p){
             let prog = this.programObjArray[p];
@@ -198,6 +215,23 @@ export default {
     },
    mounted(){
        this.getDataFromDb();
+       let FacultyLen = this.$store.state.faculty.length;
+       if(!FacultyLen) {
+           this.$store.dispatch('getFaculties');
+       }
+
+       let departmentLen = this.$store.state.department.length;
+       if(!departmentLen) {
+           this.$store.dispatch('getDepartments');
+       } 
+       let programLen = this.$store.state.program.length;
+       if(!programLen) {
+           this.$store.dispatch('getPrograms');
+       }
+       let sessionLen = this.$store.state.session.length;
+       if(!sessionLen) {
+           this.$store.dispatch('getSessions');
+       } 
    }
 }
 </script>

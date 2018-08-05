@@ -1,11 +1,12 @@
 module.exports = {
     rules: {
         'no-console': 'off',
-        
+        "indent": 0
     },
     "parserOptions": {
         "parser": "babel-eslint",
         "ecmaVersion": 6,
+        // "esversion": 6,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true,
@@ -17,7 +18,7 @@ module.exports = {
         "eslint:recommended",
         "plugin:vue/recommended"
     ],
-    "plugins": ["flowtype", "html", "vue"],
+    "plugins": ["vue"],
     "settings": {
         "html/html-extensions": [".html"]
     },

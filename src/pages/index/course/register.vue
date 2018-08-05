@@ -1,5 +1,5 @@
 <template>
-    <div class="contariner-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-6">
                 <h2 class="headings">Result Register</h2>

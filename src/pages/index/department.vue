@@ -82,7 +82,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(dept, k) in departmentObjectArray" :key="k">
+                        <tr v-for="(dept, k) in programTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
                             <td>{{dept.departmentName}}</td>
                             <td>{{dept.departmentAbbr}}</td>
@@ -107,17 +107,7 @@
         mixins: [commonData],
         data(){
             return{
-                filter: [
-                {
-                    title: 'Faculty',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                }
-            ],
+               
             select: ['all'],
             department: {
                     facultyName: '',
@@ -131,7 +121,28 @@
                 updateButton: false,
             }
         },
-
+        computed: {
+            filter(){
+                 return [
+                    {
+                        title: 'Faculty',
+                        values: this.$store.state.faculty
+                    }
+                ]
+            },
+            programTable(){
+                var fcl = this.select[0]
+                var nArray = []
+                if(fcl === 'all'){
+                    nArray = this.departmentObjectArray;
+                }else{
+                    nArray = this.departmentObjectArray.filter(el => {
+                        return el.facultyName === fcl;
+                    })
+                }
+                return nArray;
+            }
+        },
         methods: {
             clear() {
                 this.showForm = false;
@@ -194,7 +205,7 @@
             }
         }, 
         mounted() {
-            //  this.getAllDepartments();
+             this.getAllDepartments();
              this.$store.dispatch('getFaculties'); 
         }
     }
