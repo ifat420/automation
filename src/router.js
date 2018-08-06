@@ -10,7 +10,7 @@ import academicStudent from './pages/index/academic/student.vue'
 import academicStuff from './pages/index/academic/staff.vue'
 import academicHall from './pages/index/academic/hall.vue'
 
-import userSuper from './pages/index/users/super.vue'
+import grandAdmin from './pages/index/users/super.vue'
 import userAdmin from './pages/index/users/admin.vue'
 import userTeacher from './pages/index/users/teacher.vue'
 import userStudent from './pages/index/users/student.vue'
@@ -75,9 +75,9 @@ var routes = [
                 name: 'sessionAdmin'
             },
             {
-                path: '/user/super',
-                component: userSuper,
-                name: 'userSuper'
+                path: '/admins/grand',
+                component: grandAdmin,
+                name: 'grandAdmin'
             },
             {
                 path: '/user/admin',

@@ -1,4 +1,4 @@
-<template>
+<template> 
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">
@@ -6,22 +6,21 @@
             </div>
         </div>
 
-        <div class="row mb-3" style="margin-top: -15px">
-            <div class="col">
-                <div class="btn-group btn-group-toggle session-admin mb-3" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Session with admin
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Session with no admin
-                    </label> 
+        <div class="row mb-4">
+            <div class="col showAdmin">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input v-model="select[2]" value="admin" type="radio" id="admin" name="showAdmin" class="custom-control-input" checked="checked">
+                    <label class="custom-control-label" for="admin">Admin list</label>
                 </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input v-model="select[2]" value="nonAdmin" type="radio" id="nonAdmin" name="showAdmin" class="custom-control-input">
+                    <label class="custom-control-label" for="nonAdmin">Non Admin list</label>
+                </div> 
             </div>
         </div>
 
         
-
-        <div class="row">
+        <div class="row" >
             <div class="col-2" v-for="(i, j) in filter" :key="j">
                 <div class="form-group filter">
                     <label for="facultyFilter">{{ i.title }}</label>
@@ -32,21 +31,21 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" v-if="select[2]=='admin'">
             <div class="col">
                 <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Department</th>
+                        <th scope="col">Department</th> 
                         <th scope="col">Session</th>
                         <th scope="col">Admin Id</th>
                         <th scope="col">Action</th> 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(course, k) in 3" :key="k">
-                            <th scope="row"> {{k+1}} </th>
+                        <tr v-for="(course, k) in 5" :key="k">
+                            <th scope="row"> {{k+1}} </th> 
                             <td>Computer Science and Engineering</td>
                             <td>2013-14</td>
                             <td>CSE-2013-14</td> 
@@ -58,14 +57,43 @@
                 </table>
             </div>
         </div>
+
+        <div class="row" v-if="select[2]=='nonAdmin'">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col"><input type="checkbox" v-model="selectAll"></th> 
+                        <th scope="col">Department</th>
+                        <th scope="col">Session</th>
+                        <th scope="col">Admin Id</th>
+                        <th scope="col">Action</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(course, k) in 5" :key="k">
+                            <th scope="row"> <input type="checkbox" id="jack" :value="k" v-model="c"> </th> 
+                            <td>Computer Science and Engineering</td>
+                            <td>2013-14</td>
+                            <td>Not yet created</td> 
+                            <td>
+                                <a href="">Edit</a>
+                            </td>
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+ 
     </div>
 </template>
 
 <script>
 export default {
     data() {
-        return {
-            filter: [
+        return { 
+            c: [],
+            filter: [ 
                 {
                     title: 'Department',
                     values: [
@@ -85,7 +113,23 @@ export default {
                     ]
                 }
             ],
-            select: ['all', 'all'],
+            select: ['all', 'all', 'admin'],
+            radio: ['admin', 'nonAdmin']
+        }
+    },
+    computed: {
+        selectAll: {
+            get: function() {
+                return false;
+            },
+            set: function(v) {
+
+            }
+        }
+    },
+    methods: {
+        check() {
+            console.log(this.select);
         }
     }
 }

@@ -212,7 +212,12 @@ $filter-padding: 1rem 2rem;
         background-color: $color-background; 
         border: 1px solid $color-border-top;
         border-radius: 0rem;
-        height: 3rem !important;
+        height: 3rem !important; 
+
+        &:focus { 
+            
+            box-shadow: none;
+        }
     }
     
     &__head {
@@ -283,4 +288,14 @@ $filter-padding: 1rem 2rem;
 .slow-spin {
     -webkit-animation: fa-spin 6s infinite linear;
     animation: fa-spin 6s infinite linear;
+}
+
+.showAdmin {
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    color: $color-text-invert;
+    & label {
+        cursor: pointer;
+    }
+    
 }
