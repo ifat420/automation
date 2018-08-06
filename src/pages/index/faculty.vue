@@ -41,9 +41,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(faculty, i) in faculties" :key="i">
+                        <tr v-for="(faculty, i) in facultyOjbArray" :key="i">
                             <th scope="row"> {{i+1}} </th>
-                            <td>{{faculty[1]}}</td>
+                            <td>{{faculty.facultyName}}</td>
         
                             <td>
                                 <a @click.prevent="goEdit(i)" href="">Edit</a>
@@ -60,14 +60,14 @@
     export default{
         data() {
             return {
-                faculties: [],
+                facultyOjbArray: [],
                 fac: {
+                    facultyId: '',
                     facultyName: ''
                 },
                 successMessage: '',
                 showForm: false,
                 updateButton: false,
-                facutlyId: ''
             }
         },
         methods: {
@@ -83,7 +83,12 @@
                         
                     })
                     .then(data => {
-                        this.faculties = data;
+                        data.forEach(fac => {
+                            this.facultyOjbArray.push({
+                                facultyId: fac[0],
+                                facultyName: fac[1]
+                            });
+                        })
                     });    
             },
             insertNewFaculty() {
@@ -98,14 +103,14 @@
                 this.showForm = false;
             },
             goEdit(p){
-                let fac = this.faculties[p]
-                this.fac.facultyName = fac[1];
-                this.facutlyId = fac[0];
+                let f = this.facultyOjbArray[p]
+                this.fac.facultyName = f.facultyName;
+                this.fac.facultyId = f.facultyId;
                 this.updateButton = true;
                 this.showForm = true;
             },
             updateFaculty() {
-                this.$http.put(`update/faculty/${this.facutlyId}`, this.fac)
+                this.$http.put(`update/faculty/${this.fac.facultyId}`, this.fac)
                         .then(response => {
                             this.getFaculty();
                         }, err => {

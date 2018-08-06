@@ -96,21 +96,11 @@ export default {
             filter: [ 
                 {
                     title: 'Department',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
+                    values: this.$store.state.department
                 },
                 {
                     title: 'Session',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
+                    values: this.$store.state.session
                 }
             ],
             select: ['all', 'all', 'admin'],
@@ -131,6 +121,18 @@ export default {
         check() {
             console.log(this.select);
         }
+    },
+
+    mounted() {
+       let departmentLen = this.$store.state.department.length;
+       if(!departmentLen) {
+           this.$store.dispatch('getDepartments');
+       }
+
+       let sessionLen = this.$store.state.session.length;
+       if(!sessionLen) {
+           this.$store.dispatch('getSessions');
+       } 
     }
 }
 </script>

@@ -15,8 +15,8 @@
                 <form>  
                     <div class="group"> 
                         <select v-model="inputProgram.deptName">
-                            <option disabled selected value="">SELECT PROGRAM</option> 
-                            <option v-for="(program, i) in programs" :key="i" :value="program[5]" >{{program[5]}} </option> 
+                            <option disabled selected value="">SELECT DEPARTMENT NAME</option> 
+                            <option v-for="(program, i) in programObjArray" :key="i" :value="program.departmentName" >{{program.departmentName}} </option> 
                         </select>
                         <span class="highlight"></span>
                         <span class="bar"></span> 
@@ -75,13 +75,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(program, k) in programs" :key="k">
+                        <tr v-for="(p, k) in programTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{program[1]}}</td>
-                            <td>{{program[3]}}</td>
-                            <td>{{program[4]}}</td>
-                            <td>{{program[0]}}</td>
-                            <td>{{program[2]}}</td>
+                            <td>{{p.programName}}</td>
+                            <td>{{p.programAbbr}}</td>
+                            <td>{{p.programDegree}}</td>
+                            <td>{{p.departmentName}}</td>
+                            <td>{{p.facultyName}}</td>
                             <td>
                                 <a href="" @click.prevent="goEdit(k)">Edit</a>
                             </td>
@@ -97,57 +97,77 @@
 export default {
     data() {
         return {
-            filter: [
-                {
-                    title: 'Faculty',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Department',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                } 
-            ],
+
             select: ['all', 'all'],
             inputProgram: {
                 deptName: '',
                 progName: '',
                 pAbr: '',
-                deg: ''
+                deg: '',
+                id: ''
 
             },
-            progrmId: '',
             showForm: false,
-            programs: [],
-            update: false
+            programObjArray: [],
+            update: false,
+            faculty: []
         }
     },
+    computed: {
+        filter(){ 
+            return [
+                {
+                    title: 'Faculty',
+                    values: this.$store.state.faculty
+                },
+                {
+                    title: 'Department',
+                    values: this.$store.state.department
+                }, 
+            ]
+        },
 
+       programTable(){
+            var fcl = this.select[0]
+            var dep = this.select[1]
+                var nArray = []
+                if(fcl === 'all'){
+                    nArray = this.programObjArray;
+                }else{
+                    nArray = this.programObjArray.filter(el => {
+                        return el.facultyName === fcl;
+                    })
+                }
+
+                if(dep !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+                
+                return nArray;
+       }
+
+    },
     methods: { 
         goEdit(p){
-            let prog = this.programs[p]
-            this.inputProgram.deptName = prog[5];
-            this.inputProgram.progName = prog[1];
-            this.inputProgram.pAbr = prog[3];
-            this.inputProgram.deg = prog[4];
+            let prog = this.programObjArray[p];
+            console.log('this.programObjArray[p];: ', this.programObjArray[p]);
+    
+            this.inputProgram.deptName = prog.departmentName;
+            this.inputProgram.progName = prog.progName;
+            this.inputProgram.pAbr = prog.programAbbr;
+            this.inputProgram.deg = prog.programDegree;
+            this.inputProgram.id = prog.programId;
 
-            this.progrmId = prog[6]
+
             this.showForm = true;
             this.update = true;
 
 
         },
         updateProg(){
-            this.$http.put(`update/program/${this.progrmId}`, this.inputProgram)
+            this.$http.put(`update/program/${this.inputProgram.id}`, this.inputProgram)
                     .then(response => {
                         this.getDataFromDb();
                     }, error => {
@@ -164,7 +184,18 @@ export default {
                         
                     })
                     .then(data => {
-                        this.programs = data;
+                        data.forEach(p => {
+                            this.programObjArray.push({
+                                departmentAbbr: p[0],
+                                programName: p[1],
+                                facultyName: p[2],
+                                programAbbr: p[3],
+                                programDegree: p[4],
+                                departmentName: p[5],
+                                programId: p[6]
+
+                            });
+                        })
                     }).catch(this.$errorHandler)
         },
         insertProgram() {
@@ -184,6 +215,23 @@ export default {
     },
    mounted(){
        this.getDataFromDb();
+       let FacultyLen = this.$store.state.faculty.length;
+       if(!FacultyLen) {
+           this.$store.dispatch('getFaculties');
+       }
+
+       let departmentLen = this.$store.state.department.length;
+       if(!departmentLen) {
+           this.$store.dispatch('getDepartments');
+       } 
+       let programLen = this.$store.state.program.length;
+       if(!programLen) {
+           this.$store.dispatch('getPrograms');
+       }
+       let sessionLen = this.$store.state.session.length;
+       if(!sessionLen) {
+           this.$store.dispatch('getSessions');
+       } 
    }
 }
 </script>

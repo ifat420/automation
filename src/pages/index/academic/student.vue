@@ -182,15 +182,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(student, k) in studentArray" :key="k">
+                        <tr v-for="(s, k) in studentTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{student[0]}}</td>
-                            <td>{{student[1]}}</td>
-                            <td>{{student[2]}}</td>
-                            <td>{{student[3]}}</td> 
-                            <td>{{student[4]}}</td>
-                            <td>{{student[5]}}</td>
-                            <td>{{student[6]}}</td>
+                            <td>{{s.firstName}}</td>
+                            <td>{{s.lstName}}</td>
+                            <td>{{s.studentEmail}}</td>
+                            <td>{{s.studentPhone}}</td> 
+                            <td>{{s.departmentName}}</td>
+                            <td>{{s.session}}</td>
+                            <td>{{s.progAbbr}}</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -208,33 +208,14 @@ export default {
     mixins: [commonData],
     data() {
         return {
-            filter: [
-                {
-                    title: 'Faculty',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Department',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                } 
-            ],
-            select: ['all', 'all'],
+            select: ['all', 'all', 'all'],
             showForm: false,
             studentArray: [],
+            studentObjectArray: [],
             studentObject: {
-                departmentName: '1',
-                progAbbr: '1',
-                session: '1',
+                departmentName: '',
+                progAbbr: '',
+                session: '',
                 roll: '',
                 reg: '',
                 fstName: '',
@@ -243,7 +224,7 @@ export default {
                 motherName: '',
                 phoneNumber: '',
                 dob: '',
-                gender: '1',
+                gender: '',
                 religion: '',
                 preAdd: '',
                 perAdd: '',
@@ -255,6 +236,52 @@ export default {
             }
         }
     },
+    computed: {
+         filter(){ 
+            return [
+                {
+                    title: 'Department',
+                    values: this.$store.state.department
+                },
+                 {
+                    title: 'Session',
+                    values: this.$store.state.session
+                },
+                {
+                    title: 'Program',
+                    values: this.$store.state.program
+                },
+            ]
+        },
+        studentTable(){
+                var dep = this.select[0]
+                var sec = this.select[1]
+                var pog = this.select[2]
+                var nArray = []
+                if(dep === 'all'){
+                    nArray = this.studentObjectArray;
+                }
+
+                else{
+                    nArray = this.studentObjectArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+
+                if(sec !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.session === sec;
+                    })
+                }
+                if(pog !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.progAbbr === pog;
+                    })
+                }
+                
+                return nArray;
+        }
+    },
     methods: {
         getAllStudents(){
                 this.$http.get('get/student')
@@ -264,6 +291,18 @@ export default {
                     })
                     .then(data => {
                         this.studentArray = data;
+                        data.forEach(s => {
+                            this.studentObjectArray.push({
+                                firstName: s[0],
+                                lstName: s[1],
+                                studentEmail: s[2],
+                                studentPhone: s[3],
+                                departmentName: s[4],
+                                session: s[5],
+                                progAbbr: s[6]
+
+                            })
+                        })
                     })
             },
            insertStudent(){
@@ -279,6 +318,20 @@ export default {
     },
     mounted() {
         this.getAllStudents();
+        let departmentLen = this.$store.state.department.length;
+        if(!departmentLen) {
+            this.$store.dispatch('getDepartments');
+        } 
+
+       let sessionLen = this.$store.state.session.length;
+       if(!sessionLen) {
+           this.$store.dispatch('getSessions');
+       } 
+
+       let programLen = this.$store.state.program.length;
+       if(!programLen) {
+           this.$store.dispatch('getPrograms');
+       }
     }
 }
 </script>

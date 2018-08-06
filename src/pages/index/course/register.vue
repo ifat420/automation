@@ -11,7 +11,7 @@
                 <form> 
                     <div class="group"> 
                         <select>
-                            <option disabled selected value="1">SELECT DEPARTMENT</option> 
+                            <option disabled selected value="1">Select Department..</option> 
                             <option>Computer Science and Technology</option> 
                             <option>Department</option> 
                             <option>Computer Science and Technology</option> 
@@ -19,34 +19,37 @@
                             <option>Computer Science and Technology</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span> 
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
                     </div> 
 
                     <div class="group"> 
                         <select>
-                            <option disabled selected value="1">SELECT PROGRAM</option> 
+                            <option disabled selected value="1">Select Program..</option> 
                             <option>BSC</option> 
                             <option>MSC</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span> 
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
                     </div>
 
                     <div class="group"> 
                         <select>
-                            <option disabled selected value="1">SELECT SESSION</option> 
+                            <option disabled selected value="1">Select Session..</option> 
                             <option>2013-14</option> 
                             <option>2014-15</option> 
                             <option>2016-17</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span> 
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
                     </div> 
                                     
 
                     <div class="group"> 
                         <select>
-                            <option disabled selected value="1">SELECT SEMESTER</option> 
+                            <option disabled selected value="1">Select Semester..</option> 
                             <option>1.1</option> 
                             <option>1.2</option> 
                             <option>2.1</option> 
@@ -54,7 +57,8 @@
                             <option>3.1</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span> 
+                        <span class="bar"></span>
+                        <!-- <label>Select Department</label> -->
                     </div> 
 
         

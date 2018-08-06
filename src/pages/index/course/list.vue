@@ -36,16 +36,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(course, k) in courseArray" :key="k">
+                        <tr v-for="(c, k) in courseTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{course[0]}}</td>
-                            <td>{{course[1]}}</td>
-                            <td>{{course[2]}}</td>
-                            <td>{{course[3]}}</td>
-                            <td>{{course[4]}}</td>
-                            <td>{{course[5]}}</td>
-                            <td>{{course[6]}}</td>
-                            <td>{{course[7]}}</td>
+                            <td>{{c.courseCode}}</td>
+                            <td>{{c.courseTitle}}</td>
+                            <td>{{c.courseCredit}}</td>
+                            <td>{{c.courseType}}</td>
+                            <td>{{c.departmentName}}</td>
+                            <td>{{c.semester}}</td>
+                            <td>{{c.sessionDesc}}</td>
+                            <td>{{c.programAbbr}}</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -61,48 +61,59 @@
 export default {
     data() {
         return {
-            filter: [
-                {
-                    title: 'Departmetn',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Program',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Session',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Semester',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                }
-            ],
-            select: ['all', 'all', 'all', 'all'],
-            courseArray: []
+            select: ['all', 'all', 'all'],
+            courseObjArray: []
         }
     },
+    computed: {
+         filter(){ 
+            return [
+                    {
+                        title: 'Department',
+                        values: this.$store.state.department
+                    }, 
+                    {
+                        title: 'Program',
+                        values: this.$store.state.program
+                    }, 
+                    {
+                        title: 'Semester',
+                        values: this.$store.state.semester
+                    }
+
+                ]
+            },
+        courseTable(){
+                var dep = this.select[0]
+                var pog = this.select[1]
+                var sem = this.select[2]
+                var nArray = []
+                if(dep === 'all'){
+                    nArray = this.courseObjArray;
+                }
+
+                else{
+                    nArray = this.courseObjArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+
+                if(pog !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.programAbbr === pog;
+                    })
+                }
+                if(sem !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.semester === sem;
+                    })
+                }
+                
+                return nArray;
+        }
+    },
+
+
     methods: {
         getAllCourse(){
                 this.$http.get('get/course')
@@ -110,13 +121,42 @@ export default {
                         return response.json();
                     })
                     .then(data => {
-                        this.courseArray = data;
-                    console.log(data);
+                        data.forEach(c => {
+                            this.courseObjArray.push({
+                                courseCode: c[0],
+                                courseTitle: c[1],
+                                courseCredit: c[2],
+                                courseType: c[3],
+                                departmentName: c[4],
+                                semester: c[5],
+                                sessionDesc: c[6],
+                                programAbbr: c[7]
+
+                            })
+                        })
+                    // console.log(data);
                     })
             },
     },
     mounted(){
         this.getAllCourse();
+
+       let departmentLen = this.$store.state.department.length;
+       if(!departmentLen) {
+           this.$store.dispatch('getDepartments');
+       } 
+       let programLen = this.$store.state.program.length;
+       if(!programLen) {
+           this.$store.dispatch('getPrograms');
+       }
+       let sessionLen = this.$store.state.session.length;
+       if(!sessionLen) {
+           this.$store.dispatch('getSessions');
+       } 
+       let semesterLen = this.$store.state.semester.length;
+       if(!semesterLen) {
+           this.$store.dispatch('getSemester');
+       } 
     }
 }
 </script>

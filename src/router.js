@@ -32,7 +32,7 @@ import courseRegister from './pages/index/course/register.vue'
 
 import marksTable from './pages/index/marks/table.vue'
 import thirdExaminerTable from './pages/index/marks/thirdexaminertable.vue'
-import finalResultAllTogather from './pages/index/marks/finalresultalltogather.vue'
+import finalResultAllTogather from './pages/index/marks/finalresultalltogather.vue' 
 
 
 
@@ -158,7 +158,7 @@ var routes = [
                 path: '/marks/finalResultAllTogather',
                 component: finalResultAllTogather,
                 name: 'finalResultAllTogather'
-            }
+            } 
         ]
     },
     {

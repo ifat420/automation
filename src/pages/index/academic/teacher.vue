@@ -81,14 +81,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(teacher, k) in teachersArray" :key="k">
+                        <tr v-for="(t, k) in teacherTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{teacher[0]}}</td>
-                            <td>{{teacher[1]}}</td>
-                            <td>{{teacher[2]}}</td>
-                            <td>{{teacher[3]}}</td>
-                            <td>{{teacher[4]}}</td>
-                            <td>{{teacher[5]}}</td>
+                            <td>{{t.teacherName}}</td>
+                            <td>{{t.teacherDesc}}</td>
+                            <td>{{t.teacherEmail}}</td>
+                            <td>{{t.teacherPhone}}</td>
+                            <td>{{t.facultyName}}</td>
+                            <td>{{t.departmentName}}</td>
                             <td>
                                 <a @click.prevent="goEdit(k)" href="">Edit</a>
                             </td>
@@ -106,39 +106,56 @@ export default {
     mixins: [commonData],
     data() {
         return {
-            filter: [
-                {
-                    title: 'Faculty',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                },
-                {
-                    title: 'Department',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        }
-                    ]
-                } 
-            ],
             select: ['all', 'all'],
             showForm: false,
-            teachersArray: [],
+            teacherObjArray: [],
             teacherObj: {
-                deptName: '1',
+                deptName: '',
                 teacherName: '',
                 teacherDesc: '',
                 teacherEmail: '',
-                teacherPhone: ''
+                teacherPhone: '',
+                teacherId: ''
             },
             teacherId: '',
             updateButton: false 
         }
+    },
+    computed: {
+        filter(){ 
+            return [
+                {
+                    title: 'Faculty',
+                    values: this.$store.state.faculty
+                },
+                {
+                    title: 'Department',
+                    values: this.$store.state.department
+                }, 
+            ]
+        },
+
+       teacherTable(){
+            var fcl = this.select[0]
+            var dep = this.select[1]
+                var nArray = []
+                if(fcl === 'all'){
+                    nArray = this.teacherObjArray;
+                }else{
+                    nArray = this.teacherObjArray.filter(el => {
+                        return el.facultyName === fcl;
+                    })
+                }
+
+                if(dep !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+                
+                return nArray;
+       }
+
     },
     methods: {
          getAllTeachers(){
@@ -147,8 +164,18 @@ export default {
                         return response.json();
                     })
                     .then(data => {
-                        this.teachersArray = data;
-                        console.log(data);
+                        data.forEach(t => {
+                            this.teacherObjArray.push({
+                                teacherName: t[0],
+                                tedacherDesc: t[1],
+                                teacherEmail: t[2],
+                                teacherPhone: t[3],
+                                facultyName: t[4],
+                                departmentName: t[5],
+                                teacherId: t[6]
+                            })
+                        })
+                        // console.log(data);
                     })
             },
         insertTeacher(){
@@ -164,14 +191,15 @@ export default {
             goEdit(p){
                 this.showForm = true;
                 this.updateButton = true;
-                let t = this.teachersArray[p];
-                this.teacherObj.deptName = t[7];
-                this.teacherObj.teacherName = t[0];
-                this.teacherObj.teacherDesc = t[1];
-                this.teacherObj.teacherEmail = t[2];
-                this.teacherObj.teacherPhone = t[3];
+                let t = this.teacherObjArray[p];
+                this.teacherObj.deptName = t.departmentName;
+                this.teacherObj.teacherName = t.teacherName;
+                this.teacherObj.teacherDesc = t.teacherDesc;
+                this.teacherObj.teacherEmail = t.teacherEmail;
+                this.teacherObj.teacherPhone = t.teacherPhone;
+                this.teacherObj.teacherPhone = t.teacherPhone;
+                this.teacherObj.teacherId = t.teacherId;
 
-                this.teacherId = t[6];
                 
             },
             clear(){
@@ -185,7 +213,7 @@ export default {
                 this.updateButton = false;
             },
             updateTeacher(){
-                this.$http.put(`update/teacher/${this.teacherId}`, this.teacherObj)
+                this.$http.put(`update/teacher/${this.teacherObj.teacherId}`, this.teacherObj)
                         .then(response=> {
                             this.getAllTeachers();
                             this.showForm = false;
@@ -198,6 +226,15 @@ export default {
     },
     mounted(){
         this.getAllTeachers();
+        let FacultyLen = this.$store.state.faculty.length;
+        if(!FacultyLen) {
+            this.$store.dispatch('getFaculties');
+        }
+
+        let departmentLen = this.$store.state.department.length;
+        if(!departmentLen) {
+            this.$store.dispatch('getDepartments');
+        } 
     }
 }
 </script>

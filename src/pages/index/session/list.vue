@@ -31,12 +31,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(session, k) in sessions" :key="k">
+                        <tr v-for="(s, k) in sessionTable" :key="k">
                             <th scope="row"> {{k+1}} </th>
-                            <td>{{session[0]}}</td>
-                            <td>{{session[1]}}</td>
-                            <td>{{session[2]}}</td>
-                            <td>{{session[3]}}</td>
+                            <td>{{s.departmentName}}</td>
+                            <td>{{s.programAbbr}}</td>
+                            <td>{{s.sessionDesc}}</td>
+                            <td>{{s.facultyName}}</td>
                             <td>
                                 <a href="">Edit</a>
                             </td>
@@ -52,45 +52,89 @@
     export default {
         data() {
             return {
-                filter: [
-                {
-                    title: 'Faculty',
-                    values: [
-                        {
-                            name: 'All',
-                            value: 'all'
-                        },
-                        {
-                            name: 'All',
-                            value: 'all'
-                        },
-                        {
-                            name: 'All',
-                            value: 'all'
-                        },
-                    ]
+                select: ['all', 'all', 'all'],
+                sessionObjArray: []
+            }
+        },
+        computed: {
+          filter(){ 
+            return [
+                    {
+                        title: 'Faculty',
+                        values: this.$store.state.faculty
+                    },
+                    {
+                        title: 'Department',
+                        values: this.$store.state.department
+                    }, 
+                    {
+                        title: 'Program',
+                        values: this.$store.state.program
+                    }, 
+                ]
+            },
+            sessionTable(){
+                var fcl = this.select[0]
+                var dep = this.select[1]
+                var pog = this.select[2]
+                var nArray = []
+                if(fcl === 'all'){
+                    nArray = this.sessionObjArray;
+                }else{
+                    nArray = this.sessionObjArray.filter(el => {
+                        return el.facultyName === fcl;
+                    })
                 }
-            ],
-            select: ['all', 'all', 'all'],
-                sessions: []
+
+                if(dep !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+
+                if(pog !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.programAbbr === pog;
+                    })
+                }
+                
+                return nArray;
             }
         },
 
         methods: {
-            
-
             getSession(){
                 this.$http.get('get/session')
                         .then(response => {
                             return response.json();
                         })
                         .then(data => {
-                            this.sessions = data;
+                            data.forEach(el => {
+                                this.sessionObjArray.push({
+                                    departmentName: el[0],
+                                    programAbbr: el[1],
+                                    sessionDesc: el[2],
+                                    facultyName: el[3]
+                                });
+                            })
                         })
             }
         },
         mounted() {
             this.getSession();
+            let FacultyLen = this.$store.state.faculty.length;
+            if(!FacultyLen) {
+                this.$store.dispatch('getFaculties');
+            }
+
+            let departmentLen = this.$store.state.department.length;
+            if(!departmentLen) {
+                this.$store.dispatch('getDepartments');
+            } 
+            let programLen = this.$store.state.program.length;
+            if(!programLen) {
+                this.$store.dispatch('getPrograms');
+            }
         }
     }
 </script>
