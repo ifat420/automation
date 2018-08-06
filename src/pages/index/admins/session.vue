@@ -29,6 +29,11 @@
                     </select>
                 </div>
             </div>
+            <div v-if="c.length" class="col-2 offset-6">
+                <div class="button">
+                    <button  class="button__submit" type="button" @click.prevent="createAdmin" >Create Admin</button>
+                </div>
+            </div>
         </div>
 
         <div class="row" v-if="select[2]=='admin'">
@@ -71,10 +76,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(course, k) in 5" :key="k">
-                            <th scope="row"> <input type="checkbox" id="jack" :value="k" v-model="c"> </th> 
-                            <td>Computer Science and Engineering</td>
-                            <td>2013-14</td>
+                        <tr v-for="(s, k) in sessionTable" :key="k">
+                            <th scope="row"> <input type="checkbox"  :value="s.sessionId" v-model="c"> </th> 
+                            <td>{{s.departmentName}}</td>
+                            <td>{{s.sessionDesc}}</td>
                             <td>Not yet created</td> 
                             <td>
                                 <a href="">Edit</a>
@@ -93,7 +98,29 @@ export default {
     data() {
         return { 
             c: [],
-            filter: [ 
+            select: ['all', 'all', 'admin'],
+            radio: ['admin', 'nonAdmin'],
+            sessionObjArray: []
+        }
+    },
+    computed: {
+        selectAll: {
+            get: function() {
+                return this.c.length === this.sessionTable.length ? true : false;
+            },
+            set: function(v) {
+                var arr = [];
+                if(v){
+                    this.sessionTable.forEach( el => {
+                        arr.push(el.sessionId);
+                    })
+                }
+                this.c = arr;
+            }
+        },
+
+        filter(){
+            return [ 
                 {
                     title: 'Department',
                     values: this.$store.state.department
@@ -102,28 +129,89 @@ export default {
                     title: 'Session',
                     values: this.$store.state.session
                 }
-            ],
-            select: ['all', 'all', 'admin'],
-            radio: ['admin', 'nonAdmin']
-        }
-    },
-    computed: {
-        selectAll: {
-            get: function() {
-                return false;
-            },
-            set: function(v) {
+            ]
+        },
 
+        sessionTable(){
+                var dep = this.select[0]
+                var sec = this.select[1]
+            
+                var nArray = []
+                if(dep === 'all'){
+                    nArray = this.sessionObjArray;
+                }
+                else{
+                    nArray = this.sessionObjArray.filter(el => {
+                        return el.departmentName === dep;
+                    })
+                }
+
+                if(sec !== 'all'){
+                    nArray = nArray.filter(el => {
+                        return el.sessionDesc === sec;
+                    })
+                }
+                
+                return nArray;
             }
-        }
     },
     methods: {
         check() {
             console.log(this.select);
-        }
+        },
+
+        createObjectArray(){
+            var adminDet = [];
+            this.c.forEach(el => {
+                this.sessionTable.forEach(k => {
+                    if(el === k.sessionId){
+                        adminDet.push({
+                            deptAbbr: k.departmentNameAbbr,
+                            sesId: k.sessionId,
+                            sesDes: k.sessionDesc
+                        })
+                    }
+                })
+            })
+            return adminDet;
+        },
+        createAdmin(){
+            var x = this.createObjectArray();
+            this.insertSessionAdmin(x);
+        },
+        getSession(){
+                this.$http.get('get/session')
+                        .then(response => {
+                            return response.json();
+                        })
+                        .then(data => {
+                            data.forEach(el => {
+                                this.sessionObjArray.push({
+                                    departmentName: el[0],
+                                    programAbbr: el[1],
+                                    sessionDesc: el[2],
+                                    facultyName: el[3],
+                                    sessionId: el[4],
+                                    departmentNameAbbr: el[5]
+                                });
+                            })
+                        })
+            },
+
+            insertSessionAdmin(x){
+                 this.$http.post('insert/sessionAdmin', x)
+                        .then(response => {
+                            
+                        }, error => {
+                            console.log(error);
+                        })
+            }
+
+
     },
 
     mounted() {
+       this.getSession();
        let departmentLen = this.$store.state.department.length;
        if(!departmentLen) {
            this.$store.dispatch('getDepartments');
