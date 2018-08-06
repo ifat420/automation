@@ -35,6 +35,12 @@
                 </a>
                 <ul id="admins" class="sidebar__sub-list collapse">
                     <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('grandAdmin')" href="#">Grand</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
+                        <a @click.prevent="go('userAdmin')" href="#">Admin</a>
+                    </li> 
+                    <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('sessionAdmin')" href="#">session</a>    
                     </li>  
                 </ul>
@@ -45,13 +51,7 @@
                     Users
                     <i class="fas fa-angle-down"></i>
                 </a>
-                <ul id="users" class="sidebar__sub-list collapse">
-                    <li class="sidebar__sub-list--item">
-                        <a @click.prevent="go('userSuper')" href="#">Super</a>
-                    </li> 
-                    <li class="sidebar__sub-list--item">
-                        <a @click.prevent="go('userAdmin')" href="#">Admin</a>
-                    </li> 
+                <ul id="users" class="sidebar__sub-list collapse"> 
                     <li class="sidebar__sub-list--item">
                         <a @click.prevent="go('userTeacher')" href="#">Teacher</a>
                     </li> 
