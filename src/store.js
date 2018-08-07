@@ -8,7 +8,12 @@ const state = {
     department: [],
     program: [],
     session: [],
-    semester: []
+    semester: [],
+    user: {
+        type: '',
+        token: '',
+        id: ''
+    }
 }
 
 const mutations = {
