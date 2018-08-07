@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import encode from '../utilities/encode.js'
 export default {
     data() {
         return {
@@ -43,11 +44,12 @@ export default {
             }
         }
     },
-    methods: {
+    methods: {  
         login() {
             if(this.lgn.name === this.user && this.lgn.psw === this.psw) {
                 console.log('login success');
                 localStorage.setItem('login', '1');
+                localStorage.setItem('admin', 'session'); 
                 this.$router.push({
                     name: 'home'
                 })
