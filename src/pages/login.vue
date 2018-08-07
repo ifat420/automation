@@ -35,9 +35,7 @@
 import encode from '../utilities/encode.js'
 export default {
     data() {
-        return {
-            user: 'admin',
-            psw: '123456',
+        return { 
             lgn: {
                 name: '',
                 psw: ''
@@ -46,14 +44,7 @@ export default {
     },
     methods: {  
         login() {
-            if(this.lgn.name === this.user && this.lgn.psw === this.psw) {
-                console.log('login success');
-                localStorage.setItem('login', '1');
-                localStorage.setItem('admin', 'session'); 
-                this.$router.push({
-                    name: 'home'
-                })
-            }
+             
         }
     }
 }

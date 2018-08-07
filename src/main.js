@@ -73,10 +73,10 @@ Vue.prototype.$errorHandler = (e) => {
   console.log('error: ', e)
 }
 
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('Authorization', 'Bearer '+ localStorage.getItem('token')) 
-    next()
-})
+// Vue.http.interceptors.push((request, next) => {
+//     request.headers.set('Authorization', 'Bearer '+ localStorage.getItem('token')) 
+//     next()
+// })
  
 
 new Vue({
