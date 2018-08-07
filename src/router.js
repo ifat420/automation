@@ -33,10 +33,19 @@ import courseRegister from './pages/index/course/register.vue'
 import marksTable from './pages/index/marks/table.vue'
 import thirdExaminerTable from './pages/index/marks/thirdexaminertable.vue'
 import finalResultAllTogather from './pages/index/marks/finalresultalltogather.vue' 
+ 
+import errorPermission from './pages/index/error/permission.vue' 
 
 
 
 Vue.use(Router)
+
+var grandAccess = (to, from, next) => {
+    // let type = localStorage.getItem('type')
+    // if(type && type === 'grand') next();
+    // else next('/error/permission')
+    next()
+}
 
 var routes = [ 
     {
@@ -52,22 +61,26 @@ var routes = [
             {
                 path: '/academic/teacher',
                 component: academicTeacher,
-                name: 'academicTeacher'
+                name: 'academicTeacher',
+                beforeEnter: grandAccess
             },
             {
                 path: '/academic/student',
                 component: academicStudent,
-                name: 'academicStudent'
+                name: 'academicStudent',
+                beforeEnter: grandAccess
             },
             {
                 path: '/academic/stuff',
                 component: academicStuff,
-                name: 'academicStuff'
+                name: 'academicStuff',
+                beforeEnter: grandAccess
             },
             {
                 path: '/academic/hall',
                 component: academicHall,
-                name: 'academicHall'
+                name: 'academicHall',
+                beforeEnter: grandAccess
             },
             {
                 path: '/admins/session',
@@ -158,6 +171,11 @@ var routes = [
                 path: '/marks/finalResultAllTogather',
                 component: finalResultAllTogather,
                 name: 'finalResultAllTogather'
+            },
+            {
+                path: '/error/permission',
+                component: errorPermission,
+                name: 'errorPermission'
             } 
         ]
     },

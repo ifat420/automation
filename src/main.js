@@ -28,7 +28,7 @@ import faBuilding from '@fortawesome/fontawesome-free-solid/faBuilding'
 import faBook from '@fortawesome/fontawesome-free-solid/faBook'
 import faAngleDown from '@fortawesome/fontawesome-free-solid/faAngleDown'
 import faExclamationTriangle from '@fortawesome/fontawesome-free-solid/faExclamationTriangle'
-import faCog from '@fortawesome/fontawesome-free-solid/faCog'
+import faCog from '@fortawesome/fontawesome-free-solid/faCog' 
 
 import faFacebookF from '@fortawesome/fontawesome-free-brands/faFacebookF' 
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook' 
@@ -51,8 +51,7 @@ fontawesome.library.add(faBuilding)
 fontawesome.library.add(faBook)
 fontawesome.library.add(faAngleDown)
 fontawesome.library.add(faExclamationTriangle)
-fontawesome.library.add(faCog)
-
+fontawesome.library.add(faCog) 
 
 fontawesome.library.add(faFacebookF) 
 fontawesome.library.add(faFacebook) 
@@ -64,6 +63,7 @@ fontawesome.library.add(faPinterest)
 fontawesome.library.add(faPinterestP) 
 fontawesome.library.add(faGooglePlus) 
 fontawesome.library.add(faGooglePlusG) 
+
 //end font awesome
 
 Vue.config.productionTip = false
@@ -73,6 +73,10 @@ Vue.prototype.$errorHandler = (e) => {
   console.log('error: ', e)
 }
 
+Vue.http.interceptors.push((request, next) => {
+    request.headers.set('Authorization', 'Bearer '+ localStorage.getItem('token')) 
+    next()
+})
  
 
 new Vue({

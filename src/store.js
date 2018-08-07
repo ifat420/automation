@@ -8,7 +8,7 @@ const state = {
     department: [],
     program: [],
     session: [],
-    semester: []
+    semester: [] 
 }
 
 const mutations = {
@@ -36,7 +36,7 @@ const mutations = {
         state.semester = payload.semester;
         // console.log('state.session: ', state.session);
        
-    }
+    } 
 }
 
 const actions = {

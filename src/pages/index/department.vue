@@ -14,16 +14,13 @@
         <div class="row" v-if="showForm">
             <div class="col-6">
                 <form>
-                    
-                     <div class="group"> 
+                    <div class="group"> 
                         <select v-model="department.facultyName">
                             <option disabled selected value="1">SELECT FACULTY</option> 
-                            <option v-for="(fac, i) in allFaculty" :key="i" :value="fac[1]"  >{{fac[1]}}</option> 
-                            
+                            <option v-for="(fac, i) in allFaculty" :key="i" :value="fac[1]">{{fac[1]}}</option> 
                         </select>
                         <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <!-- <label>Select Department</label> -->
+                        <span class="bar"></span> 
                     </div> 
 
                     <div class="group">
